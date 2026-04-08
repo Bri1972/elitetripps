@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Tripps™ | Travel Planning</title>
+  <meta name="description" content="Elite Tripps™ offers personalized travel planning for cruises, all-inclusive getaways, and group trips. Share your dream and let us handle the rest.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root, [data-theme="light"] {
+      --color-bg: #f9f6f0;
+      --color-surface: #fdfaf5;
+      --color-surface-2: #fff8ee;
+      --color-surface-offset: #f2ece0;
+      --color-surface-navy: #13213a;
+      --color-surface-navy-2: #0e1a2f;
+      --color-divider: #e0d8cb;
+      --color-border: #d8cfc0;
+      --color-text: #1a1611;
+      --color-text-muted: #6b6257;
+      --color-text-faint: #b0a898;
+      --color-text-inverse: #fdf9f2;
+      --color-text-navy: #13213a;
+      --color-gold: #b8924a;
+      --color-gold-hover: #9e7a38;
+      --color-gold-active: #7d5f28;
+      --color-gold-light: #f0e4cc;
+      --color-gold-border: rgba(184,146,74,0.35);
+      --color-navy: #13213a;
+      --color-navy-hover: #0e1a2f;
+      --radius-sm: 0.25rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-full: 9999px;
+      --transition: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 3px rgba(26, 19, 10, 0.07);
+      --shadow-md: 0 4px 16px rgba(26, 19, 10, 0.09);
+      --shadow-lg: 0 12px 40px rgba(26, 19, 10, 0.12);
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.82rem + 0.28vw, 1rem);
+      --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.4rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.3rem + 2.5vw, 3.5rem);
+      --text-hero: clamp(2.8rem, 1.5rem + 5vw, 5.5rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+      --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+      --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+      --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Jost', 'Helvetica Neue', sans-serif;
+      --content-narrow: 640px;
+      --content-default: 920px;
+      --content-wide: 1160px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--space-8);
+    }
+    body {
+      min-height: 100dvh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.7;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+    img, svg { display: block; max-width: 100%; height: auto; }
+    input, button, textarea, select { font: inherit; color: inherit; }
+    h1, h2, h3, h4 { text-wrap: balance; line-height: 1.2; font-family: var(--font-display); }
+    p, li { text-wrap: pretty; }
+    button { cursor: pointer; background: none; border: none; }
+    a, button, [role="button"], input, textarea, select {
+      transition: color var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition), opacity var(--transition);
+    }
+    ::selection { background: rgba(184,146,74,0.2); color: var(--color-text); }
+    :focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+    .container { max-width: var(--content-default); margin-inline: auto; padding-inline: clamp(var(--space-6), 5vw, var(--space-12)); }
+    .container--narrow { max-width: var(--content-narrow); margin-inline: auto; padding-inline: clamp(var(--space-6), 5vw, var(--space-12)); }
+    .container--wide { max-width: var(--content-wide); margin-inline: auto; padding-inline: clamp(var(--space-6), 5vw, var(--space-12)); }
+    .gold-rule { width: 56px; height: 1.5px; background: var(--color-gold); margin-block: var(--space-6); }
+    .gold-rule--center { margin-inline: auto; }
+    .section-label {
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: var(--space-4);
+    }
+
+    .site-header {
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-divider);
+      padding-block: var(--space-6);
+      text-align: center;
+    }
+    .site-header__brand {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--color-text-navy);
+      text-decoration: none;
+    }
+    .site-header__brand span { color: var(--color-gold); font-weight: 300; }
+    .site-header__tagline {
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: var(--space-1);
+    }
+
+    .hero {
+      background: var(--color-surface-navy);
+      position: relative;
+      overflow: hidden;
+      padding-block: clamp(var(--space-20), 12vw, var(--space-24));
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(184,146,74,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 20% 100%, rgba(184,146,74,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero__label {
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: var(--space-8);
+    }
+    .hero__heading {
+      font-family: var(--font-display);
+      font-size: var(--text-hero);
+      font-weight: 300;
+      color: var(--color-text-inverse);
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+    .hero__heading em { font-style: italic; color: var(--color-gold); }
+    .hero__intro {
+      margin-top: var(--space-10);
+      max-width: 600px;
+      margin-inline: auto;
+      color: rgba(253,249,242,0.72);
+      font-size: var(--text-base);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+    .hero__cta-wrap { margin-top: var(--space-12); }
+    .btn-gold {
+      display: inline-block;
+      background: var(--color-gold);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: var(--space-4) var(--space-10);
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-gold:hover { background: var(--color-gold-hover); }
+    .btn-gold:active { background: var(--color-gold-active); }
+    .btn-navy {
+      display: inline-block;
+      background: var(--color-navy);
+      color: var(--color-text-inverse);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: var(--space-5) var(--space-12);
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-navy:hover { background: var(--color-navy-hover); }
+
+    .section { padding-block: clamp(var(--space-16), 8vw, var(--space-24)); }
+    .section--ivory { background: var(--color-surface); }
+    .section--cream { background: var(--color-bg); }
+    .section--warm { background: var(--color-surface-offset); }
+    .section--navy { background: var(--color-surface-navy); color: var(--color-text-inverse); }
+    .section__heading {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 400;
+      color: inherit;
+      margin-bottom: var(--space-6);
+    }
+    .section__heading--center { text-align: center; }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+    }
+    @media (max-width: 720px) { .steps-grid { grid-template-columns: 1fr; gap: var(--space-6); } }
+    .step-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8) var(--space-6) var(--space-8);
+      position: relative;
+    }
+    .step-card__num {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 300;
+      color: var(--color-gold-light);
+      line-height: 1;
+      margin-bottom: var(--space-4);
+    }
+    .step-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      color: var(--color-text-navy);
+      margin-bottom: var(--space-3);
+    }
+    .step-card__body {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.75;
+    }
+    .step-card__accent {
+      position: absolute;
+      top: 0; left: var(--space-6);
+      width: 32px; height: 2px;
+      background: var(--color-gold);
+      border-radius: 0 0 2px 2px;
+    }
+
+    .knowing-list {
+      list-style: none;
+      margin-top: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+    .knowing-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-5);
+      font-size: var(--text-base);
+      color: rgba(253,249,242,0.78);
+      line-height: 1.75;
+    }
+    .knowing-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 20px;
+      height: 1px;
+      background: var(--color-gold);
+      margin-top: 0.75em;
+    }
+
+    .fee-card {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-gold-border);
+      border-radius: var(--radius-xl);
+      padding: clamp(var(--space-8), 4vw, var(--space-12)) clamp(var(--space-8), 5vw, var(--space-16));
+      max-width: 740px;
+      margin-inline: auto;
+    }
+    .fee-card p { color: var(--color-text-muted); line-height: 1.8; }
+    .fee-card p + p { margin-top: var(--space-5); }
+    .fee-card__note {
+      margin-top: var(--space-6);
+      font-size: var(--text-sm);
+      color: var(--color-text-faint);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--color-divider);
+      font-style: italic;
+    }
+
+    .specialties-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+    }
+    @media (max-width: 620px) { .specialties-wrap { grid-template-columns: 1fr; } }
+    .specialty-group {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8) var(--space-8);
+    }
+    .specialty-group__title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      color: var(--color-text-navy);
+      margin-bottom: var(--space-2);
+    }
+    .specialty-group__rule { width: 28px; height: 1.5px; background: var(--color-gold); margin-bottom: var(--space-6); }
+    .specialty-group ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .specialty-group ul li {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      padding-left: var(--space-5);
+      position: relative;
+      line-height: 1.6;
+    }
+    .specialty-group ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.6em;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--color-gold-light);
+      border: 1px solid var(--color-gold);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+    }
+    @media (max-width: 820px) { .testimonial-grid { grid-template-columns: 1fr; } }
+    .testimonial-card {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+    }
+    .testimonial-card__quote {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      color: var(--color-text-navy);
+      line-height: 1.35;
+      margin-bottom: var(--space-4);
+    }
+    .testimonial-card__body {
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      line-height: 1.8;
+      margin-bottom: var(--space-6);
+    }
+    .testimonial-card__name {
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+    }
+
+    .form-wrap { max-width: 680px; margin-inline: auto; }
+    .form-intro { margin-bottom: var(--space-10); }
+    .form-intro p { color: var(--color-text-muted); font-size: var(--text-base); line-height: 1.8; }
+    .form-intro p + p { margin-top: var(--space-4); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+    @media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: var(--space-2); }
+    .form-group--full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-navy);
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-5);
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      width: 100%;
+      outline: none;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--color-text-faint); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--color-gold);
+      box-shadow: 0 0 0 3px rgba(184,146,74,0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-submit-wrap { margin-top: var(--space-10); text-align: center; }
+    .form-submit-note {
+      margin-top: var(--space-4);
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      letter-spacing: 0.06em;
+    }
+    .form-contact-inline {
+      margin-top: var(--space-4);
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      line-height: 1.7;
+      max-width: 40rem;
+      margin-inline: auto;
+    }
+    .form-contact-inline a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(176,168,152,0.5);
+    }
+
+    .closing {
+      background: var(--color-surface-navy-2);
+      padding-block: clamp(var(--space-16), 8vw, var(--space-20));
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .closing::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(184,146,74,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .closing__text {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--color-text-inverse);
+      max-width: 700px;
+      margin-inline: auto;
+      line-height: 1.3;
+      letter-spacing: 0.01em;
+    }
+    .closing__text em { font-style: normal; color: var(--color-gold); }
+
+    .site-footer {
+      background: var(--color-surface-navy);
+      border-top: 1px solid rgba(184,146,74,0.18);
+      padding-block: var(--space-8);
+      text-align: center;
+    }
+    .site-footer__text {
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(253,249,242,0.45);
+    }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+
+    .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus {
+      position: fixed; top: var(--space-4); left: var(--space-4);
+      width: auto; height: auto; padding: var(--space-3) var(--space-6);
+      background: var(--color-gold); color: white; border-radius: var(--radius-md);
+      font-size: var(--text-sm); font-weight: 500; z-index: 9999; text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <a href="#" class="site-header__brand" aria-label="Elite Tripps home">
+      Elite Tripps<span>™</span>
+    </a>
+    <p class="site-header__tagline">Personalized Travel Planning</p>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <p class="hero__label">Your journey begins here</p>
+        <h1 class="hero__heading" id="hero-heading">
+          Need help planning?<br>
+          <em>Start here.</em>
+        </h1>
+        <p class="hero__intro">
+          You don't need to have everything figured out yet. That's exactly what I'm here for. Just share what you're thinking so far. A destination, a feeling, or a rough idea. I'll take it from there.
+        </p>
+        <div class="hero__cta-wrap">
+          <a href="#inquiry-form" class="btn-gold">Let's get you booked</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--warm" aria-label="Travel specialties and personal service" style="padding-block: var(--space-6); border-top: 1px solid var(--color-divider); border-bottom: 1px solid var(--color-divider);">
+      <div class="container">
+        <p style="text-align: center; color: var(--color-text-muted); font-size: var(--text-sm); letter-spacing: 0.08em; text-transform: uppercase;">Personalized planning for cruises, all-inclusive getaways, and group travel</p>
+      </div>
+    </section>
+
+
+    <section class="section section--warm" aria-labelledby="intro-heading">
+      <div class="container--narrow">
+        <p class="section-label reveal">Meet your travel advisor</p>
+        <h2 class="section__heading reveal" id="intro-heading">A warm welcome, and experience you can rely on</h2>
+        <div class="gold-rule reveal"></div>
+        <div class="reveal">
+          <p style="font-size: var(--text-lg); color: var(--color-text-navy); margin-bottom: var(--space-4);">Hi, I'm Sabrina, and I've been in the travel industry since 2007.</p>
+          <p style="color: var(--color-text-muted); line-height: 1.9; margin-bottom: var(--space-4);">I help clients plan travel with care, clarity, and a personal touch. From cruises and all-inclusive getaways to group travel and celebration trips, every inquiry is reviewed by a real person who understands how to turn early ideas into a trip that feels well considered from the start.</p>
+          <p style="color: var(--color-text-muted); line-height: 1.9;">You do not need to arrive with every detail mapped out. A destination thought, a travel window, or simply the kind of experience you want is enough for us to begin.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--ivory" aria-labelledby="how-heading">
+      <div class="container">
+        <p class="section-label reveal">The process</p>
+        <h2 class="section__heading reveal" id="how-heading">Three simple steps</h2>
+        <div class="gold-rule reveal"></div>
+        <div class="steps-grid">
+          <div class="step-card reveal reveal-delay-1">
+            <div class="step-card__accent"></div>
+            <div class="step-card__num" aria-hidden="true">01</div>
+            <h3 class="step-card__title">Share your vision</h3>
+            <p class="step-card__body">A destination idea, rough dates, and what you're hoping for. That's more than enough to get started.</p>
+          </div>
+          <div class="step-card reveal reveal-delay-2">
+            <div class="step-card__accent"></div>
+            <div class="step-card__num" aria-hidden="true">02</div>
+            <h3 class="step-card__title">I'll send a starting point</h3>
+            <p class="step-card__body">After I review what you share, I'll send you ideas, options, and pricing ranges to help you move forward.</p>
+          </div>
+          <div class="step-card reveal reveal-delay-3">
+            <div class="step-card__accent"></div>
+            <div class="step-card__num" aria-hidden="true">03</div>
+            <h3 class="step-card__title">We build it together</h3>
+            <p class="step-card__body">If it feels like the right fit, we move into the planning phase and build your trip together.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--navy" aria-labelledby="knowing-heading">
+      <div class="container--narrow">
+        <p class="section-label reveal" style="color: var(--color-gold);">When you reach out</p>
+        <h2 class="section__heading reveal" id="knowing-heading" style="color: var(--color-text-inverse);">A few things worth knowing</h2>
+        <div class="gold-rule reveal"></div>
+        <ul class="knowing-list" role="list">
+          <li class="reveal">Reaching out doesn't commit you to anything. It simply gets the conversation started.</li>
+          <li class="reveal reveal-delay-1">You don't need exact dates or a perfect budget yet. A rough idea is enough.</li>
+          <li class="reveal reveal-delay-2">You'll hear back from me personally with guidance based on what you share.</li>
+          <li class="reveal reveal-delay-3">Everything you share is kept private.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--ivory" aria-labelledby="specialties-heading">
+      <div class="container">
+        <p class="section-label reveal" style="text-align:center;">What I do best</p>
+        <h2 class="section__heading section__heading--center reveal" id="specialties-heading">Experiences I specialize in</h2>
+        <div class="gold-rule gold-rule--center reveal"></div>
+        <div class="specialties-wrap">
+          <div class="specialty-group reveal">
+            <h3 class="specialty-group__title">Cruise Experiences</h3>
+            <div class="specialty-group__rule" aria-hidden="true"></div>
+            <ul role="list">
+              <li>Solo cruise getaways</li>
+              <li>Group cruise experiences</li>
+              <li>Girls' trip cruises</li>
+              <li>Graduation cruise celebrations</li>
+              <li>Family reunion cruises</li>
+            </ul>
+          </div>
+          <div class="specialty-group reveal reveal-delay-1">
+            <h3 class="specialty-group__title">All-Inclusive Getaways</h3>
+            <div class="specialty-group__rule" aria-hidden="true"></div>
+            <ul role="list">
+              <li>Couples retreats</li>
+              <li>Birthday and celebration trips</li>
+              <li>Girls' trip resort packages</li>
+              <li>Family all-inclusive vacations</li>
+              <li>Solo traveler getaways</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--cream" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <p class="section-label reveal" style="text-align:center;">Client reflections</p>
+        <h2 class="section__heading section__heading--center reveal" id="testimonials-heading">What my clients are saying</h2>
+        <div class="gold-rule gold-rule--center reveal"></div>
+        <div class="testimonial-grid">
+          <article class="testimonial-card reveal">
+            <h3 class="testimonial-card__quote">“She made our girls’ trip feel effortless.”</h3>
+            <p class="testimonial-card__body">“I told her the vibe we wanted and she handled everything from there. The resort, the excursions, all of it was exactly what we needed. We didn’t have to stress about a thing.”</p>
+            <p class="testimonial-card__name">— T. Johnson, Girls’ Trip</p>
+          </article>
+          <article class="testimonial-card reveal reveal-delay-1">
+            <h3 class="testimonial-card__quote">“My birthday trip turned out better than I imagined.”</h3>
+            <p class="testimonial-card__body">“I wasn’t even sure where I wanted to go, but she gave me options and helped me narrow it down. Everything was smooth, and I actually got to enjoy my trip instead of planning it.”</p>
+            <p class="testimonial-card__name">— M. Davis, Birthday Trip</p>
+          </article>
+          <article class="testimonial-card reveal reveal-delay-2">
+            <h3 class="testimonial-card__quote">“I felt taken care of the entire time.”</h3>
+            <p class="testimonial-card__body">“As a solo traveler, I had a lot of questions, and she made me feel comfortable from the start. She walked me through everything and made sure I had what I needed before I left.”</p>
+            <p class="testimonial-card__name">— A. Williams, Solo Trip</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--cream" id="inquiry-form" aria-labelledby="form-heading">
+      <div class="container">
+        <p class="section-label reveal" style="text-align:center;">Let's Get Started</p>
+        <h2 class="section__heading section__heading--center reveal" id="form-heading">Tell me about your trip</h2>
+        <div class="gold-rule gold-rule--center reveal"></div>
+        <div class="form-wrap">
+          <div class="form-intro reveal">
+            <p>Just share what's on your mind. Where you're thinking, who's going, and what you're hoping to feel on this trip. There are no wrong answers.</p>
+            <p>If you're still figuring out dates or budget, that's completely fine. We can sort out the details as we go.</p>
+          </div>
+          <form id="inquiry" novalidate class="reveal" aria-label="Travel inquiry form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" placeholder="Your first name" autocomplete="given-name" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" placeholder="Your last name" autocomplete="family-name" required>
+              </div>
+              <div class="form-group form-group--full">
+                <label for="email">Best Email</label>
+                <input type="email" id="email" name="email" placeholder="email@example.com" autocomplete="email" required>
+              </div>
+              <div class="form-group form-group--full">
+                <label for="destination">Destination Ideas</label>
+                <input type="text" id="destination" name="destination" placeholder="Anywhere in mind? It's okay if you're not sure yet.">
+              </div>
+              <div class="form-group form-group--full">
+                <label for="dates">Rough Travel Dates</label>
+                <input type="text" id="dates" name="dates" placeholder="Month, season, or a specific window, whatever you know">
+              </div>
+              <div class="form-group form-group--full">
+                <label for="travelers">Who's Traveling</label>
+                <input type="text" id="travelers" name="travelers" placeholder="Solo, couple, group? Share as much or as little as you'd like.">
+              </div>
+              <div class="form-group form-group--full">
+                <label for="budget">Budget Range</label>
+                <input type="text" id="budget" name="budget" placeholder="A starting range is perfect">
+              </div>
+              <div class="form-group form-group--full">
+                <label for="notes">Notes or Details</label>
+                <textarea id="notes" name="notes" placeholder="Anything else you want me to know. A vibe, a wish list, a special occasion. This is your space."></textarea>
+              </div>
+            </div>
+            
+          <p class="section-label reveal" style="text-align:center; margin-top: var(--space-12);">How planning works</p>
+                  <h2 class="section__heading section__heading--center reveal" id="planning-heading">Planning and Personalization</h2>
+                  <div class="gold-rule gold-rule--center reveal"></div>
+                  <div class="fee-card reveal">
+                    <p>Everything starts with a simple plan. After I review what you've shared, I'll send you a starting point with ideas, options, and pricing ranges to help you move forward.</p>
+                    <p>If you'd like me to fully plan and personalize your trip, there is a <strong style="color:var(--color-text-navy)">$75 planning fee</strong>. This covers the time and care that goes into building out your dates, details, and recommendations, and it is applied toward your booking when you move forward.</p>
+                    <p class="fee-card__note">Because this work is done upfront, the planning fee is non-refundable if you decide not to book.</p>
+                  </div>
+          
+            <div class="form-submit-wrap">
+              <button type="submit" class="btn-navy" aria-label="Submit travel inquiry">I'm ready. Let's get started.</button>
+              <p class="form-submit-note">No commitment, no pressure. I'll be in touch within 48 hours.</p>
+              <p id="form-success-message" class="form-submit-note" style="display:none; color: var(--color-text-muted); margin-top: var(--space-3);">Thank you. Your message was received, and I'll be in touch within 48 hours.</p>
+              <p class="form-contact-inline">Prefer to reach out directly?<br>You can email me at <a href="mailto:SabrinaNicholsJohnson@gmail.com">SabrinaNicholsJohnson@gmail.com</a> or call/text 407-435-8437.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="closing" role="contentinfo" aria-label="Closing message">
+    <div class="container">
+      <p class="closing__text">I'll handle the details. You just <em>enjoy the trip.</em></p>
+    </div>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="site-footer__text">Elite Tripps™ | Travel Planning<br>Sabrina Nichols Johnson<br>407-435-8437</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(el => observer.observe(el));
+      } else {
+        reveals.forEach(el => el.classList.add('visible'));
+      }
+
+      const form = document.getElementById('inquiry');
+      const success = document.getElementById('form-success-message');
+      if (form && success) {
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          success.style.display = 'block';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
