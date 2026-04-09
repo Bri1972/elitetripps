@@ -734,9 +734,18 @@
       const form = document.getElementById('inquiry');
       const success = document.getElementById('form-success-message');
       if (form && success) {
-        form.addEventListener('submit', function(event) {
+form.addEventListener('submit', function(event) {
           event.preventDefault();
-          success.style.display = 'block';
+          fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          }).then(function(response) {
+            if (response.ok) {
+              success.style.display = 'block';
+              form.reset();
+            }
+          });
         });
       }
     })();
