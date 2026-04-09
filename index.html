@@ -636,51 +636,84 @@
     </section>
 
     <section class="section section--cream" id="inquiry-form" aria-labelledby="form-heading">
-      <div class="container">
-        <p class="section-label reveal" style="text-align:center;">Let's Get Started</p>
-        <h2 class="section__heading section__heading--center reveal" id="form-heading">Tell me about your trip</h2>
-        <div class="gold-rule gold-rule--center reveal"></div>
-        <div class="form-wrap">
-          <div class="form-intro reveal">
-            <p>Just share what's on your mind. Where you're thinking, who's going, and what you're hoping to feel on this trip. There are no wrong answers.</p>
-            <p>If you're still figuring out dates or budget, that's completely fine. We can sort out the details as we go.</p>
+  <div class="container">
+    <p class="section-label reveal" style="text-align:center;">Let's Get Started</p>
+    <h2 class="section__heading section__heading--center reveal" id="form-heading">Tell me about your trip</h2>
+    <div class="gold-rule gold-rule--center reveal"></div>
+    <div class="form-wrap">
+      <div class="form-intro reveal">
+        <p>Just share what's on your mind. Where you're thinking, who's going, and what you're hoping to feel on this trip. There are no wrong answers.</p>
+        <p>If you're still figuring out dates or budget, that's completely fine. We can sort out the details as we go.</p>
+      </div>
+      <form id="inquiry" action="https://formspree.io/f/xreovegk" method="POST" novalidate class="reveal" aria-label="Travel inquiry form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first-name" placeholder="Your first name" autocomplete="given-name" required>
           </div>
-          <form id="inquiry" action="https://formspree.io/f/xreovegk" method="POST" novalidate class="reveal" aria-label="Travel inquiry form">
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first-name" placeholder="Your first name" autocomplete="given-name" required>
-              </div>
-              <div class="form-group">
-                <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last-name" placeholder="Your last name" autocomplete="family-name" required>
-              </div>
-              <div class="form-group form-group--full">
-                <label for="email">Best Email</label>
-                <input type="email" id="email" name="email" placeholder="email@example.com" autocomplete="email" required>
-              </div>
-              <div class="form-group form-group--full">
-                <label for="destination">Destination Ideas</label>
-                <input type="text" id="destination" name="destination" placeholder="Anywhere in mind? It's okay if you're not sure yet.">
-              </div>
-              <div class="form-group form-group--full">
-                <label for="dates">Rough Travel Dates</label>
-                <input type="text" id="dates" name="dates" placeholder="Month, season, or a specific window, whatever you know">
-              </div>
-              <div class="form-group form-group--full">
-                <label for="travelers">Who's Traveling</label>
-                <input type="text" id="travelers" name="travelers" placeholder="Solo, couple, group? Share as much or as little as you'd like.">
-              </div>
-              <div class="form-group form-group--full">
-                <label for="budget">Budget Range</label>
-                <input type="text" id="budget" name="budget" placeholder="A starting range is perfect">
-              </div>
-              <div class="form-group form-group--full">
-                <label for="notes">Notes or Details</label>
-                <textarea id="notes" name="notes" placeholder="Anything else you want me to know. A vibe, a wish list, a special occasion. This is your space."></textarea>
-              </div>
-            </div>
-            
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Your last name" autocomplete="family-name" required>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="email">Best Email</label>
+            <input type="email" id="email" name="email" placeholder="email@example.com" autocomplete="email" required>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="trip-type">Type of Trip</label>
+            <select id="trip-type" name="trip-type">
+              <option value="">Select your trip type</option>
+              <option>Honeymoon</option>
+              <option>Beach Getaway</option>
+              <option>Family Vacation</option>
+              <option>Europe Trip</option>
+              <option>All-Inclusive</option>
+              <option>Cruise</option>
+              <option>Girls' Trip</option>
+              <option>Destination Wedding</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="destination">Destination Ideas</label>
+            <input type="text" id="destination" name="destination" placeholder="Anywhere in mind? It's okay if you're not sure yet.">
+          </div>
+          <div class="form-group form-group--full">
+            <label for="dates">Rough Travel Dates</label>
+            <input type="text" id="dates" name="dates" placeholder="Month, season, or a specific window, whatever you know">
+          </div>
+          <div class="form-group form-group--full">
+            <label for="travelers">Who's Traveling</label>
+            <select id="travelers" name="travelers">
+              <option value="">Select group size</option>
+              <option>Just me</option>
+              <option>2 travelers</option>
+              <option>3 to 4 travelers</option>
+              <option>5 to 8 travelers</option>
+              <option>9 or more travelers</option>
+            </select>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="budget">Budget Range (per person)</label>
+            <select id="budget" name="budget">
+              <option value="">Select a range</option>
+              <option>Under $1,000</option>
+              <option>$1,000 to $2,500</option>
+              <option>$2,500 to $5,000</option>
+              <option>$5,000 and up</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="notes">Notes or Details</label>
+            <textarea id="notes" name="notes" placeholder="Anything else you want me to know. A vibe, a wish list, a special occasion. This is your space."></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+     
           <p class="section-label reveal" style="text-align:center; margin-top: var(--space-12);">How planning works</p>
                   <h2 class="section__heading section__heading--center reveal" id="planning-heading">Planning and Personalization</h2>
                   <div class="gold-rule gold-rule--center reveal"></div>
