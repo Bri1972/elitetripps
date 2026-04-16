@@ -1352,9 +1352,10 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          message: text,
-          sessionId: sessionId
-        })
+  message: input,
+  sessionId,
+  context: "aquarius-cruise"
+})
       });
 
       if (!res.ok) {
