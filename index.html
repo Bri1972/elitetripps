@@ -1065,61 +1065,73 @@ form.addEventListener('submit', function(event) {
   </form>
 </div>
 <script>
-  const BACKEND_URL = 'https://YOUR-RENDER-URL.onrender.com/chat';
+  const BACKEND_URL = 'https://elitetripps-backend.onrender.com/chat';
 
-  const launcher = document.getElementById('chat-launcher');
-  const widget = document.getElementById('chat-widget');
-  const closeBtn = document.getElementById('chat-close');
-  const form = document.getElementById('chat-form');
-  const input = document.getElementById('chat-input');
-  const messages = document.getElementById('chat-messages');
+  const chatLauncher = document.getElementById('chat-launcher');
+  const chatWidget = document.getElementById('chat-widget');
+  const chatClose = document.getElementById('chat-close');
+  const chatForm = document.getElementById('chat-form');
+  const chatInput = document.getElementById('chat-input');
+  const chatMessages = document.getElementById('chat-messages');
+
+  const sessionId = localStorage.getItem('eliteTrippsChatSessionId') || crypto.randomUUID();
+  localStorage.setItem('eliteTrippsChatSessionId', sessionId);
 
   function addMessage(role, text) {
-    const div = document.createElement('div');
-    div.className = 'chat-msg ' + role;
-    div.textContent = text;
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
-    return div;
+    const msg = document.createElement('div');
+    msg.className = `chat-msg ${role}`;
+    msg.textContent = text;
+    chatMessages.appendChild(msg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return msg;
   }
 
-  function showWelcome() {
-    if (messages.children.length === 0) {
-      addMessage('assistant', "Hi! I'm your Elite Tripps travel advisor. Whether you're dreaming of a cruise, an all-inclusive getaway, or a group trip, I'm here to help. What are you thinking about?");
+  chatLauncher.addEventListener('click', function () {
+    chatWidget.classList.add('open');
+
+    if (!chatMessages.dataset.welcomed) {
+      addMessage(
+        'assistant',
+        "Hi! I'm Brielle, the Elite Tripps Virtual Assistant. Whether you're thinking about a cruise, an all-inclusive getaway, or a group trip, I'm here to help. What are you thinking about?"
+      );
+      chatMessages.dataset.welcomed = 'true';
     }
-  }
-
-  launcher.addEventListener('click', () => {
-    widget.classList.add('open');
-    launcher.style.display = 'none';
-    showWelcome();
-    input.focus();
   });
 
-  closeBtn.addEventListener('click', () => {
-    widget.classList.remove('open');
-    launcher.style.display = 'flex';
+  chatClose.addEventListener('click', function () {
+    chatWidget.classList.remove('open');
   });
 
-  form.addEventListener('submit', async (e) => {
+  chatForm.addEventListener('submit', async function (e) {
     e.preventDefault();
-    const text = input.value.trim();
-    if (!text) return;
-    addMessage('user', text);
-    input.value = '';
 
-    const typing = addMessage('assistant typing', 'Typing...');
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    addMessage('user', text);
+    chatInput.value = '';
+
+    const typing = addMessage('assistant typing', 'Brielle is typing...');
 
     try {
       const res = await fetch(BACKEND_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text })
+        body: JSON.stringify({
+          message: text,
+          sessionId: sessionId
+        })
       });
+
+      if (!res.ok) {
+        throw new Error(`HTTP error ${res.status}`);
+      }
+
       const data = await res.json();
       typing.remove();
-      addMessage('assistant', data.reply);
+      addMessage('assistant', data.reply || 'Sorry, something went wrong. Please try again in a moment.');
     } catch (err) {
+      console.error('Frontend chat error:', err);
       typing.remove();
       addMessage('assistant', 'Sorry, something went wrong. Please try again in a moment.');
     }
