@@ -1352,7 +1352,7 @@
     if (!chatMessages.dataset.welcomed) {
       addMessage(
         'assistant',
-        "Hey, I’m Brielle ✨ I’m here to help with Aquarius SZN at Sea aboard Virgin Voyages, Resillent Lady. If you have questions about the cruise, pricing, or how to reserve your cabin, ask me right here."
+        "Hey, I’m Brielle ✨ I’m here to help with Aquarius SZN at Sea aboard Virgin Voyages, Resilient Lady. If you have questions about the cruise, pricing, or how to reserve your cabin, ask me right here."
       );
       chatMessages.dataset.welcomed = 'true';
     }
@@ -1377,11 +1377,11 @@
       const res = await fetch(BACKEND_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-       body: JSON.stringify({
-  message: text,
-  sessionId,
-  context: "aquarius-cruise"
-})
+        body: JSON.stringify({
+          message: text,
+          sessionId,
+          context: "aquarius-cruise"
+        })
       });
 
       if (!res.ok) {
@@ -1397,6 +1397,8 @@
       addMessage('assistant', 'Sorry, something went wrong. Please try again in a moment.');
     }
   });
+</script>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("inquiry");
