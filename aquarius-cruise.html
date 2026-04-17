@@ -1164,24 +1164,29 @@
     </section>
 
     <!-- INQUIRY FORM -->
-    <section class="section section--cream" id="inquiry-form" aria-labelledby="form-heading">
-      <div class="container">
-        <p class="section-label reveal" style="text-align:center;">Let's Get You Booked</p>
-        <h2 class="section__heading section__heading--center reveal" id="form-heading">Start My Booking</h2>
-        <div class="gold-rule gold-rule--center reveal"></div>
-        <div class="form-wrap">
-          <div class="form-intro reveal">
-            <p>Fill out the form below and I'll follow up with everything you need to secure your cabin. Spots are limited and go fast.</p>
-            <p>Not sure if you're coming solo or with someone? That's fine. Submit what you know and we'll sort the details together.</p>
-          </div>
-          <form id="inquiry" action="https://formspree.io/f/xreovegk" method="POST" novalidate class="reveal" aria-label="Cruise booking inquiry form">
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="first-name">First Name</label>
+   <section class="section section--cream" id="inquiry-form" aria-labelledby="form-heading">
+  <div class="container">
+    <p class="section-label reveal" style="text-align:center;">Let's Get You Booked</p>
+    <h2 class="section__heading section__heading--center reveal" id="form-heading">Start My Booking</h2>
+    <div class="gold-rule gold-rule--center reveal"></div>
+    <div class="form-wrap">
+      <div class="form-intro reveal">
+        <p>Fill out the form below and I'll follow up with everything you need to secure your cabin. Spots are limited and go fast.</p>
+        <p>Not sure if you're coming solo or with someone? That's fine. Submit what you know and we'll sort the details together.</p>
+      </div>
+
+      <form id="inquiry" action="https://formspree.io/f/xreovegk" method="POST" novalidate class="reveal" aria-label="Cruise booking inquiry form">
+        <input type="hidden" name="page_source" value="Aquarius SZN at Sea landing page">
+        <input type="hidden" name="trip_name" value="Aquarius SZN at Sea">
+        <input type="hidden" name="trip_dates" value="Feb 7–14, 2027">
+
+        <div class="form-grid">
+          <div class="form-group">
+                <label for="first-name">First Name (as it appears on your valid travel document)</label>
                 <input type="text" id="first-name" name="first-name" placeholder="Your first name" autocomplete="given-name" required>
               </div>
               <div class="form-group">
-                <label for="last-name">Last Name</label>
+                <label for="last-name">Last Name (as it appears on your valid travel document)</label>
                 <input type="text" id="last-name" name="last-name" placeholder="Your last name" autocomplete="family-name" required>
               </div>
               <div class="form-group form-group--full">
