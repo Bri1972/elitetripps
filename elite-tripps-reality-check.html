@@ -40,13 +40,17 @@
   }
 
   .header-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem; font-weight: 700; line-height: 1.2;
-    background: linear-gradient(135deg, #E76F51 0%, #f0d882 50%, #E76F51 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    animation: shimmer 3s linear infinite;
-  }
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 7vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, #E76F51 0%, #f0d882 50%, #E76F51 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
   .header-sub { font-size: 0.7rem; color: #888; margin-top: 0.25rem; }
 
   .wrapper {
@@ -231,13 +235,15 @@
 <body>
 
 <div class="header">
-  <h1 class="header-title">Elite Tripps™ Reality Check</h1>
-  <p class="header-sub">Think this trip is out of budget? Let’s see what’s actually possible.</p>
+  <div class="header-title">ELITE TRIPPS™ REALITY CHECK ✨</div>
+  <div class="header-sub">Think this trip is out of budget? Let’s see what’s actually possible.</div>
 </div>
 
 <!-- FORM -->
 <div class="wrapper" id="form-view">
-  <p style="text-align:center; font-size:0.88rem; color:#8a7060; line-height:1.7; margin-bottom:1.6rem;">Stop guessing. Fill this out and get your honest answer — no sugarcoating. 💃🏽</p>
+  <p class="intro-text">
+  Go ahead… drop your details below and let’s see what it would really take to make this trip happen.
+</p>
 
   <p class="section-label">— Trip Details —</p>
 
