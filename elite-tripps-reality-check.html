@@ -463,9 +463,14 @@
     <form id="gate-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleGateSubmit(event)">
       <input type="text"  name="name"           id="gate-name"    placeholder="Your first name"    oninput="checkGate()" autocomplete="given-name" />
       <input type="email" name="email"          id="gate-email"   placeholder="Your email address" oninput="checkGate()" autocomplete="email" />
-      <input type="hidden" name="trip_total"    id="hidden-total" />
-      <input type="hidden" name="amount_needed" id="hidden-needed" />
-      <input type="hidden" name="verdict"       id="hidden-verdict" />
+      <input type="hidden" name="trip_total"        id="hidden-total" />
+<input type="hidden" name="amount_needed"     id="hidden-needed" />
+<input type="hidden" name="verdict"           id="hidden-verdict" />
+<input type="hidden" name="monthly_savings"   id="hidden-monthly" />
+<input type="hidden" name="months_available"  id="hidden-months-avail" />
+<input type="hidden" name="months_needed"     id="hidden-months-need" />
+<input type="hidden" name="deposit_status"    id="hidden-deposit-status" />
+<input type="hidden" name="deposit_amount"    id="hidden-deposit-amt" />
       <input type="hidden" name="access_key" value="63b2dfd1-76d6-409c-826e-0bf68e45f526" />
       <input type="hidden" name="subject" value="New Elite Tripps™ Reality Check Lead 🎉" />
       <input type="hidden" name="from_name" value="Elite Tripps Reality Check" />
@@ -699,8 +704,13 @@
     }
 
     document.getElementById('hidden-total').value=`$${r.totalCost.toLocaleString()}`;
-    document.getElementById('hidden-needed').value=`$${r.amountNeeded.toLocaleString()}`;
-    document.getElementById('hidden-verdict').value=r.verdict.toUpperCase();
+document.getElementById('hidden-needed').value=`$${r.amountNeeded.toLocaleString()}`;
+document.getElementById('hidden-verdict').value=r.verdict.toUpperCase();
+document.getElementById('hidden-monthly').value=`$${parseCurrency('monthlySavings').toLocaleString()}/month`;
+document.getElementById('hidden-months-avail').value=`${r.monthsAvail} months`;
+document.getElementById('hidden-months-need').value=r.monthsToSave===Infinity?'Cannot save enough':`${r.monthsToSave} months`;
+document.getElementById('hidden-deposit-status').value=depositStatus==='none'?'No deposit required':depositStatus==='paid'?`Deposit already paid`:`Deposit still due: $${parseCurrency('depositAmount').toLocaleString()}`;
+document.getElementById('hidden-deposit-amt').value=depositStatus==='due'?`$${parseCurrency('depositAmount').toLocaleString()} due`:depositStatus==='paid'?`$${parseCurrency('depositPaid').toLocaleString()} paid`:'N/A';
 
     // Verdict-matched CTA
     const ctaCopy = {
