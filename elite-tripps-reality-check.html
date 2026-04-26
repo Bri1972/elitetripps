@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -20,11 +20,12 @@ to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes pulse {
 0%, 100% { box-shadow: 0 4px 24px rgba(242,183,5,0.3); }
-50%       { box-shadow: 0 4px 36px rgba(242,183,5,0.6); }
+50%       { box-shadow: 0 4px 40px rgba(242,183,5,0.6); }
 }
 
 body {
 font-family: ‘DM Sans’, sans-serif;
+font-size: 16px;
 background:
 radial-gradient(ellipse at 20% 0%,   rgba(242,135,5,0.18) 0%, transparent 55%),
 radial-gradient(ellipse at 80% 100%, rgba(3,127,140,0.25) 0%, transparent 55%),
@@ -32,6 +33,7 @@ radial-gradient(ellipse at 80% 100%, rgba(3,127,140,0.25) 0%, transparent 55%),
 color: #FFF8F0;
 }
 
+/* ── HEADER ── */
 .header {
 position: sticky; top: 0; z-index: 20;
 background: rgba(4,96,107,0.97);
@@ -39,90 +41,105 @@ border-bottom: 1px solid rgba(242,183,5,0.3);
 padding: 1.1rem 1.4rem; text-align: center;
 backdrop-filter: blur(12px);
 }
-
 .header-title {
 font-family: ‘Cormorant Garamond’, serif;
 font-size: clamp(2rem, 7vw, 2.8rem);
-font-weight: 700;
-line-height: 1.05;
-letter-spacing: 0.01em;
+font-weight: 700; line-height: 1.05; letter-spacing: 0.01em;
 background: linear-gradient(135deg, #F28705 0%, #F2B705 45%, #79DCF2 75%, #F2B705 100%);
 background-size: 200% auto;
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 animation: shimmer 3s linear infinite;
 }
-
 .header-sub-app {
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 1.05rem;
-font-weight: 700;
-color: #F2B705;
-letter-spacing: 0.05em;
+font-size: 1.1rem; font-weight: 700;
+color: #F2B705; letter-spacing: 0.05em;
 margin-top: 0.2rem;
-text-align: center;
 }
-
 .header-sub {
-font-size: 0.9rem;
-color: #79DCF2;
-margin-top: 0.35rem;
-line-height: 1.5;
-opacity: 0.85;
+font-size: 0.95rem;
+color: #d0f0f5;
+margin-top: 0.35rem; line-height: 1.5;
 }
 
+/* ── WRAPPER ── */
 .wrapper {
 max-width: 440px; margin: 0 auto;
 padding: 1.5rem 1.1rem 3rem;
 animation: fadeUp 0.4s ease;
 }
 
+.intro-text {
+text-align: center;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.25rem; line-height: 1.75;
+color: #d0f0f5;
+margin: 1.4rem auto 2rem; max-width: 360px;
+letter-spacing: 0.02em;
+}
+
 .section-label {
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 0.68rem; letter-spacing: 0.22em;
-text-transform: uppercase; color: #79DCF2;
-text-align: center; margin: 1.4rem 0 1.1rem;
-opacity: 0.8;
+font-size: 0.8rem; letter-spacing: 0.22em;
+text-transform: uppercase; color: rgba(242,183,5,0.7);
+text-align: center; margin: 1.5rem 0 1.1rem;
 }
 
-.field { margin-bottom: 1.15rem; }
+/* ── FIELDS ── */
+.field { margin-bottom: 1.25rem; }
 .field label {
-display: block; font-family: ‘Cormorant Garamond’, serif;
-font-size: 0.76rem; letter-spacing: 0.13em;
+display: block;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 0.9rem; letter-spacing: 0.13em;
 text-transform: uppercase; color: #F2B705;
-font-weight: 600; margin-bottom: 0.35rem;
+font-weight: 600; margin-bottom: 0.4rem;
 }
-.field .hint { font-size: 0.7rem; color: #79DCF2; margin-bottom: 0.4rem; line-height: 1.5; opacity: 0.85; }
+.field .hint {
+font-size: 0.9rem;
+color: #d0f0f5;
+margin-bottom: 0.45rem; line-height: 1.55;
+}
+.field-error { font-size: 0.85rem; color: #F27979; margin-top: 0.35rem; }
+
 .input-wrap { position: relative; }
 .input-wrap .prefix {
-position: absolute; left: 1rem; top: 50%;
+position: absolute; left: 0.9rem; top: 50%;
 transform: translateY(-50%);
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 1.05rem; color: #F2B705; pointer-events: none;
+font-size: 1.1rem; color: #F28705; pointer-events: none; z-index: 2;
 }
-input[type=“text”], input[type=“email”], input[type=“date”] {
-width: 100%; background: rgba(3,127,140,0.4);
-border: 1px solid rgba(242,183,5,0.35);
-border-radius: 10px; padding: 0.82rem 1rem;
-color: #FFF8F0; font-size: 1rem; font-family: ‘DM Sans’, sans-serif;
-outline: none; transition: border-color 0.2s; -webkit-appearance: none;
-}
-input[type=“text”].has-prefix { padding-left: 2.1rem; }
-input:focus { border-color: #F2B705; }
-input::placeholder { color: rgba(121,220,242,0.5); }
-input[type=“date”] { color-scheme: dark; }
-input[type=“date”]::-webkit-calendar-picker-indicator {
-filter: invert(0.9) sepia(1) saturate(2) hue-rotate(5deg); cursor: pointer;
-}
-.field-error { font-size: 0.7rem; color: #F27979; margin-top: 0.35rem; }
 
-/* DEPOSIT TOGGLE */
-.deposit-toggle-row { display: flex; gap: 0.6rem; margin-bottom: 0.9rem; }
+input[type=“text”],
+input[type=“email”],
+input[type=“date”] {
+width: 100%;
+background: #FFF8F0;
+border: 1.5px solid rgba(242,183,5,0.4);
+border-radius: 10px;
+padding: 0.82rem 1rem;
+color: #1A1410;
+font-size: 1rem;
+font-family: ‘DM Sans’, sans-serif;
+outline: none;
+transition: border-color 0.2s;
+-webkit-appearance: none;
+}
+input[type=“text”].has-prefix,
+input[type=“email”].has-prefix { padding-left: 2rem; }
+input:focus { border-color: #F2B705; }
+input::placeholder { color: #9aafa8; }
+input[type=“date”] { color-scheme: light; color: #1A1410; }
+input[type=“date”]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.5; }
+
+/* ── DEPOSIT TOGGLE ── */
+.deposit-toggle-row { display: flex; gap: 0.55rem; margin-bottom: 0.9rem; }
 .dep-btn {
-flex: 1; padding: 0.7rem 0.4rem; border-radius: 10px;
-border: 1px solid rgba(242,183,5,0.2);
-background: rgba(3,127,140,0.3);
-color: rgba(121,220,242,0.6); font-size: 0.75rem; font-family: ‘DM Sans’, sans-serif;
+flex: 1; padding: 0.75rem 0.3rem; border-radius: 10px;
+border: 1.5px solid rgba(242,183,5,0.2);
+background: rgba(255,255,255,0.06);
+color: rgba(255,248,240,0.5); font-size: 0.85rem;
+font-family: ‘DM Sans’, sans-serif;
 cursor: pointer; text-align: center; transition: all 0.2s; line-height: 1.4;
 }
 .dep-btn.active {
@@ -130,53 +147,59 @@ background: rgba(242,183,5,0.15); border-color: #F2B705;
 color: #F2B705; font-weight: 600;
 }
 
-/* SPENDING CHIPS */
-.chip-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+/* ── SPENDING CHIPS ── */
+.chip-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.55rem; flex-wrap: wrap; }
 .chip {
-padding: 0.38rem 0.75rem; border-radius: 20px;
-border: 1px solid rgba(121,220,242,0.25);
-background: rgba(3,127,140,0.3);
-color: rgba(121,220,242,0.75); font-size: 0.73rem; font-family: ‘DM Sans’, sans-serif;
+padding: 0.45rem 0.8rem; border-radius: 20px;
+border: 1.5px solid rgba(242,121,121,0.35);
+background: rgba(242,121,121,0.08);
+color: #F27979; font-size: 0.85rem;
+font-family: ‘DM Sans’, sans-serif;
 cursor: pointer; transition: all 0.18s; white-space: nowrap; flex-shrink: 0;
 }
-.chip.selected { background: rgba(242,183,5,0.2); border-color: #F2B705; color: #F2B705; }
+.chip.selected { background: rgba(242,183,5,0.15); border-color: #F2B705; color: #F2B705; }
 .chip-input-wrap { position: relative; flex: 1; min-width: 100px; }
-.chip-input-wrap .prefix { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); font-family: “Cormorant Garamond”, serif; font-size: 1rem; color: #F2B705; pointer-events: none; }
-.chip-amt-input { width: 100%; background: rgba(3,127,140,0.4); border: 1px solid rgba(242,183,5,0.3); border-radius: 8px; padding: 0.5rem 0.75rem 0.5rem 1.8rem; color: #FFF8F0; font-size: 0.88rem; font-family: “DM Sans”, sans-serif; outline: none; }
+.chip-input-wrap .prefix {
+position: absolute; left: 0.75rem; top: 50%;
+transform: translateY(-50%);
+font-family: “Cormorant Garamond”, serif;
+font-size: 1rem; color: #F28705; pointer-events: none; z-index: 2;
+}
+.chip-amt-input {
+width: 100%; background: #FFF8F0;
+border: 1.5px solid rgba(242,183,5,0.35); border-radius: 8px;
+padding: 0.5rem 0.75rem 0.5rem 1.8rem;
+color: #1A1410; font-size: 0.95rem;
+font-family: “DM Sans”, sans-serif; outline: none;
+}
 .chip-amt-input:focus { border-color: #F2B705; }
-.chip-total { font-size: 0.72rem; color: #F2B705; font-family: ‘Cormorant Garamond’, serif; }
+.chip-total { font-size: 0.85rem; color: #F2B705; font-family: ‘Cormorant Garamond’, serif; margin-top: 0.6rem; }
 
-/* INSURANCE TOGGLE */
+/* ── INSURANCE TOGGLE ── */
 .toggle-card {
-background: rgba(3,127,140,0.3); border: 1px solid rgba(242,183,5,0.2);
+background: rgba(242,121,121,0.08);
+border: 1.5px solid rgba(242,121,121,0.25);
 border-radius: 10px; padding: 0.9rem 1rem;
 display: flex; align-items: flex-start; gap: 0.8rem;
-margin-bottom: 1.15rem; cursor: pointer;
+margin-bottom: 1.2rem; cursor: pointer;
 }
 .toggle-track {
 width: 44px; height: 24px; border-radius: 12px; border: none;
-cursor: pointer; position: relative; flex-shrink: 0; margin-top: 2px; transition: background 0.2s;
+cursor: pointer; position: relative; flex-shrink: 0;
+margin-top: 2px; transition: background 0.2s;
 }
 .toggle-thumb {
 position: absolute; top: 3px; width: 18px; height: 18px;
 border-radius: 50%; background: #04606B; transition: left 0.2s;
 }
-.toggle-label { font-family: ‘Cormorant Garamond’, serif; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F2B705; font-weight: 600; margin-bottom: 0.2rem; }
-.toggle-hint { font-size: 0.7rem; color: #79DCF2; line-height: 1.5; opacity: 0.85; }
-
-.intro-text {
-text-align: center;
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 1.2rem;
-line-height: 1.7;
-color: #79DCF2;
-margin: 1.5rem auto 2rem;
-max-width: 360px;
-letter-spacing: 0.02em;
-opacity: 0.9;
+.toggle-label {
+font-family: ‘Cormorant Garamond’, serif; font-size: 0.9rem;
+letter-spacing: 0.1em; text-transform: uppercase;
+color: #F27979; font-weight: 600; margin-bottom: 0.25rem;
 }
+.toggle-hint { font-size: 0.88rem; color: #d0f0f5; line-height: 1.55; }
 
-/* BUTTONS */
+/* ── BUTTONS ── */
 .btn-primary {
 width: 100%; padding: 1.1rem; border-radius: 12px; border: none;
 background: linear-gradient(135deg, #F28705, #F2B705);
@@ -186,82 +209,77 @@ text-transform: uppercase; cursor: pointer; margin-top: 0.5rem;
 animation: pulse 2.5s ease-in-out infinite; transition: transform 0.12s;
 }
 .btn-primary:active { transform: scale(0.97); }
+
 .btn-ghost {
 width: 100%; padding: 0.8rem; border-radius: 10px;
-border: 1px solid rgba(121,220,242,0.25); background: transparent;
-color: #79DCF2; font-size: 0.85rem; font-family: ‘DM Sans’, sans-serif;
-cursor: pointer; margin-top: 0.8rem; transition: color 0.2s;
+border: 1px solid rgba(255,248,240,0.2); background: transparent;
+color: rgba(255,248,240,0.55); font-size: 0.9rem;
+font-family: ‘DM Sans’, sans-serif; cursor: pointer;
+margin-top: 0.8rem; transition: color 0.2s;
 }
 .btn-ghost:hover { color: #FFF8F0; }
 
-/* RESULTS */
+/* ── RESULTS ── */
 .verdict-banner { border-radius: 16px; padding: 1.4rem; margin-bottom: 1.1rem; text-align: center; animation: fadeUp 0.45s ease; }
 .verdict-emoji { font-size: 3rem; margin-bottom: 0.45rem; }
 .verdict-title { font-family: ‘Cormorant Garamond’, serif; font-size: 1.55rem; font-weight: 700; line-height: 1.2; }
-.verdict-message { font-size: 0.9rem; color: #FFF8F0; margin-top: 0.7rem; line-height: 1.65; }
+.verdict-message { font-size: 0.95rem; color: #FFF8F0; margin-top: 0.7rem; line-height: 1.65; }
 
 .deposit-alert {
-background: rgba(121,220,242,0.12); border: 1px solid rgba(121,220,242,0.35);
+background: rgba(242,183,5,0.1); border: 1px solid rgba(242,183,5,0.35);
 border-radius: 12px; padding: 0.9rem 1rem; margin-bottom: 1.1rem;
 }
-.deposit-alert-label { font-family: ‘Cormorant Garamond’, serif; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #79DCF2; margin-bottom: 0.4rem; }
-.deposit-alert-text { font-size: 0.84rem; color: #FFF8F0; line-height: 1.55; }
+.deposit-alert-label { font-family: ‘Cormorant Garamond’, serif; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F2B705; margin-bottom: 0.4rem; }
+.deposit-alert-text { font-size: 0.9rem; color: #FFF8F0; line-height: 1.55; }
 
 .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-bottom: 1.1rem; }
 .stat-card { background: rgba(3,127,140,0.35); border: 1px solid rgba(242,183,5,0.15); border-radius: 12px; padding: 0.85rem; text-align: center; }
-.stat-label { font-family: ‘Cormorant Garamond’, serif; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F2B705; }
+.stat-label { font-family: ‘Cormorant Garamond’, serif; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F2B705; }
 .stat-value { font-family: ‘Cormorant Garamond’, serif; font-size: 1.25rem; font-weight: 700; color: #FFF8F0; margin-top: 0.28rem; }
 
 .progress-card { background: rgba(3,127,140,0.3); border: 1px solid rgba(242,183,5,0.12); border-radius: 12px; padding: 1rem; margin-bottom: 1.1rem; }
 .progress-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
-.progress-row span:first-child { font-family: ‘Cormorant Garamond’, serif; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F2B705; }
-.progress-row span:last-child { font-size: 0.72rem; color: #79DCF2; }
-.progress-track { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+.progress-row span:first-child { font-family: ‘Cormorant Garamond’, serif; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F2B705; }
+.progress-row span:last-child { font-size: 0.85rem; color: #d0f0f5; }
+.progress-track { height: 6px; background: rgba(255,255,255,0.12); border-radius: 3px; overflow: hidden; }
 .progress-fill { height: 100%; border-radius: 3px; transition: width 0.9s ease; }
-.progress-note { font-size: 0.72rem; color: #79DCF2; margin-top: 0.5rem; }
+.progress-note { font-size: 0.85rem; color: #d0f0f5; margin-top: 0.5rem; }
 .progress-note strong { color: #FFF8F0; }
 
-.scenarios-label { font-family: ‘Cormorant Garamond’, serif; font-size: 0.76rem; letter-spacing: 0.13em; text-transform: uppercase; color: #F2B705; font-weight: 600; margin-bottom: 0.7rem; }
-.scenario-item { background: rgba(3,127,140,0.4); border: 1px solid rgba(242,183,5,0.15); border-radius: 10px; padding: 0.85rem; margin-bottom: 0.6rem; }
-.scenario-num { font-family: ‘Cormorant Garamond’, serif; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F2B705; }
-.scenario-text { font-size: 0.88rem; color: #FFF8F0; margin-top: 0.3rem; line-height: 1.55; }
+.scenarios-label { font-family: ‘Cormorant Garamond’, serif; font-size: 0.85rem; letter-spacing: 0.13em; text-transform: uppercase; color: #F2B705; font-weight: 600; margin-bottom: 0.7rem; }
+.scenario-item { background: rgba(3,127,140,0.35); border: 1px solid rgba(242,183,5,0.15); border-radius: 10px; padding: 0.9rem; margin-bottom: 0.6rem; }
+.scenario-num { font-family: ‘Cormorant Garamond’, serif; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F27979; }
+.scenario-text { font-size: 0.92rem; color: #FFF8F0; margin-top: 0.3rem; line-height: 1.55; }
 
-/* EMAIL GATE */
-.gate-card { background: rgba(3,127,140,0.35); border: 1px solid rgba(242,183,5,0.25); border-radius: 16px; padding: 1.2rem; margin-bottom: 1.1rem; }
-.gate-title { font-family: ‘Cormorant Garamond’, serif; font-size: 0.78rem; letter-spacing: 0.13em; text-transform: uppercase; color: #F2B705; font-weight: 600; margin-bottom: 0.3rem; }
-.gate-sub { font-size: 0.78rem; color: #79DCF2; margin-bottom: 1rem; line-height: 1.55; opacity: 0.85; }
-.gate-card input {
-width: 100%; background: rgba(3,127,140,0.5); border: 1px solid rgba(242,183,5,0.25);
-border-radius: 10px; padding: 0.78rem 1rem; color: #FFF8F0; font-size: 0.93rem;
-font-family: ‘DM Sans’, sans-serif; outline: none; margin-bottom: 0.6rem; transition: border-color 0.2s;
-}
+/* ── GATE ── */
+.gate-card { background: rgba(242,121,121,0.08); border: 1.5px solid rgba(242,121,121,0.25); border-radius: 16px; padding: 1.2rem; margin-bottom: 1.1rem; }
+.gate-title { font-family: ‘Cormorant Garamond’, serif; font-size: 0.88rem; letter-spacing: 0.13em; text-transform: uppercase; color: #F27979; font-weight: 600; margin-bottom: 0.3rem; }
+.gate-sub { font-size: 0.9rem; color: #d0f0f5; margin-bottom: 1rem; line-height: 1.55; }
+.gate-card input { background: #FFF8F0; border: 1.5px solid rgba(242,183,5,0.3); border-radius: 10px; padding: 0.78rem 1rem; color: #1A1410; font-size: 1rem; font-family: ‘DM Sans’, sans-serif; outline: none; width: 100%; margin-bottom: 0.6rem; transition: border-color 0.2s; }
 .gate-card input:focus { border-color: #F2B705; }
-.btn-gate { width: 100%; padding: 0.88rem; border-radius: 10px; border: none; font-size: 0.88rem; font-weight: 700; font-family: ‘Cormorant Garamond’, serif; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+.gate-card input::placeholder { color: #9aafa8; }
+.btn-gate { width: 100%; padding: 0.88rem; border-radius: 10px; border: none; font-size: 0.95rem; font-weight: 700; font-family: ‘Cormorant Garamond’, serif; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
 .btn-gate.active { background: linear-gradient(135deg, #F28705, #F2B705); color: #04606B; }
-.btn-gate.inactive { background: rgba(255,255,255,0.08); color: rgba(121,220,242,0.4); cursor: not-allowed; }
+.btn-gate.inactive { background: rgba(255,255,255,0.08); color: rgba(255,248,240,0.3); cursor: not-allowed; }
 
-/* MILESTONES */
+/* ── CONNECT ── */
+.connect-card { background: rgba(3,127,140,0.35); border: 1px solid rgba(242,183,5,0.2); border-radius: 16px; padding: 1.2rem; text-align: center; margin-bottom: 1.1rem; }
+
+/* ── MILESTONES ── */
 .milestones-card { background: rgba(3,127,140,0.3); border: 1px solid rgba(242,183,5,0.12); border-radius: 16px; padding: 1.1rem; margin-bottom: 1rem; }
-.milestones-title { font-family: ‘Cormorant Garamond’, serif; font-size: 0.76rem; letter-spacing: 0.13em; text-transform: uppercase; color: #F2B705; font-weight: 600; margin-bottom: 0.7rem; }
+.milestones-title { font-family: ‘Cormorant Garamond’, serif; font-size: 0.85rem; letter-spacing: 0.13em; text-transform: uppercase; color: #F2B705; font-weight: 600; margin-bottom: 0.7rem; }
 .milestones-list { max-height: 210px; overflow-y: auto; }
 .milestone-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid rgba(242,183,5,0.1); }
-.milestone-month { font-size: 0.8rem; color: #79DCF2; }
-.milestone-amt { font-size: 0.85rem; color: #FFF8F0; font-weight: 600; }
-.milestone-check { font-size: 0.68rem; color: #4ade80; margin-left: 0.4rem; }
-.milestone-dep { font-size: 0.68rem; color: #F2B705; margin-left: 0.4rem; }
+.milestone-month { font-size: 0.88rem; color: #d0f0f5; }
+.milestone-amt { font-size: 0.9rem; color: #FFF8F0; font-weight: 600; }
+.milestone-check { font-size: 0.78rem; color: #4ade80; margin-left: 0.4rem; }
+.milestone-dep { font-size: 0.78rem; color: #F2B705; margin-left: 0.4rem; }
 
-/* CONNECT CARD */
-.connect-card {
-background: rgba(3,127,140,0.4);
-border: 1px solid rgba(242,183,5,0.2);
-border-radius: 16px; padding: 1.2rem; text-align: center; margin-bottom: 1.1rem;
-}
-
-/* CTA */
-.cta-card { background: linear-gradient(135deg, rgba(242,135,5,0.15), rgba(242,183,5,0.08)); border: 1px solid rgba(242,183,5,0.25); border-radius: 16px; padding: 1.3rem; text-align: center; margin-bottom: 1rem; }
-.cta-title { font-family: ‘Cormorant Garamond’, serif; font-size: 1.1rem; font-weight: 700; color: #F2B705; margin-bottom: 0.35rem; }
-.cta-sub { font-size: 0.8rem; color: #79DCF2; margin-bottom: 1rem; line-height: 1.55; opacity: 0.85; }
-.btn-book { display: block; width: 100%; padding: 1rem; border-radius: 10px; background: linear-gradient(135deg, #F28705, #F2B705); color: #04606B; font-size: 0.9rem; font-weight: 700; font-family: ‘Cormorant Garamond’, serif; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; text-align: center; }
+/* ── CTA ── */
+.cta-card { background: linear-gradient(135deg, rgba(242,135,5,0.12), rgba(242,121,121,0.08)); border: 1px solid rgba(242,183,5,0.25); border-radius: 16px; padding: 1.3rem; text-align: center; margin-bottom: 1rem; }
+.cta-title { font-family: ‘Cormorant Garamond’, serif; font-size: 1.15rem; font-weight: 700; color: #F2B705; margin-bottom: 0.35rem; }
+.cta-sub { font-size: 0.9rem; color: #d0f0f5; margin-bottom: 1rem; line-height: 1.55; }
+.btn-book { display: block; width: 100%; padding: 1rem; border-radius: 10px; background: linear-gradient(135deg, #F28705, #F2B705); color: #04606B; font-size: 0.95rem; font-weight: 700; font-family: ‘Cormorant Garamond’, serif; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; text-align: center; }
 .btn-book:active { opacity: 0.85; }
 
 ::-webkit-scrollbar { width: 3px; }
@@ -273,17 +291,14 @@ border-radius: 16px; padding: 1.2rem; text-align: center; margin-bottom: 1.1rem;
 <body>
 
 <div class="header">
-  <div class="header-title">ELITE TRIPPS™ REALITY CHECK ✨</div>
+  <div class="header-title">ELITE TRIPPS™</div>
+  <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.2rem,4vw,1.6rem); font-weight:700; letter-spacing:0.04em; background:linear-gradient(135deg,#F28705 0%,#F2B705 45%,#79DCF2 75%,#F2B705 100%); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:shimmer 3s linear infinite; margin-bottom:0.1rem;">Reality Check</div>
   <div class="header-sub-app">Budget App</div>
   <div class="header-sub">Think the trip is out of your budget? Let's see what's actually possible.</div>
 </div>
 
-<!-- FORM -->
-
 <div class="wrapper" id="form-view">
-  <p class="intro-text">
-    Go ahead… drop your details below and let's see what it would really take to make this trip happen ✨
-  </p>
+  <p class="intro-text">Go ahead… drop your details below and let's see what it would really take to make this trip happen ✨</p>
 
   <p class="section-label">— Trip Details —</p>
 
@@ -333,76 +348,22 @@ border-radius: 16px; padding: 1.2rem; text-align: center; margin-bottom: 1.1rem;
     <p class="hint">Tap everything that applies — money beyond the base trip cost.</p>
     <p class="hint" style="margin-bottom:0.5rem;">Tap a category to add it, then enter your estimated amount.</p>
     <div id="spending-chips">
-      <div class="chip-row" id="chip-flights">
-        <button class="chip" onclick="toggleChipRow('flights')">✈️ Flights</button>
-        <div class="chip-input-wrap" id="chip-input-flights" style="display:none;">
-          <span class="prefix">$</span>
-          <input type="text" class="has-prefix chip-amt-input" id="chip-val-flights" inputmode="numeric" placeholder="e.g. 350" oninput="formatChipInput(this); recalcChips()" />
-        </div>
-      </div>
-      <div class="chip-row" id="chip-food">
-        <button class="chip" onclick="toggleChipRow('food')">🍽️ Food</button>
-        <div class="chip-input-wrap" id="chip-input-food" style="display:none;">
-          <span class="prefix">$</span>
-          <input type="text" class="has-prefix chip-amt-input" id="chip-val-food" inputmode="numeric" placeholder="e.g. 200" oninput="formatChipInput(this); recalcChips()" />
-        </div>
-      </div>
-      <div class="chip-row" id="chip-excursions">
-        <button class="chip" onclick="toggleChipRow('excursions')">🏄 Excursions</button>
-        <div class="chip-input-wrap" id="chip-input-excursions" style="display:none;">
-          <span class="prefix">$</span>
-          <input type="text" class="has-prefix chip-amt-input" id="chip-val-excursions" inputmode="numeric" placeholder="e.g. 150" oninput="formatChipInput(this); recalcChips()" />
-        </div>
-      </div>
-      <div class="chip-row" id="chip-shopping">
-        <button class="chip" onclick="toggleChipRow('shopping')">🛍️ Shopping</button>
-        <div class="chip-input-wrap" id="chip-input-shopping" style="display:none;">
-          <span class="prefix">$</span>
-          <input type="text" class="has-prefix chip-amt-input" id="chip-val-shopping" inputmode="numeric" placeholder="e.g. 100" oninput="formatChipInput(this); recalcChips()" />
-        </div>
-      </div>
-      <div class="chip-row" id="chip-airport">
-        <button class="chip" onclick="toggleChipRow('airport')">🚖 Airport Rides</button>
-        <div class="chip-input-wrap" id="chip-input-airport" style="display:none;">
-          <span class="prefix">$</span>
-          <input type="text" class="has-prefix chip-amt-input" id="chip-val-airport" inputmode="numeric" placeholder="e.g. 80" oninput="formatChipInput(this); recalcChips()" />
-        </div>
-      </div>
-      <div class="chip-row" id="chip-spa">
-        <button class="chip" onclick="toggleChipRow('spa')">💆 Spa/Self-care</button>
-        <div class="chip-input-wrap" id="chip-input-spa" style="display:none;">
-          <span class="prefix">$</span>
-          <input type="text" class="has-prefix chip-amt-input" id="chip-val-spa" inputmode="numeric" placeholder="e.g. 100" oninput="formatChipInput(this); recalcChips()" />
-        </div>
-      </div>
-      <div class="chip-row" id="chip-outfits">
-        <button class="chip" onclick="toggleChipRow('outfits')">👙 Pre-Trip Outfits</button>
-        <div class="chip-input-wrap" id="chip-input-outfits" style="display:none;">
-          <span class="prefix">$</span>
-          <input type="text" class="has-prefix chip-amt-input" id="chip-val-outfits" inputmode="numeric" placeholder="e.g. 150" oninput="formatChipInput(this); recalcChips()" />
-        </div>
-      </div>
-      <div class="chip-row" id="chip-baggage">
-        <button class="chip" onclick="toggleChipRow('baggage')">🧳 Baggage Fees</button>
-        <div class="chip-input-wrap" id="chip-input-baggage" style="display:none;">
-          <span class="prefix">$</span>
-          <input type="text" class="has-prefix chip-amt-input" id="chip-val-baggage" inputmode="numeric" placeholder="e.g. 60" oninput="formatChipInput(this); recalcChips()" />
-        </div>
-      </div>
-      <div class="chip-row" id="chip-misc">
-        <button class="chip" onclick="toggleChipRow('misc')">✨ Miscellaneous</button>
-        <div class="chip-input-wrap" id="chip-input-misc" style="display:none;">
-          <span class="prefix">$</span>
-          <input type="text" class="has-prefix chip-amt-input" id="chip-val-misc" inputmode="numeric" placeholder="anything else" oninput="formatChipInput(this); recalcChips()" />
-        </div>
-      </div>
+      <div class="chip-row" id="chip-flights"><button class="chip" onclick="toggleChipRow('flights')">✈️ Flights</button><div class="chip-input-wrap" id="chip-input-flights" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-flights" inputmode="numeric" placeholder="e.g. 350" oninput="formatChipInput(this); recalcChips()" /></div></div>
+      <div class="chip-row" id="chip-food"><button class="chip" onclick="toggleChipRow('food')">🍽️ Food</button><div class="chip-input-wrap" id="chip-input-food" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-food" inputmode="numeric" placeholder="e.g. 200" oninput="formatChipInput(this); recalcChips()" /></div></div>
+      <div class="chip-row" id="chip-excursions"><button class="chip" onclick="toggleChipRow('excursions')">🏄 Excursions</button><div class="chip-input-wrap" id="chip-input-excursions" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-excursions" inputmode="numeric" placeholder="e.g. 150" oninput="formatChipInput(this); recalcChips()" /></div></div>
+      <div class="chip-row" id="chip-shopping"><button class="chip" onclick="toggleChipRow('shopping')">🛍️ Shopping</button><div class="chip-input-wrap" id="chip-input-shopping" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-shopping" inputmode="numeric" placeholder="e.g. 100" oninput="formatChipInput(this); recalcChips()" /></div></div>
+      <div class="chip-row" id="chip-airport"><button class="chip" onclick="toggleChipRow('airport')">🚖 Airport Rides</button><div class="chip-input-wrap" id="chip-input-airport" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-airport" inputmode="numeric" placeholder="e.g. 80" oninput="formatChipInput(this); recalcChips()" /></div></div>
+      <div class="chip-row" id="chip-spa"><button class="chip" onclick="toggleChipRow('spa')">💆 Spa/Self-care</button><div class="chip-input-wrap" id="chip-input-spa" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-spa" inputmode="numeric" placeholder="e.g. 100" oninput="formatChipInput(this); recalcChips()" /></div></div>
+      <div class="chip-row" id="chip-outfits"><button class="chip" onclick="toggleChipRow('outfits')">👙 Pre-Trip Outfits</button><div class="chip-input-wrap" id="chip-input-outfits" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-outfits" inputmode="numeric" placeholder="e.g. 150" oninput="formatChipInput(this); recalcChips()" /></div></div>
+      <div class="chip-row" id="chip-baggage"><button class="chip" onclick="toggleChipRow('baggage')">🧳 Baggage Fees</button><div class="chip-input-wrap" id="chip-input-baggage" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-baggage" inputmode="numeric" placeholder="e.g. 60" oninput="formatChipInput(this); recalcChips()" /></div></div>
+      <div class="chip-row" id="chip-misc"><button class="chip" onclick="toggleChipRow('misc')">✨ Miscellaneous</button><div class="chip-input-wrap" id="chip-input-misc" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-misc" inputmode="numeric" placeholder="anything else" oninput="formatChipInput(this); recalcChips()" /></div></div>
     </div>
-    <p class="chip-total" id="chip-total" style="display:none; margin-top:0.7rem;"></p>
+    <p class="chip-total" id="chip-total" style="display:none;"></p>
     <input type="hidden" id="extraSpending" value="0" />
   </div>
 
   <div class="toggle-card" onclick="toggleInsurance()">
-    <button class="toggle-track" id="ins-track" style="background:#F2B705;" onclick="event.stopPropagation(); toggleInsurance()">
+    <button class="toggle-track" id="ins-track" style="background:#F27979;" onclick="event.stopPropagation(); toggleInsurance()">
       <span class="toggle-thumb" id="ins-thumb" style="left:23px;"></span>
     </button>
     <div>
@@ -436,7 +397,6 @@ border-radius: 16px; padding: 1.2rem; text-align: center; margin-bottom: 1.1rem;
 <!-- RESULTS -->
 
 <div class="wrapper" id="result-view" style="display:none">
-
   <div class="verdict-banner" id="verdict-banner">
     <div class="verdict-emoji" id="verdict-emoji"></div>
     <div class="verdict-title" id="verdict-title"></div>
@@ -466,354 +426,161 @@ border-radius: 16px; padding: 1.2rem; text-align: center; margin-bottom: 1.1rem;
     <div id="scenarios-list"></div>
   </div>
 
-  <!-- CONNECT WITH SABRINA -->
-
   <div class="connect-card">
     <p style="font-size:1.4rem; margin-bottom:0.4rem;">🖤</p>
-    <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:700; color:#F2B705; margin-bottom:0.4rem;">Enjoyed this? Let's connect!</p>
-    <p style="font-size:0.78rem; color:#79DCF2; line-height:1.65; margin-bottom:1rem; font-family:'DM Sans',sans-serif; opacity:0.85;">Follow me on Facebook for more — and if this helped you, share it with a friend who needs a reality check too. 😉</p>
-    <a href="https://www.facebook.com/sabrinanicholsjohnson" target="_blank"
-      style="display:block; width:100%; box-sizing:border-box; padding:0.88rem; border-radius:10px; border:1px solid rgba(242,183,5,0.3); background:transparent; color:#FFF8F0; font-size:0.85rem; font-weight:600; font-family:'DM Sans',sans-serif; text-decoration:none; text-align:center; margin-bottom:0.5rem;">
-      👉 Follow Sabrina on Facebook
-    </a>
-    <a href="https://m.facebook.com/groups/elitetripps/?ref=share" target="_blank"
-      style="display:block; width:100%; box-sizing:border-box; padding:0.88rem; border-radius:10px; border:1px solid rgba(242,183,5,0.2); background:transparent; color:#F2B705; font-size:0.85rem; font-weight:600; font-family:'DM Sans',sans-serif; text-decoration:none; text-align:center;">
-      ✈️ Join the Elite Tripps™ Facebook Group
-    </a>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:700; color:#F2B705; margin-bottom:0.4rem;">Enjoyed this? Let's connect!</p>
+    <p style="font-size:0.9rem; color:#d0f0f5; line-height:1.65; margin-bottom:1rem; font-family:'DM Sans',sans-serif;">Follow me on Facebook for more — and if this helped you, share it with a friend who needs a reality check too. 😉</p>
+    <a href="https://www.facebook.com/sabrinanicholsjohnson" target="_blank" style="display:block; width:100%; box-sizing:border-box; padding:0.88rem; border-radius:10px; border:1px solid rgba(242,183,5,0.3); background:transparent; color:#FFF8F0; font-size:0.9rem; font-weight:600; font-family:'DM Sans',sans-serif; text-decoration:none; text-align:center; margin-bottom:0.5rem;">👉 Follow Sabrina on Facebook</a>
+    <a href="https://m.facebook.com/groups/elitetripps/?ref=share" target="_blank" style="display:block; width:100%; box-sizing:border-box; padding:0.88rem; border-radius:10px; border:1px solid rgba(242,121,121,0.3); background:transparent; color:#F27979; font-size:0.9rem; font-weight:600; font-family:'DM Sans',sans-serif; text-decoration:none; text-align:center;">✈️ Join the Elite Tripps™ Facebook Group</a>
   </div>
-
-  <!-- EMAIL GATE via Web3Forms -->
 
   <div class="gate-card" id="gate-section">
     <p class="gate-title">📬 Get Your Full Savings Plan</p>
     <p class="gate-sub">Drop your name and email — I'll send your month-by-month breakdown straight to you.</p>
     <form id="gate-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleGateSubmit(event)">
-      <input type="text"  name="name"           id="gate-name"    placeholder="Your first name"    oninput="checkGate()" autocomplete="given-name" />
-      <input type="email" name="email"          id="gate-email"   placeholder="Your email address" oninput="checkGate()" autocomplete="email" />
-      <input type="hidden" name="trip_total"        id="hidden-total" />
-      <input type="hidden" name="amount_needed"     id="hidden-needed" />
-      <input type="hidden" name="verdict"           id="hidden-verdict" />
-      <input type="hidden" name="monthly_savings"   id="hidden-monthly" />
-      <input type="hidden" name="months_available"  id="hidden-months-avail" />
-      <input type="hidden" name="months_needed"     id="hidden-months-need" />
-      <input type="hidden" name="deposit_status"    id="hidden-deposit-status" />
-      <input type="hidden" name="deposit_amount"    id="hidden-deposit-amt" />
-      <input type="hidden" name="access_key" value="63b2dfd1-76d6-409c-826e-0bf68e45f526" />
-      <input type="hidden" name="subject" value="New Elite Tripps™ Reality Check Lead 🎉" />
-      <input type="hidden" name="from_name" value="Elite Tripps Reality Check" />
-      <input type="hidden" name="botcheck" value="" style="display:none" />
+      <input type="text"  name="name"  id="gate-name"  placeholder="Your first name"    oninput="checkGate()" autocomplete="given-name" />
+      <input type="email" name="email" id="gate-email" placeholder="Your email address" oninput="checkGate()" autocomplete="email" />
+      <input type="hidden" name="trip_total"       id="hidden-total" />
+      <input type="hidden" name="amount_needed"    id="hidden-needed" />
+      <input type="hidden" name="verdict"          id="hidden-verdict" />
+      <input type="hidden" name="monthly_savings"  id="hidden-monthly" />
+      <input type="hidden" name="months_available" id="hidden-months-avail" />
+      <input type="hidden" name="months_needed"    id="hidden-months-need" />
+      <input type="hidden" name="deposit_status"   id="hidden-deposit-status" />
+      <input type="hidden" name="deposit_amount"   id="hidden-deposit-amt" />
+      <input type="hidden" name="access_key"  value="63b2dfd1-76d6-409c-826e-0bf68e45f526" />
+      <input type="hidden" name="subject"     value="New Elite Tripps™ Reality Check Lead 🎉" />
+      <input type="hidden" name="from_name"   value="Elite Tripps Reality Check" />
+      <input type="hidden" name="botcheck"    value="" style="display:none" />
       <button type="submit" class="btn-gate inactive" id="btn-gate">Send My Plan ✨</button>
     </form>
   </div>
-
-  <!-- MILESTONES (after email gate) -->
 
   <div id="milestones-section" style="display:none;">
     <div class="milestones-card">
       <p class="milestones-title">📅 Your Month-by-Month Plan</p>
       <div class="milestones-list" id="milestones-list"></div>
     </div>
-
-```
-<div class="cta-card" id="cta-card">
-  <p class="cta-title" id="cta-title">Ready to make this trip happen? ✈️</p>
-  <p class="cta-sub" id="cta-sub">Let Sabrina help you find the perfect trip at the right price — cruises, group trips, and more.</p>
-  <a href="https://www.elitetripps.com" target="_blank" class="btn-book" id="cta-btn">Book with Sabrina → www.EliteTripps.com</a>
-</div>
-```
-
+    <div class="cta-card">
+      <p class="cta-title" id="cta-title">Ready to make this trip happen? ✈️</p>
+      <p class="cta-sub" id="cta-sub">Let Sabrina help you find the perfect trip at the right price.</p>
+      <a href="https://www.elitetripps.com" target="_blank" class="btn-book" id="cta-btn">Book with Sabrina → www.EliteTripps.com</a>
+    </div>
   </div>
 
 <button class="btn-ghost" onclick="resetForm()">← Start Over</button>
 
 </div>
 
-<div style="text-align:center; padding: 1.5rem 1rem 2rem; border-top: 1px solid rgba(242,183,5,0.1); margin-top: 1rem;">
-  <p style="font-family:'Cormorant Garamond',serif; font-size:0.85rem; color:rgba(121,220,242,0.6); letter-spacing:0.08em;">Created by <a href="https://www.facebook.com/sabrinanicholsjohnson" target="_blank" style="color:#F2B705; text-decoration:none; font-weight:600;">Sabrina Nichols Johnson</a></p>
-  <p style="font-size:0.7rem; color:rgba(121,220,242,0.5); margin-top:0.3rem; font-family:'DM Sans',sans-serif;"><a href="https://www.elitetripps.com" target="_blank" style="color:#F2B705; text-decoration:none;">www.elitetripps.com</a></p>
+<div style="text-align:center; padding:1.5rem 1rem 2rem; border-top:1px solid rgba(242,183,5,0.1); margin-top:1rem;">
+  <p style="font-family:'Cormorant Garamond',serif; font-size:0.9rem; color:rgba(255,248,240,0.45); letter-spacing:0.08em;">Created by <a href="https://www.facebook.com/sabrinanicholsjohnson" target="_blank" style="color:#F2B705; text-decoration:none; font-weight:600;">Sabrina Nichols Johnson</a></p>
+  <p style="font-size:0.8rem; color:rgba(255,248,240,0.3); margin-top:0.3rem;"><a href="https://www.elitetripps.com" target="_blank" style="color:#F27979; text-decoration:none;">www.elitetripps.com</a></p>
 </div>
 
 <script>
-  let insuranceOn   = true;
-  let depositStatus = 'due';
-  let chipTotal     = 0;
-  let calcResult    = {};
-  const monthNames  = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  let insuranceOn=true, depositStatus='due', chipTotal=0, calcResult={};
+  const monthNames=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
-  function setDepositStatus(s) {
-    depositStatus = s;
-    ['none','due','paid'].forEach(x => document.getElementById('dep-'+x).classList.toggle('active', x===s));
-    document.getElementById('deposit-due-fields').style.display  = s==='due'  ? 'block' : 'none';
-    document.getElementById('deposit-paid-fields').style.display = s==='paid' ? 'block' : 'none';
+  function setDepositStatus(s){
+    depositStatus=s;
+    ['none','due','paid'].forEach(x=>document.getElementById('dep-'+x).classList.toggle('active',x===s));
+    document.getElementById('deposit-due-fields').style.display=s==='due'?'block':'none';
+    document.getElementById('deposit-paid-fields').style.display=s==='paid'?'block':'none';
   }
   setDepositStatus('due');
 
-  function toggleInsurance() {
-    insuranceOn = !insuranceOn;
-    document.getElementById('ins-track').style.background = insuranceOn ? '#F2B705' : 'rgba(255,255,255,0.1)';
-    document.getElementById('ins-thumb').style.left = insuranceOn ? '23px' : '3px';
+  function toggleInsurance(){
+    insuranceOn=!insuranceOn;
+    document.getElementById('ins-track').style.background=insuranceOn?'#F27979':'rgba(255,255,255,0.1)';
+    document.getElementById('ins-thumb').style.left=insuranceOn?'23px':'3px';
   }
 
-  const chipKeys = ['flights','food','excursions','shopping','airport','spa','outfits','baggage','misc'];
+  const chipKeys=['flights','food','excursions','shopping','airport','spa','outfits','baggage','misc'];
 
-  function toggleChipRow(key) {
-    const btn      = document.querySelector(`#chip-${key} .chip`);
-    const inputWrap = document.getElementById(`chip-input-${key}`);
-    const isOpen   = inputWrap.style.display !== 'none';
-    if (isOpen) {
-      inputWrap.style.display = 'none';
-      btn.classList.remove('selected');
-      document.getElementById(`chip-val-${key}`).value = '';
-    } else {
-      inputWrap.style.display = 'flex';
-      btn.classList.add('selected');
-      setTimeout(() => document.getElementById(`chip-val-${key}`).focus(), 50);
-    }
+  function toggleChipRow(key){
+    const btn=document.querySelector(`#chip-${key} .chip`);
+    const inputWrap=document.getElementById(`chip-input-${key}`);
+    const isOpen=inputWrap.style.display!=='none';
+    if(isOpen){inputWrap.style.display='none';btn.classList.remove('selected');document.getElementById(`chip-val-${key}`).value='';}
+    else{inputWrap.style.display='flex';btn.classList.add('selected');setTimeout(()=>document.getElementById(`chip-val-${key}`).focus(),50);}
     recalcChips();
   }
 
-  function formatChipInput(input) {
-    let raw = input.value.replace(/[^0-9]/g,'');
-    input.value = raw ? parseInt(raw,10).toLocaleString('en-US') : '';
+  function formatChipInput(input){let raw=input.value.replace(/[^0-9]/g,'');input.value=raw?parseInt(raw,10).toLocaleString('en-US'):'';}
+
+  function recalcChips(){
+    chipTotal=chipKeys.reduce((sum,key)=>{const el=document.getElementById(`chip-val-${key}`);return sum+(el&&el.value?parseFloat(el.value.replace(/[^0-9.]/g,''))||0:0);},0);
+    const t=document.getElementById('chip-total');
+    if(chipTotal>0){t.style.display='block';t.textContent='Total extras: $'+chipTotal.toLocaleString();}
+    else t.style.display='none';
+    document.getElementById('extraSpending').value=chipTotal;
   }
 
-  function recalcChips() {
-    chipTotal = chipKeys.reduce((sum, key) => {
-      const el = document.getElementById(`chip-val-${key}`);
-      return sum + (el && el.value ? parseFloat(el.value.replace(/[^0-9.]/g,''))||0 : 0);
-    }, 0);
-    const t = document.getElementById('chip-total');
-    if (chipTotal > 0) {
-      t.style.display = 'block';
-      t.textContent   = 'Total extras: $' + chipTotal.toLocaleString();
-    } else {
-      t.style.display = 'none';
-    }
-    document.getElementById('extraSpending').value = chipTotal;
-  }
+  function formatCurrency(input){let raw=input.value.replace(/[^0-9]/g,'');input.value=raw?parseInt(raw,10).toLocaleString('en-US'):'';}
+  function parseCurrency(id){const el=document.getElementById(id);return el&&el.value?parseFloat(el.value.replace(/[^0-9.]/g,''))||0:0;}
 
-  function formatCurrency(input) {
-    let raw = input.value.replace(/[^0-9]/g,'');
-    input.value = raw ? parseInt(raw,10).toLocaleString('en-US') : '';
-  }
-  function parseCurrency(id) {
-    const el = document.getElementById(id);
-    return el && el.value ? parseFloat(el.value.replace(/[^0-9.]/g,''))||0 : 0;
-  }
+  ['tripCost','depositAmount','depositPaid','alreadySaved','extraSpending','monthlySavings'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',()=>formatCurrency(el));});
 
-  ['tripCost','depositAmount','depositPaid','alreadySaved','extraSpending','monthlySavings'].forEach(id=>{
-    const el=document.getElementById(id);
-    if(el) el.addEventListener('input',()=>formatCurrency(el));
-  });
+  (function(){const d=new Date();const min=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;['targetDate','depositDueDate'].forEach(id=>{const el=document.getElementById(id);if(el)el.min=min;});})();
 
-  (function(){
-    const d=new Date();
-    const min=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-    ['targetDate','depositDueDate'].forEach(id=>{ const el=document.getElementById(id); if(el) el.min=min; });
-  })();
-
-  function validate() {
+  function validate(){
     let ok=true;
-    if(!parseCurrency('tripCost')){document.getElementById('err-tripCost').style.display='block';ok=false;}
-    else document.getElementById('err-tripCost').style.display='none';
-    if(!parseCurrency('monthlySavings')){document.getElementById('err-monthlySavings').style.display='block';ok=false;}
-    else document.getElementById('err-monthlySavings').style.display='none';
-    if(!document.getElementById('targetDate').value){document.getElementById('err-targetDate').style.display='block';ok=false;}
-    else document.getElementById('err-targetDate').style.display='none';
+    if(!parseCurrency('tripCost')){document.getElementById('err-tripCost').style.display='block';ok=false;}else document.getElementById('err-tripCost').style.display='none';
+    if(!parseCurrency('monthlySavings')){document.getElementById('err-monthlySavings').style.display='block';ok=false;}else document.getElementById('err-monthlySavings').style.display='none';
+    if(!document.getElementById('targetDate').value){document.getElementById('err-targetDate').style.display='block';ok=false;}else document.getElementById('err-targetDate').style.display='none';
     return ok;
   }
 
-  function calculate() {
-    const tripCost    = parseCurrency('tripCost');
-    const alreadySaved= parseCurrency('alreadySaved');
-    const extraSpend  = chipTotal || parseCurrency('extraSpending');
-    const monthlySav  = parseCurrency('monthlySavings');
-    const targetDate  = document.getElementById('targetDate').value;
-
-    let depositPaidAmt=0, depositDueAmt=0, depositDueDate=null;
-    if(depositStatus==='paid')      depositPaidAmt = parseCurrency('depositPaid');
-    else if(depositStatus==='due'){ depositDueAmt  = parseCurrency('depositAmount');
-                                    depositDueDate = document.getElementById('depositDueDate').value; }
-
-    const insuranceAmt = insuranceOn ? tripCost*0.08 : 0;
-    const totalCost    = tripCost + insuranceAmt + extraSpend;
-    const alreadyHave  = alreadySaved + depositPaidAmt;
-    const amountNeeded = Math.max(totalCost - alreadyHave, 0);
-    const progressPct  = Math.min(Math.round((alreadyHave/totalCost)*100),100);
-
-    const today       = new Date();
-    const target      = new Date(targetDate);
-    const msPerMonth  = 1000*60*60*24*30.44;
-    const monthsAvail = Math.max(Math.round((target-today)/msPerMonth),0);
-    const monthsToSave= monthlySav>0 ? Math.ceil(amountNeeded/monthlySav) : Infinity;
-
+  function calculate(){
+    const tripCost=parseCurrency('tripCost'),alreadySaved=parseCurrency('alreadySaved'),extraSpend=chipTotal||parseCurrency('extraSpending'),monthlySav=parseCurrency('monthlySavings'),targetDate=document.getElementById('targetDate').value;
+    let depositPaidAmt=0,depositDueAmt=0,depositDueDate=null;
+    if(depositStatus==='paid')depositPaidAmt=parseCurrency('depositPaid');
+    else if(depositStatus==='due'){depositDueAmt=parseCurrency('depositAmount');depositDueDate=document.getElementById('depositDueDate').value;}
+    const insuranceAmt=insuranceOn?tripCost*0.08:0,totalCost=tripCost+insuranceAmt+extraSpend,alreadyHave=alreadySaved+depositPaidAmt,amountNeeded=Math.max(totalCost-alreadyHave,0),progressPct=Math.min(Math.round((alreadyHave/totalCost)*100),100);
+    const today=new Date(),target=new Date(targetDate),msPerMonth=1000*60*60*24*30.44,monthsAvail=Math.max(Math.round((target-today)/msPerMonth),0),monthsToSave=monthlySav>0?Math.ceil(amountNeeded/monthlySav):Infinity;
     let depositUrgency=null;
-    if(depositStatus==='due' && depositDueDate && depositDueAmt>0){
-      const depDate=new Date(depositDueDate);
-      const mAway=Math.max(Math.round((depDate-today)/msPerMonth),0);
-      const canCover=(mAway*monthlySav+alreadyHave)>=depositDueAmt;
-      const mNeeded=mAway>0 ? Math.ceil((depositDueAmt-alreadyHave)/mAway) : depositDueAmt;
-      depositUrgency={amt:depositDueAmt,monthsAway:mAway,date:depositDueDate,canCover,monthlyNeeded:mNeeded};
-    }
-
-    const milestones=[];
-    let running=alreadyHave;
-    const depDate2=depositDueDate?new Date(depositDueDate):null;
-    for(let i=1;i<=Math.max(monthsToSave===Infinity?24:monthsToSave,monthsAvail,12);i++){
-      const d=new Date(today.getFullYear(),today.getMonth()+i,1);
-      running+=monthlySav;
-      const isDepMonth=depDate2&&d.getMonth()===depDate2.getMonth()&&d.getFullYear()===depDate2.getFullYear()&&depositStatus==='due';
-      milestones.push({label:`${monthNames[d.getMonth()]} ${d.getFullYear()}`,total:Math.round(running),hit:Math.round(running)>=Math.round(amountNeeded),isDepositMonth:isDepMonth});
-    }
-
+    if(depositStatus==='due'&&depositDueDate&&depositDueAmt>0){const depDate=new Date(depositDueDate),mAway=Math.max(Math.round((depDate-today)/msPerMonth),0),canCover=(mAway*monthlySav+alreadyHave)>=depositDueAmt,mNeeded=mAway>0?Math.ceil((depositDueAmt-alreadyHave)/mAway):depositDueAmt;depositUrgency={amt:depositDueAmt,monthsAway:mAway,date:depositDueDate,canCover,monthlyNeeded:mNeeded};}
+    const milestones=[],depDate2=depositDueDate?new Date(depositDueDate):null;let running=alreadyHave;
+    for(let i=1;i<=Math.max(monthsToSave===Infinity?24:monthsToSave,monthsAvail,12);i++){const d=new Date(today.getFullYear(),today.getMonth()+i,1);running+=monthlySav;const isDepMonth=depDate2&&d.getMonth()===depDate2.getMonth()&&d.getFullYear()===depDate2.getFullYear()&&depositStatus==='due';milestones.push({label:`${monthNames[d.getMonth()]} ${d.getFullYear()}`,total:Math.round(running),hit:Math.round(running)>=Math.round(amountNeeded),isDepositMonth:isDepMonth});}
     let verdict,message,scenarios;
-    if(monthsToSave<=monthsAvail){
-      verdict='green';
-      const buf=monthsAvail-monthsToSave;
-      message=`You can absolutely do this trip! At $${monthlySav.toLocaleString()}/month you'll be fully funded ${monthsToSave} month${monthsToSave!==1?'s':''} before your trip — that's a ${buf}-month cushion. Stay consistent and this is YOURS. 🎉`;
-    } else if(monthlySav>0&&monthsToSave<=monthsAvail*1.5){
-      verdict='yellow';
-      const needMo=monthsAvail>0?Math.ceil(amountNeeded/monthsAvail):0;
-      const nd=new Date(today.getFullYear(),today.getMonth()+monthsToSave,1);
-      message=`You're close, sis — but something needs to shift. At your current rate you'll come up short by your target date. Here's how to fix it:`;
-      scenarios=[
-        `💰 Save more: Bump your monthly savings to $${needMo.toLocaleString()}/month and you'll hit your goal right on time.`,
-        `📅 Adjust your date: Keep saving $${monthlySav.toLocaleString()}/month and push your trip to ${monthNames[nd.getMonth()]} ${nd.getFullYear()} — fully funded.`,
-      ];
-    } else {
-      verdict='red';
-      const realisticTrip=Math.round(monthlySav*monthsAvail+alreadyHave);
-      const needMo=monthsAvail>0?Math.ceil(amountNeeded/monthsAvail):0;
-      message=`Real talk — this trip at this budget isn't happening by that date at your current savings rate. But that doesn't mean you can't travel. Here's what IS realistic:`;
-      scenarios=[
-        `✈️ Adjust the trip: A $${realisticTrip.toLocaleString()} trip IS doable by your date. Want help finding options in that range?`,
-        `💪 Level up: You'd need $${needMo.toLocaleString()}/month to make this exact trip happen on time. If that's possible — let's map it out.`,
-      ];
-    }
+    if(monthsToSave<=monthsAvail){verdict='green';const buf=monthsAvail-monthsToSave;message=`You can absolutely do this trip! At $${monthlySav.toLocaleString()}/month you'll be fully funded ${monthsToSave} month${monthsToSave!==1?'s':''} before your trip — that's a ${buf}-month cushion. Stay consistent and this is YOURS. 🎉`;}
+    else if(monthlySav>0&&monthsToSave<=monthsAvail*1.5){verdict='yellow';const needMo=monthsAvail>0?Math.ceil(amountNeeded/monthsAvail):0,nd=new Date(today.getFullYear(),today.getMonth()+monthsToSave,1);message=`You're close, sis — but something needs to shift. At your current rate you'll come up short by your target date. Here's how to fix it:`;scenarios=[`💰 Save more: Bump your monthly savings to $${needMo.toLocaleString()}/month and you'll hit your goal right on time.`,`📅 Adjust your date: Keep saving $${monthlySav.toLocaleString()}/month and push your trip to ${monthNames[nd.getMonth()]} ${nd.getFullYear()} — fully funded.`];}
+    else{verdict='red';const realisticTrip=Math.round(monthlySav*monthsAvail+alreadyHave),needMo=monthsAvail>0?Math.ceil(amountNeeded/monthsAvail):0;message=`Real talk — this trip at this budget isn't happening by that date at your current savings rate. But that doesn't mean you can't travel. Here's what IS realistic:`;scenarios=[`✈️ Adjust the trip: A $${realisticTrip.toLocaleString()} trip IS doable by your date. Want help finding options in that range?`,`💪 Level up: You'd need $${needMo.toLocaleString()}/month to make this exact trip happen on time. If that's possible — let's map it out.`];}
     return{verdict,message,scenarios,totalCost:Math.round(totalCost),amountNeeded:Math.round(amountNeeded),alreadyHave:Math.round(alreadyHave),monthsAvail,monthsToSave,progressPct,milestones,depositUrgency};
   }
 
-  const vCfg={
-    green: {emoji:'✅',label:"Sis, You're Good! 🎉",       color:'#4ade80',bg:'rgba(74,222,128,0.1)',  border:'rgba(74,222,128,0.3)'},
-    yellow:{emoji:'⚠️',label:"Something's Gotta Shift 💡", color:'#F2B705',bg:'rgba(242,183,5,0.1)', border:'rgba(242,183,5,0.3)'},
-    red:   {emoji:'🚨',label:"Let's Be Real, Sis 💬",      color:'#F27979',bg:'rgba(242,121,121,0.1)',border:'rgba(242,121,121,0.3)'},
-  };
+  const vCfg={green:{emoji:'✅',label:"Sis, You're Good! 🎉",color:'#4ade80',bg:'rgba(74,222,128,0.08)',border:'rgba(74,222,128,0.25)'},yellow:{emoji:'⚠️',label:"Something's Gotta Shift 💡",color:'#F2B705',bg:'rgba(242,183,5,0.08)',border:'rgba(242,183,5,0.28)'},red:{emoji:'🚨',label:"Let's Be Real, Sis 💬",color:'#F27979',bg:'rgba(242,121,121,0.08)',border:'rgba(242,121,121,0.28)'}};
 
-  function runCheck(){
-    if(!validate()){window.scrollTo({top:0,behavior:'smooth'});return;}
-    calcResult=calculate();
-    renderResults();
-    document.getElementById('form-view').style.display='none';
-    document.getElementById('result-view').style.display='block';
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
+  function runCheck(){if(!validate()){window.scrollTo({top:0,behavior:'smooth'});return;}calcResult=calculate();renderResults();document.getElementById('form-view').style.display='none';document.getElementById('result-view').style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
 
   function renderResults(){
-    const r=calcResult, v=vCfg[r.verdict];
-    const banner=document.getElementById('verdict-banner');
-    banner.style.background=v.bg; banner.style.border=`1px solid ${v.border}`;
-    document.getElementById('verdict-emoji').textContent=v.emoji;
-    const te=document.getElementById('verdict-title'); te.textContent=v.label; te.style.color=v.color;
-    document.getElementById('verdict-message').textContent=r.message;
-
-    if(r.depositUrgency){
-      const du=r.depositUrgency;
-      document.getElementById('deposit-alert').style.display='block';
-      document.getElementById('deposit-alert-text').textContent=du.canCover
-        ?`Your $${du.amt.toLocaleString()} deposit is due in ${du.monthsAway} month${du.monthsAway!==1?'s':''}. ✅ At your savings rate you can cover it — just make sure you set that money aside first.`
-        :`Your $${du.amt.toLocaleString()} deposit is due in ${du.monthsAway} month${du.monthsAway!==1?'s':''}. ⚠️ You'll need to save at least $${du.monthlyNeeded.toLocaleString()}/month to cover it on time. This is your FIRST priority.`;
-    } else { document.getElementById('deposit-alert').style.display='none'; }
-
-    document.getElementById('stat-total').textContent=`$${r.totalCost.toLocaleString()}`;
-    document.getElementById('stat-needed').textContent=`$${r.amountNeeded.toLocaleString()}`;
-    document.getElementById('stat-months-avail').textContent=`${r.monthsAvail} mo`;
-    document.getElementById('stat-months-save').textContent=r.monthsToSave===Infinity?'∞':`${r.monthsToSave} mo`;
-    document.getElementById('progress-pct').textContent=`${r.progressPct}%`;
-    document.getElementById('progress-fill').style.width=`${r.progressPct}%`;
-    document.getElementById('progress-fill').style.background=v.color;
-    document.getElementById('prog-have').textContent=`$${r.alreadyHave.toLocaleString()}`;
-    document.getElementById('prog-total').textContent=`$${r.totalCost.toLocaleString()}`;
-
-    if(r.scenarios&&r.scenarios.length){
-      document.getElementById('scenarios-wrap').style.display='block';
-      document.getElementById('scenarios-list').innerHTML=r.scenarios.map((s,i)=>`<div class="scenario-item"><div class="scenario-num">Option ${i+1}</div><div class="scenario-text">${s}</div></div>`).join('');
-    }
-
-    document.getElementById('hidden-total').value=`$${r.totalCost.toLocaleString()}`;
-    document.getElementById('hidden-needed').value=`$${r.amountNeeded.toLocaleString()}`;
-    document.getElementById('hidden-verdict').value=r.verdict.toUpperCase();
-    document.getElementById('hidden-monthly').value=`$${parseCurrency('monthlySavings').toLocaleString()}/month`;
-    document.getElementById('hidden-months-avail').value=`${r.monthsAvail} months`;
-    document.getElementById('hidden-months-need').value=r.monthsToSave===Infinity?'Cannot save enough':`${r.monthsToSave} months`;
-    document.getElementById('hidden-deposit-status').value=depositStatus==='none'?'No deposit required':depositStatus==='paid'?`Deposit already paid`:`Deposit still due: $${parseCurrency('depositAmount').toLocaleString()}`;
-    document.getElementById('hidden-deposit-amt').value=depositStatus==='due'?`$${parseCurrency('depositAmount').toLocaleString()} due`:depositStatus==='paid'?`$${parseCurrency('depositPaid').toLocaleString()} paid`:'N/A';
-
-    const ctaCopy = {
-      green:  { title:"You're ready! Let's lock in your trip. ✈️",         sub:"You've got a solid plan. Let Sabrina help you find the perfect trip and make it official.",    btn:"Let's Book Your Trip → EliteTripps.com" },
-      yellow: { title:"You're close — let me help you make it work. 💡",   sub:"A few small adjustments and this trip is yours. Sabrina can help you find the right fit for your budget.", btn:"Let's Make It Work → EliteTripps.com" },
-      red:    { title:"Let me help you find something in your budget. 🙌🏽", sub:"Don't give up on the trip — give up on that price point. Sabrina specializes in finding real options for real budgets.", btn:"Find My Budget Trip → EliteTripps.com" },
-    };
-    const cta = ctaCopy[r.verdict];
-    document.getElementById('cta-title').textContent = cta.title;
-    document.getElementById('cta-sub').textContent   = cta.sub;
-    document.getElementById('cta-btn').textContent   = cta.btn;
-
-    document.getElementById('milestones-list').innerHTML=r.milestones.slice(0,18).map(m=>`
-      <div class="milestone-row">
-        <span class="milestone-month">${m.label}</span>
-        <span>
-          <span class="milestone-amt">$${m.total.toLocaleString()}</span>
-          ${m.hit?'<span class="milestone-check">✓ Goal!</span>':''}
-          ${m.isDepositMonth?'<span class="milestone-dep">⚡ Deposit Due</span>':''}
-        </span>
-      </div>`).join('');
+    const r=calcResult,v=vCfg[r.verdict];
+    const banner=document.getElementById('verdict-banner');banner.style.background=v.bg;banner.style.border=`1px solid ${v.border}`;
+    document.getElementById('verdict-emoji').textContent=v.emoji;const te=document.getElementById('verdict-title');te.textContent=v.label;te.style.color=v.color;document.getElementById('verdict-message').textContent=r.message;
+    if(r.depositUrgency){const du=r.depositUrgency;document.getElementById('deposit-alert').style.display='block';document.getElementById('deposit-alert-text').textContent=du.canCover?`Your $${du.amt.toLocaleString()} deposit is due in ${du.monthsAway} month${du.monthsAway!==1?'s':''}. ✅ At your savings rate you can cover it — just set that money aside first.`:`Your $${du.amt.toLocaleString()} deposit is due in ${du.monthsAway} month${du.monthsAway!==1?'s':''}. ⚠️ You'll need to save at least $${du.monthlyNeeded.toLocaleString()}/month to cover it on time. This is your FIRST priority.`;}else document.getElementById('deposit-alert').style.display='none';
+    document.getElementById('stat-total').textContent=`$${r.totalCost.toLocaleString()}`;document.getElementById('stat-needed').textContent=`$${r.amountNeeded.toLocaleString()}`;document.getElementById('stat-months-avail').textContent=`${r.monthsAvail} mo`;document.getElementById('stat-months-save').textContent=r.monthsToSave===Infinity?'∞':`${r.monthsToSave} mo`;
+    document.getElementById('progress-pct').textContent=`${r.progressPct}%`;document.getElementById('progress-fill').style.width=`${r.progressPct}%`;document.getElementById('progress-fill').style.background=v.color;document.getElementById('prog-have').textContent=`$${r.alreadyHave.toLocaleString()}`;document.getElementById('prog-total').textContent=`$${r.totalCost.toLocaleString()}`;
+    if(r.scenarios&&r.scenarios.length){document.getElementById('scenarios-wrap').style.display='block';document.getElementById('scenarios-list').innerHTML=r.scenarios.map((s,i)=>`<div class="scenario-item"><div class="scenario-num">Option ${i+1}</div><div class="scenario-text">${s}</div></div>`).join('');}
+    document.getElementById('hidden-total').value=`$${r.totalCost.toLocaleString()}`;document.getElementById('hidden-needed').value=`$${r.amountNeeded.toLocaleString()}`;document.getElementById('hidden-verdict').value=r.verdict.toUpperCase();document.getElementById('hidden-monthly').value=`$${parseCurrency('monthlySavings').toLocaleString()}/month`;document.getElementById('hidden-months-avail').value=`${r.monthsAvail} months`;document.getElementById('hidden-months-need').value=r.monthsToSave===Infinity?'Cannot save enough':`${r.monthsToSave} months`;document.getElementById('hidden-deposit-status').value=depositStatus==='none'?'No deposit required':depositStatus==='paid'?'Deposit already paid':`Deposit still due: $${parseCurrency('depositAmount').toLocaleString()}`;document.getElementById('hidden-deposit-amt').value=depositStatus==='due'?`$${parseCurrency('depositAmount').toLocaleString()} due`:depositStatus==='paid'?`$${parseCurrency('depositPaid').toLocaleString()} paid`:'N/A';
+    const ctaCopy={green:{title:"You're ready! Let's lock in your trip. ✈️",sub:"You've got a solid plan. Let Sabrina help you find the perfect trip and make it official.",btn:"Let's Book Your Trip → EliteTripps.com"},yellow:{title:"You're close — let me help you make it work. 💡",sub:"A few small adjustments and this trip is yours. Sabrina can help you find the right fit for your budget.",btn:"Let's Make It Work → EliteTripps.com"},red:{title:"Let me help you find something in your budget. 🙌🏽",sub:"Don't give up on the trip — give up on that price point. Sabrina specializes in real options for real budgets.",btn:"Find My Budget Trip → EliteTripps.com"}};
+    const cta=ctaCopy[r.verdict];document.getElementById('cta-title').textContent=cta.title;document.getElementById('cta-sub').textContent=cta.sub;document.getElementById('cta-btn').textContent=cta.btn;
+    document.getElementById('milestones-list').innerHTML=r.milestones.slice(0,18).map(m=>`<div class="milestone-row"><span class="milestone-month">${m.label}</span><span><span class="milestone-amt">$${m.total.toLocaleString()}</span>${m.hit?'<span class="milestone-check">✓ Goal!</span>':''}${m.isDepositMonth?'<span class="milestone-dep">⚡ Deposit Due</span>':''}</span></div>`).join('');
   }
 
-  function checkGate(){
-    const n=document.getElementById('gate-name').value.trim();
-    const e=document.getElementById('gate-email').value.trim();
-    document.getElementById('btn-gate').className=`btn-gate ${n&&e.includes('@')&&e.includes('.')? 'active':'inactive'}`;
-  }
+  function checkGate(){const n=document.getElementById('gate-name').value.trim(),e=document.getElementById('gate-email').value.trim();document.getElementById('btn-gate').className=`btn-gate ${n&&e.includes('@')&&e.includes('.')?'active':'inactive'}`;}
 
   async function handleGateSubmit(e){
-    e.preventDefault();
-    const n=document.getElementById('gate-name').value.trim();
-    const em=document.getElementById('gate-email').value.trim();
-    if(!n||!em.includes('@')) return;
-    const btn=document.getElementById('btn-gate');
-    btn.textContent='Sending... ⏳'; btn.className='btn-gate inactive';
-    try{
-      const form=document.getElementById('gate-form');
-      await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
-    }catch(err){}
-    document.getElementById('gate-section').style.display='none';
-    document.getElementById('milestones-section').style.display='block';
-    setTimeout(()=>document.getElementById('milestones-section').scrollIntoView({behavior:'smooth',block:'start'}),100);
+    e.preventDefault();const n=document.getElementById('gate-name').value.trim(),em=document.getElementById('gate-email').value.trim();if(!n||!em.includes('@'))return;
+    const btn=document.getElementById('btn-gate');btn.textContent='Sending... ⏳';btn.className='btn-gate inactive';
+    try{const form=document.getElementById('gate-form');await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});}catch(err){}
+    document.getElementById('gate-section').style.display='none';document.getElementById('milestones-section').style.display='block';setTimeout(()=>document.getElementById('milestones-section').scrollIntoView({behavior:'smooth',block:'start'}),100);
   }
 
   function resetForm(){
-    document.getElementById('result-view').style.display='none';
-    document.getElementById('form-view').style.display='block';
-    document.getElementById('gate-section').style.display='block';
-    document.getElementById('milestones-section').style.display='none';
-    document.getElementById('scenarios-wrap').style.display='none';
-    document.getElementById('gate-name').value='';
-    document.getElementById('gate-email').value='';
-    document.getElementById('btn-gate').className='btn-gate inactive';
-    document.getElementById('btn-gate').textContent='Send My Plan ✨';
-    chipKeys.forEach(key => {
-      const btn = document.querySelector(`#chip-${key} .chip`);
-      if(btn) btn.classList.remove('selected');
-      const wrap = document.getElementById(`chip-input-${key}`);
-      if(wrap) wrap.style.display='none';
-      const val = document.getElementById(`chip-val-${key}`);
-      if(val) val.value='';
-    });
-    chipTotal=0;
-    document.getElementById('chip-total').style.display='none';
-    document.getElementById('extraSpending').value='0';
-    setDepositStatus('due');
-    window.scrollTo({top:0,behavior:'smooth'});
+    document.getElementById('result-view').style.display='none';document.getElementById('form-view').style.display='block';document.getElementById('gate-section').style.display='block';document.getElementById('milestones-section').style.display='none';document.getElementById('scenarios-wrap').style.display='none';
+    document.getElementById('gate-name').value='';document.getElementById('gate-email').value='';document.getElementById('btn-gate').className='btn-gate inactive';document.getElementById('btn-gate').textContent='Send My Plan ✨';
+    chipKeys.forEach(key=>{const btn=document.querySelector(`#chip-${key} .chip`);if(btn)btn.classList.remove('selected');const wrap=document.getElementById(`chip-input-${key}`);if(wrap)wrap.style.display='none';const val=document.getElementById(`chip-val-${key}`);if(val)val.value='';});
+    chipTotal=0;document.getElementById('chip-total').style.display='none';document.getElementById('extraSpending').value='0';setDepositStatus('due');window.scrollTo({top:0,behavior:'smooth'});
   }
 </script>
 
