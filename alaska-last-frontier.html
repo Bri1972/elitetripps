@@ -738,61 +738,120 @@
   <!-- FORM -->
   <section class="inquiry-section" id="inquiry">
     <div class="container">
-      <p class="section-label reveal" style="text-align:center;">Ready to Go?</p>
+      <p class="section-label reveal" style="text-align:center;">Let's Get You Booked</p>
+      <h2 class="section__heading reveal" style="text-align:center; color: var(--text-dark);">Start My Booking</h2>
       <div class="form-card reveal">
-        <h2 class="form-card__title">Let's Make It Happen</h2>
-        <p class="form-card__sub">Fill this out and I'll be in touch within 24 hours with next steps and your deposit info.</p>
 
-        <form action="https://formspree.io/f/xreovegk" method="POST">
-          <input type="hidden" name="_subject" value="Alaska Last Frontier Cruise 2027 Inquiry" />
-          <input type="hidden" name="trip" value="Into the Last Frontier — Brilliant Lady, Aug 5–12, 2027" />
+        <div style="margin-bottom: 28px;">
+          <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 10px;">Fill out the form below and I'll follow up with everything you need to secure your cabin. Spots are limited and go fast.</p>
+          <p style="font-size: 0.9rem; color: var(--text-mid); line-height: 1.7;">Not sure if you're coming solo or with someone? That's fine. Submit what you know and we'll sort the details together.</p>
+        </div>
 
-          <div class="form-grid">
-            <div class="form-row">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="First & Last Name" required />
-            </div>
-            <div class="form-row">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="you@email.com" required />
-            </div>
-          </div>
+        <form id="inquiry-form" action="https://formspree.io/f/xreovegk" method="POST" novalidate aria-label="Alaska cruise booking inquiry form">
+          <input type="hidden" name="page_source" value="Into the Last Frontier landing page" />
+          <input type="hidden" name="trip_name" value="Into the Last Frontier" />
+          <input type="hidden" name="trip_dates" value="Aug 5-12, 2027" />
 
           <div class="form-grid">
+
             <div class="form-row">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="(000) 000-0000" />
+              <label for="first-name">First Name <span style="font-weight:400; text-transform:none; letter-spacing:0; font-size:0.9em;">(as it appears on your valid travel document)</span></label>
+              <input type="text" id="first-name" name="first-name" placeholder="Your first name" autocomplete="given-name" required />
             </div>
+
             <div class="form-row">
-              <label for="cabin">Which Cabin?</label>
-              <select id="cabin" name="cabin" required>
-                <option value="" disabled selected>Select</option>
-                <option>Central Sea Terrace — $3,786/cabin</option>
-                <option>Sea Terrace — $3,722/cabin</option>
-                <option>Not sure yet — send me more info</option>
+              <label for="last-name">Last Name <span style="font-weight:400; text-transform:none; letter-spacing:0; font-size:0.9em;">(as it appears on your valid travel document)</span></label>
+              <input type="text" id="last-name" name="last-name" placeholder="Your last name" autocomplete="family-name" required />
+            </div>
+
+            <div class="form-row" style="grid-column: 1 / -1;">
+              <label for="email">Best Email</label>
+              <input type="email" id="email" name="email" placeholder="email@example.com" autocomplete="email" required />
+            </div>
+
+            <div class="form-row" style="grid-column: 1 / -1;">
+              <label for="phone">Best Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" autocomplete="tel" required />
+            </div>
+
+            <div class="form-row" style="grid-column: 1 / -1;">
+              <label for="contact-method">How would you like me to follow up?</label>
+              <select id="contact-method" name="contact-method" required>
+                <option value="">Select an option</option>
+                <option>Email</option>
+                <option>Text Message</option>
+                <option>Phone Call</option>
               </select>
             </div>
-          </div>
 
-          <div class="form-row">
-            <label for="who">Who's Coming?</label>
-            <select id="who" name="who" required>
-              <option value="" disabled selected>Select</option>
-              <option>Just me (solo)</option>
-              <option>Cabin for 2 (double occupancy)</option>
-              <option>A group of us (multiple cabins)</option>
-              <option>Still deciding — just want info</option>
-            </select>
-            <p class="field-note">All cabins are double occupancy. If you need a different setup, mention it in the notes below and I'll reach out directly.</p>
-          </div>
+            <div class="form-row" style="grid-column: 1 / -1;">
+              <label for="cabin-type">Which cabin are you interested in?</label>
+              <select id="cabin-type" name="cabin-type" required>
+                <option value="">Select an option</option>
+                <option>Central Sea Terrace -- $3,786/cabin ($1,893/person)</option>
+                <option>Sea Terrace -- $3,722/cabin ($1,861/person)</option>
+                <option>Not sure yet -- send me more info</option>
+              </select>
+            </div>
 
-          <div class="form-row">
-            <label for="questions">Anything Else?</label>
-            <textarea id="questions" name="questions" placeholder="Questions, special requests, solo traveler inquiry, or anything you want me to know..."></textarea>
+            <div class="form-row" style="grid-column: 1 / -1;">
+              <label for="cabin-mate">Who will be sharing your cabin with you?</label>
+              <select id="cabin-mate" name="cabin-mate" required>
+                <option value="">Select an option</option>
+                <option>I already have my cabin mate</option>
+                <option>I need help finding a cabin mate</option>
+                <option>I'm not sure yet</option>
+              </select>
+              <p class="field-note">All cabins are double occupancy. If you need a different setup, mention it in the notes below and I'll reach out directly.</p>
+            </div>
+
+            <div class="form-row" style="grid-column: 1 / -1;">
+              <label for="cabin-count">How many cabins would you like to reserve?</label>
+              <select id="cabin-count" name="cabin-count" required>
+                <option value="">Select an option</option>
+                <option>SOLO cabin (1 guests)</option>
+                <option>1 cabin (2 guests)</option>
+                <option>2 cabins (4 guests)</option>
+                <option>3+ cabins (group booking)</option>
+                <option>I'm not sure yet</option>
+              </select>
+            </div>
+
+            <div class="form-row" style="grid-column: 1 / -1;">
+              <label for="reason">What's bringing you to Alaska?</label>
+              <select id="reason" name="reason">
+                <option value="">Select an option</option>
+                <option>Milestone birthday</option>
+                <option>Bucket list trip</option>
+                <option>Girls trip</option>
+                <option>Couple's getaway</option>
+                <option>Ready for something different</option>
+                <option>Something else</option>
+              </select>
+            </div>
+
+            <div class="form-row" style="grid-column: 1 / -1;">
+              <label for="readiness">Are you ready to secure your cabin?</label>
+              <select id="readiness" name="readiness">
+                <option value="">Select an option</option>
+                <option>Yes, I'm ready to book</option>
+                <option>I'm close, just need a little more info</option>
+                <option>Just exploring right now</option>
+              </select>
+            </div>
+
+            <div class="form-row" style="grid-column: 1 / -1;">
+              <label for="notes">Anything I should know?</label>
+              <textarea id="notes" name="notes" placeholder="Cabin mate details, special requests, or any quick questions..."></textarea>
+            </div>
+
           </div>
 
           <div class="form-submit">
-            <button type="submit" class="btn-gold">Send My Inquiry</button>
+            <button type="submit" class="btn-gold">Start My Booking</button>
+            <p id="form-success-message" style="display:none; margin-top: 12px; color: var(--text-mid); text-align: center;">
+              Your request has been submitted! Sabrina will review your details and follow up with your next steps and Virgin Voyages payment link. Once your cabin request is confirmed, your deposit will be due within 24 hours.
+            </p>
             <p>No commitment yet. I'll reach out within 24 hours with everything you need.</p>
           </div>
         </form>
