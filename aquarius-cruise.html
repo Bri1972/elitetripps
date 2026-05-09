@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aquarius SZN at Sea | Elite Tripps™</title>
+  <title>Aquarius SZN at Sea | Trip Page Model</title>
   <meta name="description" content="Aquarius SZN at Sea — A 7-night adults-only birthday cruise aboard Virgin Voyages Resilient Lady. February 7–14, 2027. Departing Miami.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,7 +91,7 @@
 
     /* Header */
     .site-header {
-      background: var(--color-surface);
+      background: none;
       border-bottom: 1px solid var(--color-divider);
       padding-block: var(--space-6);
       text-align: center;
@@ -210,7 +210,8 @@
     /* Hero */
    .hero {
   background: url('aquarius-hero.jpg') center/cover no-repeat;
-  height: 700px;
+  min-height: 700px;
+  height: min(82vh, 700px);
 }
 
     /* Highlight strip */
@@ -686,10 +687,37 @@
 
     /* Responsive */
     @media (max-width: 680px) {
-      .hero { padding-block: var(--space-16); }
+      .container { padding-inline: var(--space-4); }
+      .site-header { padding-block: var(--space-4); }
+      .site-header__brand { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+      .site-header__tagline { letter-spacing: 0.14em; }
+      .hero {
+        min-height: 420px;
+        height: min(62vh, 520px);
+        background-position: center top;
+      }
+      .highlight-strip { padding-block: var(--space-4); }
+      .highlight-strip p { font-size: 0.72rem; letter-spacing: 0.1em; padding-inline: var(--space-4); }
       .section { padding-block: var(--space-12); }
-      .overview-grid { grid-template-columns: 1fr 1fr; }
-      .itinerary-item { grid-template-columns: 80px 1fr; gap: var(--space-4); }
+      .section__heading { margin-bottom: var(--space-4); }
+      .overview-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+      .destinations-grid { grid-template-columns: 1fr; }
+      .itinerary-item { grid-template-columns: 1fr; gap: var(--space-2); padding: var(--space-4); }
+      .cabin-card, .payment-card, .included-card { padding: var(--space-6); }
+      .step-item { gap: var(--space-4); }
+      .step-item__num { width: 40px; height: 40px; min-width: 40px; }
+      .btn-gold, .btn-outline { width: 100%; justify-content: center; padding: var(--space-4) var(--space-5); }
+      .form-wrap { max-width: 100%; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group--full { grid-column: auto; }
+      #chat-launcher { width: 64px; height: 64px; right: 16px; bottom: 16px; }
+      #chat-widget { right: 12px; left: 12px; width: auto; max-width: none; height: min(70vh, 520px); bottom: 92px; }
+    }
+
+    @media (max-width: 420px) {
+      .hero { min-height: 360px; height: min(56vh, 440px); }
+      .section { padding-block: var(--space-10); }
+      .cta-section { padding-block: var(--space-16); }
     }
     #chat-launcher {
   position: fixed;
@@ -703,7 +731,7 @@
   z-index: 1000;
   border: 2px solid var(--color-gold);
   box-shadow: 0 0 12px rgba(184,146,74,0.4);
-  background: none;
+  background: var(--color-surface);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -768,7 +796,7 @@
 }
 
 #chat-close {
-  background: none;
+  background: var(--color-surface);
   border: none;
   color: #fff;
   font-size: 1.4rem;
@@ -1315,8 +1343,9 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
-<div id="chat-launcher" aria-label="Open chat with Brielle">
-  <img src="brielle.png" alt="Chat with Brielle">
+<div id="chat-launcher" aria-label="Open trip chat assistant">
+
+  <img src="brielle.png" alt="Open trip assistant chat">
 </div>
 
 <div id="chat-widget" role="dialog" aria-label="Elite Tripps chat assistant">
@@ -1355,8 +1384,7 @@
   const chatInput = document.getElementById('chat-input');
   const chatMessages = document.getElementById('chat-messages');
 
-  const sessionId = localStorage.getItem('eliteTrippsChatSessionId') || crypto.randomUUID();
-  localStorage.setItem('eliteTrippsChatSessionId', sessionId);
+  const sessionId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now());
 
   function addMessage(role, text) {
     const msg = document.createElement('div');
