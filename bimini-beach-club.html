@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="3 nights. The Bahamas. Limited cabins. Virgin Voyages Bimini Beach Club Cruise departing Miami. Choose your date and claim your spot." />
+  <title>Bimini Beach Club Cruise | Elite Tripps™</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:   #1A0008;
+      --red:    #E5194B;
+      --aqua:   #E8A900;
+      --gold:   #F5C518;
+      --coral:  #C81230;
+      --sand:   #FFFAFA;
+      --cream:  #FFF0F2;
+      --white:  #FFFFFF;
+      --muted:  #6B7280;
+      --border: #F0D5D8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--sand);
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    .topbar {
+      background: var(--navy);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .topbar a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.04em;
+    }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white) !important;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Layered tropical gradient atmosphere */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 110%, rgba(232,169,0,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 20% 0%, rgba(200,18,48,0.25) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 50% at 80% 0%, rgba(245,197,24,0.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Subtle wave pattern */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to top, var(--sand), transparent);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--aqua);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(229,25,75,0.15);
+      border: 1px solid rgba(229,25,75,0.35);
+      border-radius: 50px;
+      padding: 6px 18px;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-tag span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #FF8FAB;
+      letter-spacing: 0.08em;
+    }
+    .hero-tag .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--red);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 9vw, 7rem);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.01em;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-subtitle-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 20px;
+      margin-bottom: 44px;
+      position: relative;
+      z-index: 1;
+    }
+    .meta-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.85);
+    }
+    .meta-pill .icon { font-size: 1rem; }
+
+    .hero-cta {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 17px 44px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .hero-cta:hover { background: #c41540; transform: translateY(-1px); }
+
+    .hero-fomo {
+      position: relative;
+      z-index: 1;
+      margin-top: 20px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── PROMOS STRIP ── */
+    .promos-strip {
+      background: var(--red);
+      padding: 16px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px 32px;
+    }
+    .promo-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--white);
+      white-space: nowrap;
+    }
+    .promo-item .promo-icon { font-size: 1rem; }
+    .promo-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 72px 24px;
+    }
+
+    .section-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .section-title em { font-style: italic; color: var(--coral); }
+
+    .section-sub {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 48px;
+      max-width: 540px;
+    }
+
+    /* ── DATE CARDS (FOMO) ── */
+    .dates-section {
+      background: var(--navy);
+      padding: 72px 24px;
+    }
+    .dates-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .dates-section .section-eyebrow { color: var(--aqua); }
+    .dates-section .section-title { color: var(--white); }
+    .dates-section .section-title em { color: var(--gold); }
+    .dates-section .section-sub { color: rgba(255,255,255,0.5); }
+
+    .date-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .date-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 28px 24px;
+      position: relative;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .date-card:hover {
+      border-color: rgba(232,169,0,0.45);
+      background: rgba(232,169,0,0.07);
+    }
+    .date-card.best {
+      border-color: var(--gold);
+      background: rgba(245,197,24,0.07);
+    }
+
+    .best-badge {
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.65rem;
+      font-weight: 700;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+
+    .cabin-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(229,25,75,0.15);
+      border: 1px solid rgba(229,25,75,0.3);
+      border-radius: 50px;
+      padding: 3px 10px;
+      font-size: 0.63rem;
+      font-weight: 600;
+      color: #FF8FAB;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .date-card-month {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--aqua);
+      margin-bottom: 8px;
+    }
+    .date-card-dates {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .date-card-nights {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+    }
+    .date-card-price-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .date-card-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .date-card-price sup {
+      font-size: 1rem;
+      font-weight: 400;
+      vertical-align: top;
+      margin-top: 6px;
+      display: inline-block;
+    }
+    .date-card-per {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 4px;
+    }
+    .date-card-was {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      text-decoration: line-through;
+      margin-top: 2px;
+    }
+
+    /* ── INCLUDES ── */
+    .includes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .include-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 20px;
+    }
+    .include-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+    .include-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .include-text {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── STEPS ── */
+    .steps-bg {
+      background: var(--cream);
+      padding: 72px 24px;
+    }
+    .steps-inner { max-width: 900px; margin: 0 auto; }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(50% / 3 + 24px);
+      right: calc(50% / 3 + 24px);
+      height: 2px;
+      background: linear-gradient(to right, var(--aqua), var(--red));
+      pointer-events: none;
+    }
+    .step {
+      text-align: center;
+      padding: 20px 24px;
+    }
+    .step-num {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 auto 16px;
+    }
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .step-text { font-size: 0.84rem; color: var(--muted); }
+
+    /* ── FORM ── */
+    .form-section {
+      background: var(--white);
+      padding: 72px 24px;
+      border-top: 4px solid var(--red);
+    }
+    .form-inner { max-width: 680px; margin: 0 auto; }
+
+    .form-notice {
+      background: rgba(232,169,0,0.09);
+      border-left: 3px solid var(--aqua);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      font-size: 0.83rem;
+      color: var(--navy);
+      margin-bottom: 36px;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+      letter-spacing: 0.03em;
+    }
+    label .req { color: var(--red); margin-left: 2px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--sand);
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      padding: 12px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      color: var(--navy);
+      outline: none;
+      transition: border-color 0.18s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--aqua);
+      background: var(--white);
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    textarea { resize: vertical; min-height: 90px; }
+
+    .bday-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .referral-group {
+      background: rgba(245,197,24,0.07);
+      border: 1px solid rgba(245,197,24,0.3);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .referral-group label {
+      color: #7A6000;
+      margin-bottom: 8px;
+    }
+    .referral-note {
+      font-size: 0.74rem;
+      color: #9A7D00;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      padding: 17px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .submit-btn:hover { background: #c41540; }
+
+    .form-disclaimer {
+      text-align: center;
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    /* ── SUCCESS STATE ── */
+    #success-msg {
+      display: none;
+      background: rgba(232,169,0,0.1);
+      border: 1.5px solid var(--aqua);
+      border-radius: 8px;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    #success-msg .success-icon { font-size: 2.5rem; margin-bottom: 12px; }
+    #success-msg h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    #success-msg p { font-size: 0.9rem; color: var(--muted); }
+
+    /* ── CLOSING CTA ── */
+    .closing {
+      background: var(--navy);
+      padding: 80px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .closing::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(232,169,0,0.2) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .closing-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .closing-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--aqua);
+      margin-bottom: 16px;
+    }
+    .closing-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .closing-title em { font-style: italic; color: var(--gold); }
+    .closing-sub {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+    }
+    .closing-cta {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      padding: 17px 44px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .closing-cta:hover { background: #c41540; }
+
+    .closing-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 36px;
+    }
+    .closing-pill {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50px;
+      padding: 7px 16px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0E0004;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 8px;
+    }
+    .footer-links {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--aqua); }
+    .footer-disclaimer {
+      margin-top: 12px;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .promo-divider { display: none; }
+      .steps-grid::before { display: none; }
+      .date-card.best { margin-top: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topbar" style="justify-content:center;">
+    <a href="https://www.elitetripps.com" class="topbar-brand">Elite Tripps™</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="hero-eyebrow">Virgin Voyages · The Bahamas</p>
+    <div class="hero-tag">
+      <span class="dot"></span>
+      <span>LIMITED CABINS · 3 DATES AVAILABLE</span>
+    </div>
+    <h1 class="hero-title">Bimini <em>Beach Club</em><br>Cruise</h1>
+    <p class="hero-subtitle-line">3 Nights. The Bahamas. An Experience You'll Keep Talking About.</p>
+    <div class="hero-meta">
+      <div class="meta-pill"><span class="icon">🚢</span> Valiant Lady &amp; Brilliant Lady</div>
+      <div class="meta-pill"><span class="icon">📍</span> Departs Miami, Florida</div>
+      <div class="meta-pill"><span class="icon">🌴</span> Beach Club at Bimini, Bahamas</div>
+      <div class="meta-pill"><span class="icon">🌙</span> 3 Nights</div>
+    </div>
+    <a href="#inquiry" class="hero-cta">Claim Your Cabin</a>
+    <p class="hero-fomo">Cabins are going fast &mdash; 3 dates, one decision to make.</p>
+  </header>
+
+  <!-- PROMOS STRIP -->
+  <div class="promos-strip">
+    <div class="promo-item"><span class="promo-icon">🏠</span> Free Balcony Upgrades — Limited Time</div>
+    <div class="promo-divider"></div>
+    <div class="promo-item"><span class="promo-icon">✌🏾</span> 70% Off 2nd Sailor</div>
+    <div class="promo-divider"></div>
+    <div class="promo-item"><span class="promo-icon">💳</span> Sea View from $417 (was $543)</div>
+    <div class="promo-divider"></div>
+    <div class="promo-item"><span class="promo-icon">📅</span> Or from $35/month</div>
+  </div>
+
+  <!-- DATE CARDS -->
+  <div class="dates-section">
+    <div class="dates-inner">
+      <p class="section-eyebrow">Choose Your Date</p>
+      <h2 class="section-title">Three Dates. <em>One Decision.</em></h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);">Cabins are limited across all sailing dates. When they're gone, they're gone.</p>
+
+      <div class="date-cards">
+
+        <!-- Date 1 -->
+        <div class="date-card">
+          <span class="cabin-badge">LIMITED CABINS</span>
+          <p class="date-card-month">December 2027</p>
+          <p class="date-card-dates">Mon, Dec 27<br>&mdash; Thu, Dec 30</p>
+          <p class="date-card-nights">🌙 3 nights · Ring in the New Year on the water</p>
+          <p class="date-card-price-label">Sea View from</p>
+          <p class="date-card-price"><sup>$</sup>507</p>
+          <p class="date-card-per">per sailor</p>
+        </div>
+
+        <!-- Date 2 — BEST RATE -->
+        <div class="date-card best">
+          <span class="best-badge">⭐ Best Rate</span>
+          <span class="cabin-badge">LIMITED CABINS</span>
+          <p class="date-card-month">January 2028</p>
+          <p class="date-card-dates">Tue, Jan 04<br>&mdash; Fri, Jan 07</p>
+          <p class="date-card-nights">🌙 3 nights · Start the year right</p>
+          <p class="date-card-price-label">Sea View from</p>
+          <p class="date-card-price"><sup>$</sup>417</p>
+          <p class="date-card-per">per sailor</p>
+          <p class="date-card-was">was $543</p>
+        </div>
+
+        <!-- Date 3 -->
+        <div class="date-card">
+          <span class="cabin-badge">LIMITED CABINS</span>
+          <p class="date-card-month">January 2028</p>
+          <p class="date-card-dates">Fri, Jan 07<br>&mdash; Mon, Jan 10</p>
+          <p class="date-card-nights">🌙 3 nights · Kick off the weekend in paradise</p>
+          <p class="date-card-price-label">Sea View from</p>
+          <p class="date-card-price"><sup>$</sup>447</p>
+          <p class="date-card-per">per sailor</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT'S INCLUDED -->
+  <div style="background: var(--sand);">
+    <div class="section">
+      <p class="section-eyebrow">What's Included</p>
+      <h2 class="section-title">More Than a Cruise.<br><em>It's the Whole Vibe.</em></h2>
+      <p class="section-sub">Adults-only. No kids. No chaos. Just you, the ocean, and The Beach Club.</p>
+
+      <div class="includes-grid">
+        <div class="include-card">
+          <span class="include-icon">🏖️</span>
+          <p class="include-title">The Beach Club at Bimini</p>
+          <p class="include-text">Private beach club access in the Bahamas. Think crystal water, beach chairs, and pure vacation energy.</p>
+        </div>
+        <div class="include-card">
+          <span class="include-icon">🏠</span>
+          <p class="include-title">Free Balcony Upgrade</p>
+          <p class="include-text">Limited time offer. Book now and get upgraded to a balcony cabin — at the Sea View price.</p>
+        </div>
+        <div class="include-card">
+          <span class="include-icon">✌🏾</span>
+          <p class="include-title">70% Off 2nd Sailor</p>
+          <p class="include-text">Bringing someone? Your second cabin mate sails at 70% off. That's not a deal — that's a gift.</p>
+        </div>
+        <div class="include-card">
+          <span class="include-icon">🔞</span>
+          <p class="include-title">Adults Only · 18+</p>
+          <p class="include-text">Virgin Voyages is adults-only. No kid menus, no cartoons in the hallway. Just grown folks on a gorgeous ship.</p>
+        </div>
+        <div class="include-card">
+          <span class="include-icon">🍽️</span>
+          <p class="include-title">All Dining Included</p>
+          <p class="include-text">Every restaurant on board is included. No dining packages to buy. Just show up and eat well.</p>
+        </div>
+        <div class="include-card">
+          <span class="include-icon">💳</span>
+          <p class="include-title">From $35/Month</p>
+          <p class="include-text">Payment plans available. Lock in your cabin now and spread the cost. No reason to wait.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="steps-bg">
+    <div class="steps-inner">
+      <p class="section-eyebrow" style="text-align:center;">How It Works</p>
+      <h2 class="section-title" style="text-align:center; margin-bottom:48px;">Three Steps. <em>That's It.</em></h2>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">1</div>
+          <p class="step-title">Fill Out the Form</p>
+          <p class="step-text">Tell me your date, your cabin type, and who's coming. Takes 2 minutes.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <p class="step-title">Lock In Your Cabin</p>
+          <p class="step-text">I'll follow up within 24 hours with your payment link to secure your spot.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <p class="step-title">Pack for Bimini</p>
+          <p class="step-text">I handle everything else. You just show up ready for the Bahamas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-section" id="inquiry">
+    <div class="form-inner">
+      <p class="section-eyebrow">Ready to Go</p>
+      <h2 class="section-title" style="margin-bottom:10px;">Claim My Cabin</h2>
+      <p class="section-sub">Fill this out and I'll follow up with everything you need. Spots are limited and go fast — don't sit on this one.</p>
+
+      <div class="form-notice">
+        📌 No commitment yet. Once you submit, I'll reach out within 24 hours with your next steps and your Virgin Voyages payment link.
+      </div>
+
+      <div id="success-msg">
+        <p class="success-icon">🌴</p>
+        <h3>You're one step closer to Bimini.</h3>
+        <p>Sabrina will review your request and follow up within 24 hours with everything you need to lock in your cabin. Check your email — she'll be in touch soon.</p>
+      </div>
+
+      <!-- Replace xzdqzaag below with your actual Formspree Form ID -->
+      <form id="booking-form" action="https://formspree.io/f/xzdqzaag" method="POST">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name <span class="req">*</span><br><small style="font-weight:400; color:var(--muted);">as it appears on your travel document</small></label>
+            <input type="text" id="fname" name="first_name" required placeholder="First Name" />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name <span class="req">*</span><br><small style="font-weight:400; color:var(--muted);">as it appears on your travel document</small></label>
+            <input type="text" id="lname" name="last_name" required placeholder="Last Name" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Best Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required placeholder="you@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Best Phone Number <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" required placeholder="(___) ___-____" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Birthday ✨ <span style="font-weight:400;color:var(--muted);">(month &amp; day only)</span></label>
+          <div class="bday-row">
+            <select name="birthday_month">
+              <option value="">Month</option>
+              <option>January</option><option>February</option><option>March</option>
+              <option>April</option><option>May</option><option>June</option>
+              <option>July</option><option>August</option><option>September</option>
+              <option>October</option><option>November</option><option>December</option>
+            </select>
+            <select name="birthday_day">
+              <option value="">Day</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+              <option>11</option><option>12</option><option>13</option><option>14</option><option>15</option>
+              <option>16</option><option>17</option><option>18</option><option>19</option><option>20</option>
+              <option>21</option><option>22</option><option>23</option><option>24</option><option>25</option>
+              <option>26</option><option>27</option><option>28</option><option>29</option><option>30</option>
+              <option>31</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="followup">How would you like me to follow up? <span class="req">*</span></label>
+          <select id="followup" name="followup_preference" required>
+            <option value="">Select an option</option>
+            <option>Email</option>
+            <option>Text Message</option>
+            <option>Phone Call</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="date_choice">Which sailing date are you interested in? <span class="req">*</span></label>
+          <select id="date_choice" name="sailing_date" required>
+            <option value="">Select a date</option>
+            <option>Dec 27 – Dec 30, 2027 · from $507/sailor</option>
+            <option>Jan 04 – Jan 07, 2028 · from $417/sailor (Best Rate)</option>
+            <option>Jan 07 – Jan 10, 2028 · from $447/sailor</option>
+            <option>I'm flexible — send me more info</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="cabin_mate">Who will be sharing your cabin with you? <span class="req">*</span></label>
+          <select id="cabin_mate" name="cabin_mate" required>
+            <option value="">Select an option</option>
+            <option>I already have my cabin mate</option>
+            <option>I want a solo cabin</option>
+            <option>I need help finding a cabin mate</option>
+            <option>I'm not sure yet</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="num_cabins">How many cabins would you like to reserve? <span class="req">*</span></label>
+          <select id="num_cabins" name="num_cabins" required>
+            <option value="">Select an option</option>
+            <option>1 cabin (2 guests)</option>
+            <option>Solo cabin (1 guest)</option>
+            <option>2 cabins (4 guests)</option>
+            <option>3+ cabins (group booking)</option>
+            <option>I'm not sure yet</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="occasion">What's bringing you to Bimini? <span class="req">*</span></label>
+          <select id="occasion" name="occasion" required>
+            <option value="">Select an option</option>
+            <option>Girls trip</option>
+            <option>Couple's getaway</option>
+            <option>Milestone birthday</option>
+            <option>Bucket list trip</option>
+            <option>I just need a break</option>
+            <option>Something else</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="readiness">Are you ready to secure your cabin? <span class="req">*</span></label>
+          <select id="readiness" name="readiness" required>
+            <option value="">Select an option</option>
+            <option>Yes — I'm ready to book</option>
+            <option>Almost — I just need a little more info</option>
+            <option>Just exploring right now</option>
+          </select>
+        </div>
+
+        <!-- WHO REFERRED YOU -->
+        <div class="referral-group">
+          <label for="referral">Who referred you to this page?</label>
+          <input type="text" id="referral" name="referred_by" placeholder="Enter their name (first and last if you know it)" />
+          <p class="referral-note">Did a friend or family member share this with you? Drop their name here — I love taking care of the people who spread the word. 🖤</p>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Anything I should know?</label>
+          <textarea id="notes" name="notes" placeholder="Accessibility needs, special occasion, questions — anything at all."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send My Booking Request →</button>
+
+        <p class="form-disclaimer">
+          No commitment yet. Sabrina will follow up within 24 hours with your next steps and Virgin Voyages payment link.<br>
+          Prices based on double occupancy. Cabins subject to availability.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- CLOSING CTA -->
+  <div class="closing">
+    <div class="closing-inner">
+      <p class="closing-eyebrow">Bimini · The Bahamas</p>
+      <h2 class="closing-title">Cabins Are Going.<br><em>Grab Yours.</em></h2>
+      <p class="closing-sub">Three dates. Limited spots on each. When they're gone, they're gone — and you'll see everyone's photos but yours.</p>
+      <a href="#inquiry" class="closing-cta">Claim My Cabin</a>
+      <div class="closing-pills">
+        <span class="closing-pill">🔞 Adults Only · 18+</span>
+        <span class="closing-pill">✌🏾 70% Off 2nd Sailor</span>
+        <span class="closing-pill">🏠 Free Balcony Upgrade</span>
+        <span class="closing-pill">🍽️ All Dining Included</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-brand">Elite Tripps™</p>
+    <p class="footer-links">
+      © 2025 <a href="https://www.elitetripps.com">Elite Tripps™</a> · All rights reserved
+    </p>
+    <p class="footer-disclaimer">
+      Prices based on double occupancy and subject to availability. Promotions subject to change. 
+      Sailing dates aboard Valiant Lady &amp; Brilliant Lady (Virgin Voyages). 
+      Cabin availability is not guaranteed until deposit is received. Travel in style. Arrive in luxury.
+    </p>
+    <p style="margin-top:20px;">
+      <a href="https://www.elitetripps.com" style="color:rgba(255,255,255,0.45); font-size:0.78rem; text-decoration:none; font-family:'DM Mono',monospace; letter-spacing:0.06em;">← Back to Elite Tripps™</a>
+    </p>
+  </footer>
+
+  <script>
+    // Form submission handler
+    const form = document.getElementById('booking-form');
+    const successMsg = document.getElementById('success-msg');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('.submit-btn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+          successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          btn.textContent = 'Send My Booking Request →';
+          btn.disabled = false;
+          alert('Something went wrong. Please try again or reach out directly.');
+        }
+      } catch {
+        btn.textContent = 'Send My Booking Request →';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  </script>
+
+</body>
+</html>
