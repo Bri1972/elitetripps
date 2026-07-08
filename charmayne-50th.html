@@ -1,1 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charmayne's 50th Birthday Celebration</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #0b0705;
+    --near-black: #14100c;
+    --burnt-orange: #c1552b;
+    --burnt-orange-bright: #d9713f;
+    --gold: #d4af6a;
+    --gold-bright: #f2d089;
+    --wine: #4a1023;
+    --beige: #ece1cf;
+    --beige-soft: #f3ead9;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--black);
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(212, 175, 106, 0.10), transparent 40%),
+      radial-gradient(circle at 85% 25%, rgba(193, 85, 43, 0.12), transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(74, 16, 35, 0.25), transparent 55%);
+    color: var(--beige);
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 56px 20px 44px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(212,175,106,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    position: relative;
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  .eyebrow::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 10px auto 0;
+    opacity: 0.6;
+  }
+
+  /* ---------- IMAGE PLACEHOLDER ---------- -->
+  To add the invitation photo, uncomment and replace the src below:
+
+  <div class="invite-photo">
+    <img src="YOUR-IMAGE-FILE-OR-URL-HERE.jpg" alt="Charmayne">
+  </div>
+
+  Suggested CSS for the photo wrapper (already included below, safe to use as-is):
+  .invite-photo img { width: 100%; max-width: 320px; border-radius: 14px;
+  border: 1px solid rgba(212,175,106,0.4); box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  display:block; margin: 0 auto 30px; }
+  ---------------------------------------- */
+
+  .charmayne-name {
+    position: relative;
+    font-family: 'Alex Brush', cursive;
+    font-size: 4.6rem;
+    line-height: 1;
+    color: var(--gold-bright);
+    text-shadow: 0 0 24px rgba(242, 208, 137, 0.35);
+  }
+
+  .turning {
+    position: relative;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--beige-soft);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  .big-fifty {
+    position: relative;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 8.5rem;
+    line-height: 0.9;
+    margin: 14px 0 6px;
+    background: linear-gradient(180deg, #f6e2ab 0%, #d4af6a 45%, #a9793c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 18px rgba(212,175,106,0.35));
+  }
+
+  .tagline {
+    position: relative;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--burnt-orange-bright);
+    margin-top: 6px;
+  }
+
+  .tagline-divider {
+    position: relative;
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+    margin: 22px auto;
+  }
+
+  .invite-line {
+    position: relative;
+    font-size: 0.98rem;
+    color: var(--beige);
+    opacity: 0.9;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  /* ---------- CARDS ---------- */
+  .card {
+    background: rgba(20, 16, 12, 0.72);
+    border: 1px solid rgba(212, 175, 106, 0.35);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+    padding: 30px 26px;
+    margin-top: 34px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(212,175,106,0.14);
+  }
+
+  .detail-row:last-child {
+    border-bottom: none;
+  }
+
+  .detail-icon {
+    flex-shrink: 0;
+    width: 22px;
+    text-align: center;
+    color: var(--burnt-orange-bright);
+    font-size: 1.05rem;
+    margin-top: 2px;
+  }
+
+  .detail-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+
+  .detail-value {
+    font-size: 0.98rem;
+    color: var(--beige-soft);
+  }
+
+  /* two-up grid for dress code / parking */
+  .two-up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .mini-card {
+    background: rgba(74, 16, 35, 0.25);
+    border: 1px solid rgba(212,175,106,0.3);
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+  }
+
+  .mini-card .detail-icon {
+    display: block;
+    margin: 0 auto 8px;
+    font-size: 1.3rem;
+  }
+
+  .mini-card .detail-label {
+    margin-bottom: 4px;
+  }
+
+  .mini-card .detail-value {
+    font-size: 0.9rem;
+  }
+
+  /* adults only note */
+  .note-card {
+    background: linear-gradient(135deg, rgba(74,16,35,0.4), rgba(193,85,43,0.18));
+    border: 1px solid rgba(212,175,106,0.35);
+    text-align: center;
+  }
+
+  .note-card .card-title {
+    color: var(--burnt-orange-bright);
+  }
+
+  .note-card p {
+    font-size: 0.92rem;
+    color: var(--beige-soft);
+    opacity: 0.92;
+  }
+
+  /* ---------- RSVP FORM ---------- */
+  .rsvp-section {
+    margin-top: 44px;
+  }
+
+  .rsvp-heading {
+    text-align: center;
+    margin-bottom: 26px;
+  }
+
+  .rsvp-heading .script {
+    font-family: 'Alex Brush', cursive;
+    font-size: 2.6rem;
+    color: var(--gold-bright);
+    display: block;
+  }
+
+  .rsvp-heading .sub {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--beige);
+    opacity: 0.8;
+    margin-top: 6px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .required-mark {
+    color: var(--burnt-orange-bright);
+  }
+
+  .field input[type="text"],
+  .field input[type="tel"],
+  .field select,
+  .field textarea {
+    width: 100%;
+    background: rgba(11, 7, 5, 0.6);
+    border: 1px solid rgba(212, 175, 106, 0.4);
+    border-radius: 10px;
+    padding: 13px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: var(--beige-soft);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: rgba(236, 225, 207, 0.4);
+  }
+
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 0 3px rgba(212, 175, 106, 0.15);
+  }
+
+  .field select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='8'><path d='M0 0l7 8 7-8z' fill='%23d4af6a'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+  }
+
+  .field textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(11, 7, 5, 0.5);
+    border: 1px solid rgba(212, 175, 106, 0.3);
+    border-radius: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .radio-option:hover {
+    border-color: var(--gold);
+  }
+
+  .radio-option input[type="radio"] {
+    accent-color: var(--burnt-orange-bright);
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .radio-option span {
+    font-size: 0.94rem;
+    color: var(--beige-soft);
+  }
+
+  .submit-btn {
+    margin-top: 8px;
+    background: linear-gradient(135deg, var(--burnt-orange-bright), var(--burnt-orange));
+    border: 1px solid var(--gold);
+    color: var(--beige-soft);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 16px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 14px 30px rgba(193, 85, 43, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(193, 85, 43, 0.45);
+  }
+
+  .submit-btn:active {
+    transform: translateY(0);
+  }
+
+  /* Success message area (shown after Formspree redirect returns, or can be
+     shown manually by removing the "hidden" class if you enable a JS handler) */
+  .success-message {
+    display: none;
+    margin-top: 20px;
+    background: rgba(74, 16, 35, 0.35);
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    color: var(--gold-bright);
+    font-size: 0.95rem;
+  }
+
+  .success-message.show {
+    display: block;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(212,175,106,0.2);
+  }
+
+  footer .script-small {
+    font-family: 'Alex Brush', cursive;
+    font-size: 1.8rem;
+    color: var(--gold);
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--beige);
+    opacity: 0.6;
+    margin-top: 6px;
+  }
+
+  @media (max-width: 420px) {
+    .big-fifty { font-size: 6.2rem; }
+    .charmayne-name { font-size: 3.6rem; }
+    .two-up { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <span class="eyebrow">Invitation</span>
+
+    <!-- ================= IMAGE PLACEHOLDER =================
+         Drop the invitation photo here if you'd like it on the page.
+         Example:
+         <div class="invite-photo">
+           <img src="charmayne.jpg" alt="Charmayne">
+         </div>
+    ========================================================= -->
+
+    <div class="charmayne-name">Charmayne</div>
+    <div class="turning">is turning</div>
+    <div class="big-fifty">50</div>
+    <div class="tagline">Bold, Beautiful, Unapologetically Fabulous</div>
+
+    <div class="tagline-divider"></div>
+
+    <p class="invite-line">
+      Join us for an over-the-top luxury celebration honoring Charmayne's 50th Birthday.
+    </p>
+  </section>
+
+  <!-- ============ EVENT DETAILS ============ -->
+  <section class="card">
+    <div class="card-title">Event Details</div>
+
+    <div class="detail-row">
+      <div class="detail-icon">&#128197;</div>
+      <div>
+        <div class="detail-label">Date</div>
+        <div class="detail-value">Saturday, September 26, 2026</div>
+      </div>
+    </div>
+
+    <div class="detail-row">
+      <div class="detail-icon">&#128336;</div>
+      <div>
+        <div class="detail-label">Time</div>
+        <div class="detail-value">6:00 PM &ndash; 12:00 Midnight</div>
+      </div>
+    </div>
+
+    <div class="detail-row">
+      <div class="detail-icon">&#128205;</div>
+      <div>
+        <div class="detail-label">Location</div>
+        <div class="detail-value">
+          B'Mari Events &amp; Art Studio<br>
+          106 N. McDonough St<br>
+          Jonesboro, GA 30236
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DRESS CODE / PARKING ============ -->
+  <section class="card">
+    <div class="card-title">Good to Know</div>
+    <div class="two-up">
+      <div class="mini-card">
+        <div class="detail-icon">&#128096;</div>
+        <div class="detail-label">Dress Code</div>
+        <div class="detail-value">Burnt Orange &amp; Beige</div>
+      </div>
+      <div class="mini-card">
+        <div class="detail-icon">&#128663;</div>
+        <div class="detail-label">Parking</div>
+        <div class="detail-value">Parking in rear</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ADULTS ONLY ============ -->
+  <section class="card note-card">
+    <div class="card-title">Adults Only</div>
+    <p>We love the little ones, but this celebration will be adults only. Thank you for understanding.</p>
+  </section>
+
+  <!-- ============ RSVP FORM ============ -->
+  <section class="rsvp-section">
+    <div class="rsvp-heading">
+      <span class="script">RSVP</span>
+      <span class="sub">Please respond by September 1 &middot; 678-920-8322</span>
+    </div>
+
+    <div class="card">
+      <form action="https://formspree.io/f/mvzjnryd" method="POST">
+
+        <!-- Optional: set a subject line for the email Formspree sends you -->
+        <input type="hidden" name="_subject" value="New RSVP - Charmayne's 50th Birthday">
+
+        <!-- To redirect guests to a thank-you page after submitting, uncomment
+             the line below and replace the URL with your own thank-you page:
+        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+        -->
+
+        <div class="field">
+          <label for="fullName">Full Name <span class="required-mark">*</span></label>
+          <input type="text" id="fullName" name="Full Name" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone Number <span class="required-mark">*</span></label>
+          <input type="tel" id="phone" name="Phone Number" placeholder="(678) 000-0000" required>
+        </div>
+
+        <div class="field">
+          <label>Will you attend? <span class="required-mark">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="Will you attend" value="Yes, I'll be there" required>
+              <span>Yes, I'll be there</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Will you attend" value="No, I can't make it" required>
+              <span>No, I can't make it</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="guestCount">Number of Guests (including yourself) <span class="required-mark">*</span></label>
+          <select id="guestCount" name="Number of Guests" required>
+            <option value="" disabled selected>Select number of guests</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5+">5+</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="notes">Notes for the Host</label>
+          <textarea id="notes" name="Notes for the Host" placeholder="Anything you'd like Charmayne or the host to know..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit RSVP</button>
+      </form>
+
+      <div class="success-message">
+        Thank you! Your RSVP has been submitted.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="script-small">50 &amp; Unapologetically Fabulous</div>
+    <p>Celebrating Charmayne</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
