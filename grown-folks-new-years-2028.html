@@ -118,6 +118,11 @@ textarea{min-height:110px;resize:vertical}
 .thanks h3{font-size:2rem;font-style:italic;font-weight:800;color:var(--burgundy);margin-bottom:14px}
 .thanks p{margin:0 0 14px}
 
+.referral-box{background:var(--cream);border-left:4px solid var(--pink);padding:20px 18px;margin-bottom:30px}
+.referral-box input[type=text]{background:#fff}
+.divider{display:flex;align-items:center;gap:14px;margin:0 0 26px;color:var(--burgundy);font-size:.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;white-space:nowrap}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--burgundy);opacity:.45}
+
 /* REFER (cream pink) */
 .refer{background:var(--cream)}
 .share-btns{display:flex;flex-wrap:wrap;gap:10px}
@@ -208,9 +213,7 @@ footer p{margin:0}
         <!-- STEP 1 -->
         <div class="step active" data-step="1">
           <span class="step-label">Step 1 of 3</span>
-          <h3 class="step-title">About you</h3>
-
-          <div class="field">
+          <div class="field referral-box">
             <label class="q" for="referredBy">Did someone share this with you?</label>
             <span class="hint">Referrals mean the world to me. 💛 Add their name so I can thank them.</span>
             <input type="text" id="referredBy" name="referred_by">
@@ -218,6 +221,8 @@ footer p{margin:0}
             <span class="hint">Optional. So I can reach out and thank them personally.</span>
             <input type="text" id="referrerContact" name="referrer_contact">
           </div>
+
+          <div class="divider" role="presentation"><span>Now, about you</span></div>
 
           <div class="row">
             <div class="field" data-required="true">
@@ -231,7 +236,7 @@ footer p{margin:0}
               <span class="err">Please add your last name.</span>
             </div>
           </div>
-          <p class="hint" style="margin-top:-12px;margin-bottom:22px">Use your name as it appears on your passport or travel ID.</p>
+          <p class="hint" style="margin-top:-12px;margin-bottom:22px">Your name as it appears on your passport or travel ID.</p>
 
           <div class="field" data-required="true" data-type="email">
             <label class="q" for="email">Best email <span class="req">*</span></label>
