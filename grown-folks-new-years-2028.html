@@ -210,6 +210,15 @@ footer p{margin:0}
           <span class="step-label">Step 1 of 3</span>
           <h3 class="step-title">About you</h3>
 
+          <div class="field">
+            <label class="q" for="referredBy">Did someone share this with you?</label>
+            <span class="hint">Referrals mean the world to me. 💛 Add their name so I can thank them.</span>
+            <input type="text" id="referredBy" name="referred_by">
+            <label class="q" for="referrerContact" style="margin-top:14px">Their phone or email</label>
+            <span class="hint">Optional. So I can reach out and thank them personally.</span>
+            <input type="text" id="referrerContact" name="referrer_contact">
+          </div>
+
           <div class="row">
             <div class="field" data-required="true">
               <label class="q" for="firstName">First name <span class="req">*</span></label>
@@ -404,12 +413,6 @@ footer p{margin:0}
               <option>As soon as pricing is ready</option><option>Within the next 3 months</option><option>In 3 to 6 months</option><option>Just exploring for now</option>
             </select>
             <span class="err">Please choose one.</span>
-          </div>
-
-          <div class="field">
-            <label class="q" for="referredBy">Did someone share this with you?</label>
-            <span class="hint">Optional. Add their name so I can thank them. 💛</span>
-            <input type="text" id="referredBy" name="referred_by">
           </div>
 
           <div class="field">
@@ -624,6 +627,7 @@ footer p{margin:0}
     if(steps_.includes('Travel buddy match')) document.querySelector('.ty-buddy').hidden = false;
     form.style.display = 'none';
     document.getElementById('thanks').classList.add('active');
+    const referSec = document.querySelector('section.refer'); if(referSec) referSec.style.display = 'none';
     document.getElementById('interest-form').scrollIntoView({behavior:'smooth', block:'start'});
   });
 })();
