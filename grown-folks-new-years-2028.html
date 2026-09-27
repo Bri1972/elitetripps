@@ -216,10 +216,12 @@ footer p{margin:0}
           <div class="field referral-box">
             <label class="q" for="referredBy">Did someone share this with you?</label>
             <span class="hint">Referrals mean the world to me. 💛 Add their name so I can thank them.</span>
-            <input type="text" id="referredBy" name="referred_by">
-            <label class="q" for="referrerContact" style="margin-top:14px">Their phone or email</label>
-            <span class="hint">Optional. So I can reach out and thank them personally.</span>
-            <input type="text" id="referrerContact" name="referrer_contact">
+            <input type="text" id="referredBy" name="referred_by" autocomplete="off" data-lpignore="true" data-1p-ignore>
+            <div id="refContactWrap" hidden>
+              <label class="q" for="referrerContact" style="margin-top:14px">Their phone or email</label>
+              <span class="hint">Optional. So I can reach out and thank them personally.</span>
+              <input type="text" id="referrerContact" name="referrer_contact" autocomplete="off" data-lpignore="true" data-1p-ignore>
+            </div>
           </div>
 
           <div class="divider" role="presentation"><span>Now, about you</span></div>
@@ -484,6 +486,16 @@ footer p{margin:0}
   const bday = document.getElementById('bday');
   for(let d=1; d<=31; d++){ const o=document.createElement('option'); o.textContent=d; bday.appendChild(o); }
 
+  // Referral: reveal contact box only after a name is typed
+  const refName = document.getElementById('referredBy');
+  const refWrap = document.getElementById('refContactWrap');
+  const refContact = document.getElementById('referrerContact');
+  refName.addEventListener('input', () => {
+    const has = refName.value.trim().length > 0;
+    refWrap.hidden = !has;
+    if(!has) refContact.value = '';
+  });
+
   // Solo follow-up
   const soloField = document.getElementById('soloField');
   form.querySelectorAll('input[name="traveling_with"]').forEach(r => r.addEventListener('change', () => {
@@ -602,6 +614,16 @@ footer p{margin:0}
     if(!validateStep(3)) return;
     const btn = form.querySelector('button[type="submit"]');
     btn.textContent = 'Sending...'; btn.disabled = true;
+
+    // Safety net: clear referral info that matches the traveler's own details
+    const norm = v => (v || '').toLowerCase().replace(/\s+/g, ' ').trim();
+    const digits = v => (v || '').replace(/\D/g, '').slice(-10);
+    const myEmail = norm(document.getElementById('email').value);
+    const myPhone = digits(document.getElementById('phone').value);
+    const myName = norm(document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value);
+    const rc = refContact.value;
+    if(rc && ((myEmail && norm(rc) === myEmail) || (myPhone.length >= 7 && digits(rc) === myPhone))) refContact.value = '';
+    if(refName.value && norm(refName.value) === myName){ refName.value = ''; refContact.value = ''; }
 
     const steps_ = nextSteps();
     document.getElementById('nextStep').value = steps_.join(', ');
