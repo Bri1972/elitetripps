@@ -371,17 +371,20 @@ footer p{margin:0}
           <span class="step-label">Step 3 of 3</span>
           <h3 class="step-title">Almost done</h3>
 
-          <div class="field" data-required="true" data-group="yes_factor" data-max="2">
+          <div class="field" data-required="true" data-group="yes_factor" data-other="yesOther">
             <span class="q">What would help you say yes? <span class="req">*</span></span>
-            <span class="hint">Choose up to 2. Be honest… this tells me how to help you.</span>
+            <span class="hint">Choose all that apply. Be honest… this tells me how to help you.</span>
             <div class="choices">
-              <label class="choice"><input type="checkbox" name="yes_factor[]" value="Payment plan">A payment plan that fits my budget</label>
-              <label class="choice"><input type="checkbox" name="yes_factor[]" value="Full cost upfront">Knowing the full cost upfront</label>
+              <label class="choice"><input type="checkbox" name="yes_factor[]" value="Payment plans">More info on payment plans</label>
+              <label class="choice"><input type="checkbox" name="yes_factor[]" value="Budget help">Help planning my budget</label>
               <label class="choice"><input type="checkbox" name="yes_factor[]" value="Someone to travel with">Someone to travel with</label>
-              <label class="choice"><input type="checkbox" name="yes_factor[]" value="Details handled">Having the details handled for me</label>
-              <label class="choice"><input type="checkbox" name="yes_factor[]" value="Just the price">I just need to see the price</label>
+              <label class="choice"><input type="checkbox" name="yes_factor[]" value="What's included">Knowing what's all included</label>
+              <label class="choice"><input type="checkbox" name="yes_factor[]" value="Travel insurance">Travel insurance info</label>
             </div>
-            <span class="err">Please choose 1 or 2.</span>
+            <label class="q" for="yesOther" style="margin-top:16px">Anything else that would help?</label>
+            <span class="hint">Optional. Tell me in your own words.</span>
+            <input type="text" id="yesOther" name="yes_other">
+            <span class="err">Please choose at least one, or tell me in your own words.</span>
           </div>
 
           <div class="field hidden" id="rhythmField" data-group="payment_rhythm">
@@ -391,16 +394,6 @@ footer p{margin:0}
               <label class="choice"><input type="radio" name="payment_rhythm" value="Weekly">Weekly</label>
               <label class="choice"><input type="radio" name="payment_rhythm" value="Every two weeks">Every two weeks</label>
               <label class="choice"><input type="radio" name="payment_rhythm" value="Monthly">Monthly</label>
-            </div>
-            <span class="err">Please choose one.</span>
-          </div>
-
-          <div class="field" data-required="true" data-group="insurance_quote">
-            <span class="q">Would you like a travel insurance quote? <span class="req">*</span></span>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="insurance_quote" value="Yes">Yes</label>
-              <label class="choice"><input type="radio" name="insurance_quote" value="No">No</label>
-              <label class="choice"><input type="radio" name="insurance_quote" value="Maybe later">Maybe later</label>
             </div>
             <span class="err">Please choose one.</span>
           </div>
@@ -496,14 +489,10 @@ footer p{margin:0}
 
   // Cap "yes factor" at 2
   const yesBoxes = Array.from(form.querySelectorAll('input[name="yes_factor[]"]'));
-  yesBoxes.forEach(b => b.addEventListener('change', () => {
-    const checked = yesBoxes.filter(x => x.checked).length;
-    yesBoxes.forEach(x => { if(!x.checked) x.disabled = checked >= 2; });
-  }));
 
   // "Say yes" follow-ups
   const rhythmField = document.getElementById('rhythmField');
-  const budgetPicked = () => yesBoxes.some(b => b.checked && (b.value === 'Payment plan' || b.value === 'Full cost upfront'));
+  const budgetPicked = () => yesBoxes.some(b => b.checked && (b.value === 'Payment plans' || b.value === 'Budget help'));
   yesBoxes.forEach(b => b.addEventListener('change', () => {
     const on = budgetPicked();
     rhythmField.classList.toggle('hidden', !on);
@@ -513,10 +502,11 @@ footer p{margin:0}
   function nextSteps(){
     const picks = yesBoxes.filter(b => b.checked).map(b => b.value);
     const out = [];
-    if(picks.includes('Payment plan') || picks.includes('Full cost upfront')) out.push('Send budget planner');
+    if(picks.includes('Payment plans')) out.push('Send payment plan info');
+    if(picks.includes('Budget help')) out.push('Send budget planner');
     if(picks.includes('Someone to travel with')) out.push('Travel buddy match');
-    if(picks.includes('Details handled')) out.push('Details and insurance');
-    if(picks.includes('Just the price')) out.push('First call at pricing');
+    if(picks.includes("What's included")) out.push("Send what's included");
+    if(picks.includes('Travel insurance')) out.push('Send Allianz quote');
     return out;
   }
 
@@ -528,7 +518,11 @@ footer p{margin:0}
       if(n > +f.dataset.max) return false;
     }
     if(f.dataset.required !== 'true') return true;
-    if(group) return !!f.querySelector('input:checked');
+    if(group){
+      if(f.querySelector('input:checked')) return true;
+      if(f.dataset.other){ const o = document.getElementById(f.dataset.other); return !!(o && o.value.trim()); }
+      return false;
+    }
     const input = f.querySelector('input, select, textarea');
     const v = (input.value || '').trim();
     if(!v) return false;
@@ -621,7 +615,7 @@ footer p{margin:0}
       return;
     }
 
-    if(steps_.includes('Send budget planner')){
+    if(steps_.includes('Send budget planner') || steps_.includes('Send payment plan info')){
       const r = form.querySelector('input[name="payment_rhythm"]:checked');
       const map = {'Weekly':' each week','Every two weeks':' every two weeks','Monthly':' each month'};
       document.querySelector('.ty-rhythm').textContent = r ? map[r.value] : '';
