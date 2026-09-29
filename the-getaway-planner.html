@@ -44,6 +44,7 @@ h1,h2,h3{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-weight:400;te
 .screen h2::after{content:"";display:block;width:64px;height:4px;background:var(--orange);margin-top:12px}
 .screen h2:focus{outline:none}
 .sub{color:var(--muted);margin:0 0 22px}
+.formerr{background:#FDE8E6;border-left:5px solid var(--err);border-radius:12px;padding:12px 16px;margin:20px 0 0;font-weight:700;color:var(--err)}
 .field{margin-bottom:22px}
 .q{display:block;font-weight:700;margin-bottom:6px;font-size:1.05rem;color:var(--dark)}
 .hint{display:block;font-size:.95rem;color:var(--muted);margin:-2px 0 8px}
@@ -226,6 +227,7 @@ footer p{margin:0 0 8px}
     <div class="field"><label class="q" for="saved">Already set aside for this trip</label>
       <span class="hint">Savings you've put toward it so far. Leave it blank if you're just starting.</span>
       <div class="money"><span>$</span><input type="text" id="saved" inputmode="decimal" placeholder="0"></div></div>
+    <p class="formerr" id="s1err" role="alert" hidden></p>
     <div class="nav"><button type="button" class="btn" id="to2">Next</button></div>
   </section>
 
@@ -258,6 +260,7 @@ footer p{margin:0 0 8px}
     <div class="field" id="f-pay"><label class="q" for="payDate">When does your trip need to be paid off by?</label>
       <span class="hint">Your final payment date. For a cruise, it's usually about four months before you sail. Not sure? Leave it blank and I'll estimate it.</span>
       <input type="date" id="payDate"><p class="err" id="payErr">Please choose a future date.</p></div>
+    <p class="formerr" id="s3err" role="alert" hidden></p>
     <div class="nav"><button type="button" class="btn btn-ghost" data-back="s2">Back</button><button type="button" class="btn" id="toRes">Show my plan</button></div>
   </section>
 
@@ -312,6 +315,7 @@ footer p{margin:0 0 8px}
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const FORM_URL = 'https://formspree.io/f/xyezodee';
 
+  const val = id => { const e = document.getElementById(id); return e ? e.value : ''; };
   const money = n => '$' + Math.round(n).toLocaleString('en-US');
   const num = v => { const x = parseFloat(String(v || '').replace(/[^0-9.]/g, '')); return isFinite(x) ? x : 0; };
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -326,7 +330,7 @@ footer p{margin:0 0 8px}
   function addPeriods(from, rh, k){ const d = new Date(from); if(rh === 'Monthly') d.setMonth(d.getMonth() + k); else d.setDate(d.getDate() + (rh === 'Weekly' ? 7 : 14) * k); return d; }
   function countPeriods(rh, end){ const from = today(); let n = 0; for(let k = 1; k <= 400; k++){ if(addPeriods(from, rh, k) <= end) n = k; else break; } return n; }
 
-  ['depDate','travelDate','payDate'].forEach(id => $('#' + id).min = isoToday());
+  ['depDate','travelDate','payDate'].forEach(id => { const e = $('#' + id); if(e) e.min = isoToday(); });
 
   // ---------- extras chips (flights + insurance are bought early, so they count with the trip) ----------
   const EXTRAS = [['insurance','Travel insurance',true],['flights','Flights',true],['hotel','Hotel or extra nights',false],['food','Food and dining out',false],['excursions','Excursions',false],['shopping','Shopping and souvenirs',false],['rides','Airport rides and parking',false],['spa','Spa and pampering',false],['outfits','Outfits',false],['bags','Baggage fees',false],['other','Something else',false]];
@@ -351,8 +355,8 @@ footer p{margin:0 0 8px}
 
   // ---------- deposit ----------
   $$('input[name="dep"]').forEach(r => r.addEventListener('change', () => {
-    const v = $('input[name="dep"]:checked').value;
-    $('#depBox').hidden = v === 'none'; $('#depDateWrap').hidden = v !== 'due';
+    const v = $('input[name="dep"]:checked').value, box = $('#depBox'), dw = $('#depDateWrap');
+    if(box) box.hidden = v === 'none'; if(dw) dw.hidden = v !== 'due';
   }));
 
   // ---------- rhythm buttons ----------
@@ -372,25 +376,40 @@ footer p{margin:0 0 8px}
     const h = $('#' + id + ' h2'); if(h) setTimeout(() => h.focus({preventScroll:true}), 200);
   }
   $$('[data-back]').forEach(b => b.addEventListener('click', () => show(b.dataset.back)));
-  const bad = (id, on) => $('#' + id).classList.toggle('bad', on);
+  const bad = (id, on) => { const e = $('#' + id); if(e) e.classList.toggle('bad', on); };
   $('#to2').addEventListener('click', () => {
     const ok = num($('#tripCost').value) > 0; bad('f-trip', !ok);
-    if(!ok){ $('#tripCost').focus(); return; }
-    runTotal(); show('s2');
+    const box = $('#s1err');
+    if(!ok){ box.textContent = 'Please add what the trip costs, then tap Next.'; box.hidden = false; $('#f-trip').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'}); return; }
+    box.hidden = true; runTotal(); show('s2');
   });
   $('#to3').addEventListener('click', () => show('s3'));
   $('#toRes').addEventListener('click', () => {
-    const now = today();
+    const now = today(), msgs = [], box = $('#s3err');
     const okRh = !!rhythm; bad('f-rh', !okRh);
     const tr = parseDate($('#travelDate').value); const okTr = !!(tr && tr > now); bad('f-travel', !okTr);
-    const pd = parseDate($('#payDate').value); let okPay = true;
-    if($('#payDate').value){
-      if(!(pd > now)){ okPay = false; $('#payErr').textContent = 'Please choose a future date.'; }
-      else if(okTr && pd > tr){ okPay = false; $('#payErr').textContent = 'Your trip should be paid off before you travel.'; }
+    const pdv = val('payDate'), pd = parseDate(pdv); let okPay = true, payMsg = '';
+    if(pdv){
+      if(!(pd > now)){ okPay = false; payMsg = 'Please choose a future date.'; }
+      else if(okTr && pd > tr){ okPay = false; payMsg = 'Your trip should be paid off before you travel.'; }
     }
+    const pe = $('#payErr'); if(pe && payMsg) pe.textContent = payMsg;
     bad('f-pay', !okPay);
-    if(!okRh){ $('.rh').focus(); return; } if(!okTr){ $('#travelDate').focus(); return; } if(!okPay){ $('#payDate').focus(); return; }
-    resetComfort(); render(); show('s4');
+    if(!okRh) msgs.push("Please choose how you'd like to set money aside.");
+    if(!okTr) msgs.push('Please add the date you travel.');
+    if(!okPay) msgs.push(payMsg);
+    if(msgs.length){
+      box.textContent = msgs.join(' '); box.hidden = false;
+      const first = !okRh ? $('#f-rh') : !okTr ? $('#f-travel') : $('#f-pay');
+      if(first) first.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+      return;
+    }
+    box.hidden = true;
+    try{ resetComfort(); render(); show('s4'); }
+    catch(err){
+      if(window.console) console.error(err);
+      box.textContent = 'Something went wrong showing your plan. Please refresh the page and try again. If it keeps happening, let Sabrina know.'; box.hidden = false;
+    }
   });
   $('#again').addEventListener('click', () => show('s1'));
 
@@ -398,8 +417,8 @@ footer p{margin:0 0 8px}
   function compute(){
     const trip = num($('#tripCost').value), ex = extrasSplit();
     const tripPart = trip + ex.early, extrasPart = ex.late, total = tripPart + extrasPart;
-    const dep = $('input[name="dep"]:checked').value, depAmt = num($('#depAmt').value);
-    const depPaid = dep === 'paid' ? depAmt : 0, saved = num($('#saved').value);
+    const depEl = $('input[name="dep"]:checked'), dep = depEl ? depEl.value : 'none', depAmt = num(val('depAmt'));
+    const depPaid = dep === 'paid' ? depAmt : 0, saved = num(val('saved'));
     const covered = Math.min(total, saved + depPaid);
     const tripRemaining = Math.max(0, tripPart - covered);
     const leftover = Math.max(0, covered - tripPart);
@@ -407,14 +426,14 @@ footer p{margin:0 0 8px}
     const remaining = tripRemaining + extrasRemaining;
     const rh = rhythm, ppy = RH[rh].ppy, now = today();
     const travel = parseDate($('#travelDate').value);
-    let pay = parseDate($('#payDate').value), assumed = false;
+    let pay = parseDate(val('payDate')), assumed = false;
     if(!pay){
       const a = new Date(travel); a.setDate(a.getDate() - 120); a.setHours(23,59,59,0);
       if(a > now){ pay = a; assumed = true; } else pay = travel;
     }
     const same = sameDay(pay, travel);
     const c = {trip, extrasEarly:ex.early, extrasLate:ex.late, tripPart, extrasPart, total, dep, depAmt, saved, covered, tripRemaining, extrasRemaining, remaining, rh, ppy, travel, pay, assumed, same,
-      depDue: dep === 'due' ? parseDate($('#depDate').value) : null};
+      depDue: dep === 'due' ? parseDate(val('depDate')) : null};
     c.nP = countPeriods(rh, pay); c.nT = countPeriods(rh, travel);
     c.lump = !same && c.nP < 1 && tripRemaining > 0;
     if(c.nT >= 1){
@@ -436,7 +455,7 @@ footer p{margin:0 0 8px}
   }
 
   function render(){
-    const c = compute(), each = RH[c.rh].each, dest = ($('#dest').value || '').trim();
+    const c = compute(), each = RH[c.rh].each, dest = val('dest').trim();
     const yourTrip = dest ? 'your ' + esc(dest) + ' getaway' : 'your getaway';
     let title = '', big = '', of = '', lines = [];
     if(c.remaining === 0){
@@ -573,7 +592,7 @@ footer p{margin:0 0 8px}
     const data = new FormData();
     data.set('_subject', 'New Getaway Planner lead | Grown Folks Getaway');
     data.set('_replyto', email); data.set('Name', name); data.set('Email', email);
-    data.set('Destination', ($('#dest').value || '').trim() || 'Not shared');
+    if($('#dest')) data.set('Destination', val('dest').trim() || 'Not shared');
     data.set('Trip Cost', String(c.trip)); data.set('Extras Total', String(c.extrasEarly + c.extrasLate)); data.set('Total Getaway Cost', String(c.total));
     data.set('Already Set Aside', String(c.covered)); data.set('Still To Save', String(c.remaining));
     data.set('Trip Portion Still To Save', String(c.tripRemaining)); data.set('Extras Portion Still To Save', String(c.extrasRemaining));
