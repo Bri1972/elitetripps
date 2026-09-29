@@ -161,6 +161,24 @@ section .intro{color:var(--muted);margin:0 0 28px;max-width:38em}
 .pres .fine{font-size:.9rem;color:var(--body-light);margin:0 0 18px}
 .pfine{font-size:.9rem;color:var(--muted);margin:16px 0 0}
 
+.booking-box{background:var(--cream);border-left:4px solid var(--pink);padding:22px 18px 6px;margin:0 0 30px}
+.bk-title{font-size:1.3rem;color:var(--burgundy);margin-bottom:8px}
+.dob{display:grid;grid-template-columns:1.5fr .8fr 1fr;gap:10px}
+.booking-box select,.booking-box input[type=text]{background:#fff}
+.picked{background:var(--cream);border-left:4px solid var(--pink);padding:16px 18px;margin:0 0 24px}
+.picked-text{margin:0 0 8px;font-weight:600;color:var(--burgundy)}
+.link-btn{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--burgundy);text-decoration:underline;cursor:pointer}
+/* GOOD TO KNOW */
+.gk-item{background:#fff;border-left:4px solid var(--pink);padding:20px 22px;margin:0 0 14px}
+.gk-item h3{font-size:1.2rem;color:var(--burgundy);margin-bottom:8px}
+.gk-item p{margin:0 0 8px;font-size:1rem}
+.gk-item p:last-child{margin-bottom:0}
+.gk-list{list-style:none;margin:6px 0 10px;padding:0}
+.gk-list li{padding:9px 0;border-top:1px solid var(--line-light);font-size:1rem}
+.gk-list b{color:var(--burgundy)}
+.gk-terms{font-size:.95rem;color:var(--muted)}
+.gk-terms a,.consent a{color:var(--burgundy);font-weight:600}
+
 /* FORM */
 .form-section{background:var(--burgundy);color:#fff;overflow:hidden}
 .form-section h2{color:#fff;font-style:italic;font-weight:800}
@@ -360,8 +378,8 @@ footer p{margin:0 0 10px}
         <h4>The Sea Terrace</h4>
         <p class="tag">Balcony · Just me</p>
         <div class="price">$4,733</div>
-        <p class="per">total cabin price</p>
-        <dl><div><dt>Deposit</dt><dd>$915</dd></div></dl>
+        <p class="per">your total</p>
+        <dl><div><dt>Your deposit</dt><dd>$915</dd></div></dl>
         <button type="button" class="btn btn-sm pick" data-cabin="Sea Terrace balcony" data-sailors="1">Book this cabin</button>
       </div>
       <div class="cabin">
@@ -369,8 +387,8 @@ footer p{margin:0 0 10px}
         <h4>The Sea View</h4>
         <p class="tag">Window · Just me</p>
         <div class="price">$4,313</div>
-        <p class="per">total cabin price</p>
-        <dl><div><dt>Deposit</dt><dd>$830</dd></div></dl>
+        <p class="per">your total</p>
+        <dl><div><dt>Your deposit</dt><dd>$830</dd></div></dl>
         <button type="button" class="btn btn-sm pick" data-cabin="Sea View" data-sailors="1">Book this cabin</button>
       </div>
       <div class="cabin">
@@ -378,8 +396,8 @@ footer p{margin:0 0 10px}
         <h4>The Insider</h4>
         <p class="tag">No window · Just me</p>
         <div class="price">$3,612</div>
-        <p class="per">total cabin price</p>
-        <dl><div><dt>Deposit</dt><dd>$689</dd></div></dl>
+        <p class="per">your total</p>
+        <dl><div><dt>Your deposit</dt><dd>$689</dd></div></dl>
         <button type="button" class="btn btn-sm pick" data-cabin="Insider" data-sailors="1">Book this cabin</button>
       </div>
     </div>
@@ -397,7 +415,7 @@ footer p{margin:0 0 10px}
     <p class="intro">The extras that come with sailing together.</p>
     <div class="perk"><span class="n">1</span><div><h3>$100 Bar Tab</h3><p>Every group balcony cabin gets a $100 bar tab to use onboard.</p><span class="tg">Group balcony cabins</span></div></div>
     <div class="perk"><span class="n">2</span><div><h3>Wi-Fi</h3><p>Classic Wi-Fi for one device per person, included with the group rate.</p><span class="tg">Group cabins</span></div></div>
-    <div class="perk"><span class="n">3</span><div><h3>Group dining window</h3><p>A 45-day pre-booking dining window, so you can reserve your dinners before you sail.</p><span class="tg">Everyone traveling with the group</span></div></div>
+    <div class="perk"><span class="n">3</span><div><h3>Dinner with the group</h3><p>Traveling on your own or with a friend, there's always a seat at the group table if you want one.</p><span class="tg">Everyone traveling with the group</span></div></div>
 
     <h3 class="own-h">Plan for these on your own</h3>
     <ul class="own">
@@ -408,27 +426,62 @@ footer p{margin:0 0 10px}
       <li>Onboard and in-port extras</li>
     </ul>
     <p class="air-note">Airfare is not included. Each traveler books and manages their own flights to and from San Juan.</p>
+    <p style="margin:0"><a href="the-getaway-planner.html" style="color:var(--gold);font-weight:700">Add it all up in the Getaway Planner</a></p>
   </div>
 </section>
 
 <section class="light" id="planner">
   <div class="wrap">
     <div class="star-rule"><svg viewBox="-10 -10 20 20" aria-hidden="true"><path d="M0,-9 Q1.2,-1.2 9,0 Q1.2,1.2 0,9 Q-1.2,1.2 -9,0 Q-1.2,-1.2 0,-9Z" fill="currentColor"/></svg></div>
-    <h2>Plan your payments</h2>
-    <p class="intro">Pick your cabin and see what each payment could look like. It's a savings guide to help you budget.</p>
+    <h2>Cruise payment planner</h2>
+    <p class="intro">Pick your cabin and see what to set aside to have your cruise fare ready. This covers the cruise fare only.</p>
     <div class="planner">
       <div class="pctl">
         <div class="field" style="margin:0"><label class="q" for="pCabin">Cabin</label>
           <select id="pCabin"><option value="Sea Terrace balcony">The Sea Terrace (balcony)</option><option value="Central Sea Terrace balcony">Central Sea Terrace (balcony)</option><option value="Sea View">The Sea View (window)</option><option value="Insider">The Insider (no window)</option></select></div>
         <div class="field" style="margin:0"><label class="q" for="pSailors">Who's in the cabin</label>
           <select id="pSailors"><option value="2">Two of us</option><option value="1">Just me</option></select></div>
-        <div class="field" style="margin:0"><label class="q" for="pRhythm">How you'd like to pay</label>
+        <div class="field" style="margin:0"><label class="q" for="pRhythm">How you'd like to save</label>
           <select id="pRhythm"><option>Monthly</option><option>Every two weeks</option><option>Weekly</option><option>Pay in full</option></select></div>
       </div>
       <div id="pResult" aria-live="polite"></div>
-      <p class="pfine">Your deposit holds your cabin, and your final balance is due August 15, 2027. Flights, hotel, insurance, excursions, and onboard extras are on top of these amounts.</p>
+      <p class="pfine">This is a savings guide to help you budget. Your deposit holds your cabin, and your cruise balance is due August 15, 2027. Flights, hotel, insurance, excursions, and onboard extras are on top of these amounts.</p>
+      <div class="note-box" style="margin:18px 0 0"><b>Want the full picture?</b> Add flights, hotel, insurance, excursions, and onboard extras in the <a href="the-getaway-planner.html" style="color:var(--burgundy);font-weight:700">Getaway Planner</a>.</div>
       <div class="note-box" style="margin:18px 0 0"><b>Prefer to finance?</b> Virgin Voyages offers FlexPay, a financing option for qualified applicants. Approval and terms are set by the lender. Interested? Check the FlexPay box in the booking form below and I'll reach out to you personally.</div>
     </div>
+  </div>
+</section>
+
+<section class="cream" id="good-to-know">
+  <div class="wrap">
+    <div class="star-rule"><svg viewBox="-10 -10 20 20" aria-hidden="true"><path d="M0,-9 Q1.2,-1.2 9,0 Q1.2,1.2 0,9 Q-1.2,1.2 -9,0 Q-1.2,-1.2 0,-9Z" fill="currentColor"/></svg></div>
+    <h2>Good to know before you book</h2>
+    <p class="intro">A few things I want you to know up front, so there are no surprises. This is a summary. Virgin Voyages' full terms apply: <a href="https://www.virginvoyages.com/addl-terms-and-conditions" target="_blank" rel="noopener" style="color:var(--burgundy);font-weight:600">Additional Terms and Conditions</a> and <a href="https://www.virginvoyages.com/ticket-contract" target="_blank" rel="noopener" style="color:var(--burgundy);font-weight:600">Ticket Contract</a>.</p>
+
+    <div class="gk-item"><h3>Your deposit and final payment</h3>
+      <p>Your deposit holds your cabin. Your cruise fare is due in full by <b>August 15, 2027</b>. I ask for that date so there's a cushion if anything goes wrong.</p></div>
+
+    <div class="gk-item"><h3>You pay Virgin directly</h3>
+      <p>Pay through the secure link I send, or log in to your Virgin Voyages account or app. Your card details go straight to Virgin Voyages. I never see them or save them.</p></div>
+
+    <div class="gk-item"><h3>Your rate</h3>
+      <p>Your cruise fare is locked in once your deposit is paid. Government taxes and fees can change.</p></div>
+
+    <div class="gk-item"><h3>If your plans change</h3>
+      <p>Virgin Voyages' cancellation policy applies:</p>
+      <ul class="gk-list">
+        <li><b>Within 7 days of paying your deposit:</b> full refund, deposit included.</li>
+        <li><b>Up to 120 days before sailing:</b> payments are refundable, except the deposit, which can become a credit toward a future voyage.</li>
+        <li><b>119 to 45 days before sailing:</b> you can take a credit for what you've paid, or move to a new date within a year.</li>
+        <li><b>44 days or less:</b> everything you've paid is final. You can still transfer your spot to someone else.</li>
+      </ul>
+      <p>Each traveler's cancellation is handled on their own. If a cabin mate cancels, the price for the remaining traveler may change.</p></div>
+
+    <div class="gk-item"><h3>On the water</h3>
+      <p>Itineraries, ports, and times can change because of weather or other reasons. You need to be checked in and on board at least one hour before departure. Ships have basic medical care only, and a medical emergency can mean evacuation at your own expense.</p></div>
+
+    <div class="gk-item"><h3>Also</h3>
+      <p>This is an adults-only cruise, 18 and older. Airfare is not included, and each traveler books their own flights. Group hotel details are coming.</p></div>
   </div>
 </section>
 
@@ -498,17 +551,14 @@ footer p{margin:0 0 10px}
           <span class="err">Please choose one.</span>
         </div>
 
-        <div class="field">
-          <span class="q">Your birthday</span>
-          <span class="hint">Optional. Month and day only… I just like to celebrate my travelers. 🎂</span>
-          <div class="row">
-            <select id="bmonth" aria-label="Birthday month"><option value="">Month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select>
-            <select id="bday" aria-label="Birthday day"><option value="">Day</option></select>
-          </div>
-        </div>
-
         <div class="divider" role="presentation"><span>Your cabin</span></div>
 
+        <div id="cabinPicked" class="picked" hidden>
+          <span class="q" style="margin-bottom:4px">Your cabin</span>
+          <p class="picked-text" id="pickedText"></p>
+          <button type="button" class="link-btn" id="changeCabin">Change</button>
+        </div>
+        <div id="cabinQs">
         <div class="field" data-required="true" data-group="1">
           <span class="q">Cabin type <span class="req">*</span></span>
           <div class="choices">
@@ -531,14 +581,10 @@ footer p{margin:0 0 10px}
           <span class="err">Please choose one.</span>
         </div>
 
+        </div>
+
         <div class="priceline" id="priceLine" hidden></div>
         <div class="disclaimer" id="moreNote" hidden>No problem. I'll reach out to set that up with you personally.</div>
-
-        <div class="field" id="companionField" hidden>
-          <label class="q" for="companion">Your travel companion's name</label>
-          <span class="hint">Optional. As it appears on their passport or travel ID. You can send it later.</span>
-          <input type="text" id="companion" name="Second Traveler" autocomplete="off" data-lpignore="true" data-1p-ignore>
-        </div>
 
         <div class="field" id="mateField" data-group="1" hidden>
           <span class="q">Would you like to share a cabin? <span class="req">*</span></span>
@@ -567,16 +613,54 @@ footer p{margin:0 0 10px}
           <span class="err">Please choose one.</span>
         </div>
 
-        <div class="divider" role="presentation"><span>A few optional extras</span></div>
+        <div id="bookDetails" class="booking-box" hidden>
+          <h3 class="bk-title">To enter your booking</h3>
+          <p class="hint" style="margin:0 0 18px">I use your name and date of birth only to enter your booking with Virgin Voyages. I don't collect your address, passport number, or card details. You'll add those yourself in Virgin's app.</p>
 
-        <div class="field">
-          <span class="q">Would you like an Allianz travel insurance quote?</span>
-          <div class="choices two">
-            <label class="choice"><input type="radio" name="Insurance Quote" value="Yes">Yes</label>
-            <label class="choice"><input type="radio" name="Insurance Quote" value="No">No</label>
-            <label class="choice"><input type="radio" name="Insurance Quote" value="Maybe later">Maybe later</label>
+          <div class="field" data-required="true" data-dob="1">
+            <span class="q">Your date of birth <span class="req">*</span></span>
+            <div class="dob">
+        <select id="dobM" aria-label="Birth month"><option value="">Month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select>
+        <select id="dobD" aria-label="Birth day"><option value="">Day</option></select>
+        <select id="dobY" aria-label="Birth year"><option value="">Year</option></select>
+      </div>
+            <span class="err">Please enter a valid date of birth. Travelers must be 18 or older.</span>
+          </div>
+
+          <div id="secondBox" hidden>
+            <span class="q" style="margin-bottom:4px">Your travel companion</span>
+            <span class="hint">Optional. Their name as it appears on their passport. You can send it later.</span>
+            <div class="row">
+              <div class="field"><label class="q" for="c2First">First name</label><input type="text" id="c2First" autocomplete="off" data-lpignore="true" data-1p-ignore></div>
+              <div class="field"><label class="q" for="c2Last">Last name</label><input type="text" id="c2Last" autocomplete="off" data-lpignore="true" data-1p-ignore></div>
+            </div>
+            <div class="field">
+              <span class="q">Their date of birth</span>
+              <div class="dob">
+        <select id="c2M" aria-label="Companion birth month"><option value="">Month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select>
+        <select id="c2D" aria-label="Companion birth day"><option value="">Day</option></select>
+        <select id="c2Y" aria-label="Companion birth year"><option value="">Year</option></select>
+      </div>
+            </div>
+          </div>
+
+          <div class="field" data-required="true" data-group="1">
+            <span class="q">Have you sailed with Virgin Voyages before? <span class="req">*</span></span>
+            <div class="choices two">
+              <label class="choice"><input type="radio" name="Sailed With Virgin Before" value="Yes">Yes</label>
+              <label class="choice"><input type="radio" name="Sailed With Virgin Before" value="No">No</label>
+            </div>
+            <span class="err">Please choose one.</span>
+          </div>
+
+          <div class="field" id="clubField" hidden>
+            <label class="q" for="clubNo">Sailing Club number</label>
+            <span class="hint">Optional. If you have one.</span>
+            <input type="text" id="clubNo" name="Sailing Club Number" autocomplete="off" data-lpignore="true" data-1p-ignore>
           </div>
         </div>
+
+        <div class="divider" role="presentation"><span>A few optional extras</span></div>
 
         <div class="field">
           <span class="q">If I set up a group hotel in San Juan for Christmas night, would you want to stay there?</span>
@@ -600,8 +684,22 @@ footer p{margin:0 0 10px}
 
         <p class="air-note">Airfare is not included. Each traveler books and manages their own flights to and from San Juan.</p>
 
+        <div class="divider" role="presentation"><span>Travel insurance</span></div>
+
         <div class="field" data-required="true" data-group="1">
-          <label class="choice consent"><input type="checkbox" name="Consent" value="Yes">I understand sending this doesn't book my cabin. It's secured once my deposit is paid, within 24 hours of receiving my payment link. <span class="req">*</span></label>
+          <span class="q">Please choose one <span class="req">*</span></span>
+          <span class="hint" style="margin:0 0 12px">Travel insurance can help protect your investment if you need to cancel or cut your trip short, and it can help with medical costs while you're away. It isn't required to book. I offer Allianz travel insurance.</span>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="Insurance Quote" value="Send me a quote" data-full="Yes, please send me an Allianz travel insurance quote.">Yes, please send me an Allianz travel insurance quote.</label>
+            <label class="choice"><input type="radio" name="Insurance Quote" value="I'll get my own" data-full="I'll get my own travel insurance.">I'll get my own travel insurance.</label>
+            <label class="choice"><input type="radio" name="Insurance Quote" value="Declined" data-full="I'm declining travel insurance. I understand I'm traveling without it, and I'm responsible for any costs if I need to cancel, my trip is interrupted, or I have a medical emergency.">I'm declining travel insurance. I understand I'm traveling without it, and I'm responsible for any costs if I need to cancel, my trip is interrupted, or I have a medical emergency.</label>
+          </div>
+          <span class="hint" style="margin:10px 0 0">Cruise payments, airfare, and other prepaid costs may be nonrefundable or subject to cancellation fees.</span>
+          <span class="err">Please choose one so I know how to help you.</span>
+        </div>
+
+        <div class="field" data-required="true" data-group="1">
+          <label class="choice consent"><input type="checkbox" name="Consent" value="Yes">I've read "Good to know before you book" and <a href="https://www.virginvoyages.com/addl-terms-and-conditions" target="_blank" rel="noopener">Virgin Voyages' terms</a>. I understand sending this doesn't book my cabin. It's secured once my deposit is paid, within 24 hours of receiving my payment link. <span class="req">*</span></label>
           <span class="err">Please check this box to continue.</span>
         </div>
 
@@ -611,6 +709,7 @@ footer p{margin:0 0 10px}
       <div class="thanks" id="thanks" role="status">
         <h3>Request received! 🥂</h3>
         <p>Thank you. I have your details, and I'll follow up using the way you asked me to.</p>
+        <p id="tyIns" hidden>I'll also send your Allianz travel insurance quote.</p>
         <p>Next, I'll send you your Virgin Voyages payment link. Your deposit is due within 24 hours of receiving it to secure your cabin.</p>
         <p>New Year's on the water is getting real. 💛</p>
         <p>Sabrina</p>
@@ -696,9 +795,22 @@ footer p{margin:0 0 10px}
     } else isl.classList.add('show');
   }
 
-  // Birthday days
-  const bday = $('#bday');
-  for(let d = 1; d <= 31; d++){ const o = document.createElement('option'); o.textContent = d; bday.appendChild(o); }
+  // Date-of-birth dropdowns (days 1-31, years for travelers 18 and older)
+  ['dob','c2'].forEach(p => {
+    const dSel = $('#' + p + 'D'), ySel = $('#' + p + 'Y'), top = new Date().getFullYear() - 18;
+    for(let d = 1; d <= 31; d++){ const o = document.createElement('option'); o.textContent = d; dSel.appendChild(o); }
+    for(let y = top; y >= top - 82; y--){ const o = document.createElement('option'); o.textContent = y; ySel.appendChild(o); }
+  });
+  const dobStr = p => { const m = $('#' + p + 'M').value, d = $('#' + p + 'D').value, y = $('#' + p + 'Y').value; return (m && d && y) ? m + ' ' + d + ', ' + y : ''; };
+  function dobOk(p){
+    const mi = $('#' + p + 'M').selectedIndex, d = +$('#' + p + 'D').value, y = +$('#' + p + 'Y').value;
+    if(!mi || !d || !y) return false;
+    const dt = new Date(y, mi - 1, d);
+    if(dt.getFullYear() !== y || dt.getMonth() !== mi - 1 || dt.getDate() !== d) return false;
+    const now = new Date(); let age = now.getFullYear() - y;
+    if(now.getMonth() < mi - 1 || (now.getMonth() === mi - 1 && now.getDate() < d)) age--;
+    return age >= 18;
+  }
 
   // Money + payment planner
   const money = n => '$' + (Number.isInteger(n) ? n.toLocaleString('en-US') : n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
@@ -745,21 +857,26 @@ footer p{margin:0 0 10px}
     const totalPP = p.total / div, depPP = p.dep / div, restPP = totalPP - depPP;
     let big, label, count = '';
     if(rhythm === 'Pay in full'){
-      big = money(restPP); label = 'per person, due by August 15, 2027';
+      big = money(restPP); label = (sailors === 2 ? 'per person, ' : '') + 'due by August 15, 2027';
     } else {
       const n = countPayments(rhythm);
       if(n < 1){
         out.innerHTML = '<div class="pres"><p class="big small">Let\'s talk.</p><p class="of">The final payment date is close, so reach out and I\'ll help you plan the best way to pay.</p>' + cta + '</div>';
         wireGo(); return;
       }
-      big = money(Math.ceil(restPP / n)); label = 'per person, ' + per[rhythm]; count = n;
+      big = money(Math.ceil(restPP / n)); label = (sailors === 2 ? 'per person, ' : '') + 'set aside ' + per[rhythm]; count = n;
     }
     let rows = '';
-    if(sailors === 2) rows += '<li><span>Cabin total</span><b>' + money(p.total) + '</b></li>';
-    rows += '<li><span>Total per person</span><b>' + money(totalPP) + '</b></li>';
-    rows += '<li><span>Deposit per person</span><b>' + money(depPP) + '</b></li>';
+    if(sailors === 2){
+      rows += '<li><span>Cabin total</span><b>' + money(p.total) + '</b></li>';
+      rows += '<li><span>Total per person</span><b>' + money(totalPP) + '</b></li>';
+      rows += '<li><span>Deposit per person</span><b>' + money(depPP) + '</b></li>';
+    } else {
+      rows += '<li><span>Your total</span><b>' + money(totalPP) + '</b></li>';
+      rows += '<li><span>Your deposit</span><b>' + money(depPP) + '</b></li>';
+    }
     rows += '<li><span>Left after deposit</span><b>' + money(restPP) + '</b></li>';
-    if(count) rows += '<li><span>Number of payments</span><b>' + count + '</b></li>';
+    if(count) rows += '<li><span>' + ({Weekly:'Weeks to save','Every two weeks':'Saving periods',Monthly:'Months to save'}[rhythm]) + '</span><b>' + count + '</b></li>';
     rows += '<li><span>Final payment date</span><b>Aug 15, 2027</b></li>';
     out.innerHTML = '<div class="pres stripes"><p class="lbl">Your plan</p><p class="big">' + big + '</p><p class="of">' + label + '</p><ul>' + rows + '</ul>' + cta + '</div>';
     wireGo();
@@ -777,24 +894,29 @@ footer p{margin:0 0 10px}
   function syncFromPlanner(){
     setRadio('Cabin Type', $('#pCabin').value);
     setRadio('Number of Sailors', $('#pSailors').value);
+    setPicked(true);
   }
   $$('.pick').forEach(b => b.addEventListener('click', () => {
     setRadio('Cabin Type', b.dataset.cabin);
     setRadio('Number of Sailors', b.dataset.sailors);
     $('#pCabin').value = b.dataset.cabin; $('#pSailors').value = b.dataset.sailors; renderPlanner();
+    setPicked(true);
     $('#booking').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
   }));
 
   // Conditional fields and live price line
-  const mate = $('#mateField'), companionField = $('#companionField'), moreNote = $('#moreNote'), priceLine = $('#priceLine');
+  const mate = $('#mateField'), moreNote = $('#moreNote'), priceLine = $('#priceLine');
+  const bookDetails = $('#bookDetails'), secondBox = $('#secondBox'), clubField = $('#clubField');
+  const cabinQs = $('#cabinQs'), cabinPicked = $('#cabinPicked'), pickedText = $('#pickedText');
+  let picked = false;
+  function setPicked(on){ picked = on; cabinQs.hidden = on; cabinPicked.hidden = !on; condition(); }
+  $('#changeCabin').addEventListener('click', () => { setPicked(false); cabinQs.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'}); });
   function condition(){
     const sailors = (form.querySelector('input[name="Number of Sailors"]:checked') || {}).value;
     const type = (form.querySelector('input[name="Cabin Type"]:checked') || {}).value;
     const solo = sailors === '1';
     mate.hidden = !solo; mate.dataset.required = solo ? 'true' : 'false';
     if(!solo){ $$('input', mate).forEach(i => i.checked = false); mate.classList.remove('invalid'); }
-    companionField.hidden = sailors !== '2';
-    if(sailors !== '2') $('#companion').value = '';
     moreNote.hidden = sailors !== '3 or more';
     let txt = '';
     if(type && sailors && sailors !== '3 or more'){
@@ -804,11 +926,34 @@ footer p{margin:0 0 10px}
         const p = priceFor(type, +sailors);
         if(!p) txt = "I'll confirm pricing for this cabin with you.";
         else if(sailors === '2') txt = nm(type) + ', two of us: ' + money(p.total) + ' per cabin. Deposit: ' + money(p.dep) + ' per cabin (' + money(p.dep / 2) + ' per person).';
-        else txt = nm(type) + ', just me: ' + money(p.total) + '. Deposit: ' + money(p.dep) + '.';
+        else txt = nm(type) + ', just you. Total: ' + money(p.total) + '. Your deposit: ' + money(p.dep) + '.';
       }
     }
-    priceLine.hidden = !txt; priceLine.textContent = txt;
+    const who = sailors === '2' ? 'two of us' : sailors === '1' ? 'just you' : sailors === '3 or more' ? 'more than two' : '';
+    priceLine.hidden = !txt || picked; priceLine.textContent = txt;
+    pickedText.textContent = txt || ((type && who) ? nm(type) + ', ' + who : '');
+    updateBook();
   }
+  // Booking details show only for "I'm ready to book"
+  function updateBook(){
+    const ready = (form.querySelector('input[name="Readiness"]:checked') || {}).value === 'Ready to book';
+    const sailors = (form.querySelector('input[name="Number of Sailors"]:checked') || {}).value;
+    bookDetails.hidden = !ready;
+    if(!ready){
+      $$('select', bookDetails).forEach(x => x.selectedIndex = 0);
+      $$('input[type="text"]', bookDetails).forEach(x => x.value = '');
+      $$('input[type="radio"]', bookDetails).forEach(x => x.checked = false);
+      clubField.hidden = true; $$('.field', bookDetails).forEach(x => x.classList.remove('invalid'));
+    }
+    const two = ready && sailors === '2';
+    secondBox.hidden = !two;
+    if(!two){ $$('select', secondBox).forEach(x => x.selectedIndex = 0); $$('input', secondBox).forEach(x => x.value = ''); }
+  }
+  $$('input[name="Readiness"]', form).forEach(r => r.addEventListener('change', updateBook));
+  $$('input[name="Sailed With Virgin Before"]', form).forEach(r => r.addEventListener('change', () => {
+    const yes = (form.querySelector('input[name="Sailed With Virgin Before"]:checked') || {}).value === 'Yes';
+    clubField.hidden = !yes; if(!yes) $('#clubNo').value = '';
+  }));
   $$('input[name="Number of Sailors"], input[name="Cabin Type"]', form).forEach(r => r.addEventListener('change', condition));
   condition();
 
@@ -822,8 +967,9 @@ footer p{margin:0 0 10px}
 
   // Validation
   function fieldValid(f){
-    if(f.hidden) return true;
+    if(f.hidden || f.closest('[hidden]')) return true;
     if(f.dataset.required !== 'true') return true;
+    if(f.dataset.dob) return dobOk('dob');
     if(f.dataset.group) return !!f.querySelector('input:checked');
     const input = f.querySelector('input, select, textarea');
     const v = (input.value || '').trim();
@@ -880,11 +1026,21 @@ footer p{margin:0 0 10px}
     const rc = refContact.value;
     if(rc && ((myEmail && norm(rc) === myEmail) || (myPhone.length >= 7 && digits(rc) === myPhone))) refContact.value = '';
     if(refName.value && norm(refName.value) === myName){ refName.value = ''; refContact.value = ''; }
-    const comp = $('#companion'); if(comp.value && norm(comp.value) === myName) comp.value = '';
+    const c2Full = [$('#c2First').value.trim(), $('#c2Last').value.trim()].filter(Boolean).join(' ');
+    if(c2Full && norm(c2Full) === myName){ $('#c2First').value = ''; $('#c2Last').value = ''; }
 
     const data = new FormData(form);
-    data.set('Birthday', [$('#bmonth').value, $('#bday').value].filter(Boolean).join(' ') || 'Not shared');
+    if(!bookDetails.hidden){
+      data.set('Date of Birth', dobStr('dob'));
+      if(!secondBox.hidden){
+        const nm2 = [$('#c2First').value.trim(), $('#c2Last').value.trim()].filter(Boolean).join(' ');
+        if(nm2) data.set('Second Traveler', nm2);
+        const d2 = dobStr('c2'); if(d2) data.set('Second Traveler Date of Birth', d2);
+      }
+    }
     data.set('_replyto', $('#email').value);
+    const insChoice = form.querySelector('input[name="Insurance Quote"]:checked');
+    data.set('Insurance Acknowledgment', insChoice ? insChoice.dataset.full : '');
     if(usedRhythm) data.set('Payment Rhythm', $('#pRhythm').value);
 
     try{
@@ -896,6 +1052,7 @@ footer p{margin:0 0 10px}
       return;
     }
     form.style.display = 'none';
+    if(insChoice && insChoice.value === 'Send me a quote') $('#tyIns').hidden = false;
     $('#thanks').classList.add('active');
     const referSec = $('#refer'); if(referSec) referSec.style.display = 'none';
     $('#booking').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
