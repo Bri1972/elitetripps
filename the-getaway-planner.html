@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Getaway Planner | Grown Folks Getaway | Brought to you by Elite Tripps™</title>
-<meta name="description" content="Take your time. Take the trip. Enter what your getaway costs and see what to set aside each week, every two weeks, or each month, then print your plan.">
+<title>Grown Folks Getaway Planner | Hosted by Elite Tripps™</title>
+<meta name="description" content="Cruise together. Vacation your way. Add your getaway costs and see what to set aside, at a pace that works for you, then print or save your plan.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
 :root{
-  --white:#FFFFFF; --cream:#FFF8F0; --warm:#FFF0E0; --orange:#FF5F00; --orange-dark:#E04D00; --black:#0A0A0A; --dark:#1A1A1A;
-  --orange-text:#C24100; --body:#3A3A3A; --muted:#6B6B6B; --line:rgba(0,0,0,.08); --line2:rgba(0,0,0,.14); --err:#B3261E;
+  --white:#FFFFFF; --cream:#F5EDE0; --warm:#FBF0D6; --sky:#DCEBF3; --ocean:#1F5F8B; --ocean-dark:#0C3550; --black:#0C3550; --dark:#0C3550; --gold:#D9A441; --gold-dark:#C8942F;
+  --ocean-text:#1F5F8B; --body:#2A3640; --muted:#586772; --line:rgba(12,53,80,.12); --line2:rgba(12,53,80,.2); --err:#B3261E;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -21,27 +21,28 @@ h1,h2,h3{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-weight:400;te
 .wrap{max-width:720px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
 [hidden]{display:none!important}
 :focus-visible{outline:3px solid var(--black);outline-offset:3px}
+.hero :focus-visible,.hero-res :focus-visible,.gate :focus-visible,.cta :focus-visible,footer :focus-visible{outline-color:var(--gold)}
 .printonly{display:none}
 
-/* HERO: solid orange with circle outlines and the wave */
-.hero{position:relative;overflow:hidden;background:var(--orange);color:#fff;padding:54px 0 96px;padding-top:calc(54px + env(safe-area-inset-top,0px))}
+/* HERO: solid ocean blue with circle outlines and the wave */
+.hero{position:relative;overflow:hidden;background:var(--ocean);color:#fff;padding:54px 0 96px;padding-top:calc(54px + env(safe-area-inset-top,0px))}
 .hero::before{content:"";position:absolute;top:-90px;right:-100px;width:320px;height:320px;border:4px solid rgba(255,255,255,.14);border-radius:50%;pointer-events:none}
 .hero::after{content:"";position:absolute;bottom:20px;left:-90px;width:220px;height:220px;border:4px solid rgba(255,255,255,.1);border-radius:50%;pointer-events:none}
 .wave{position:absolute;left:0;bottom:-1px;width:100%;height:64px;display:block;z-index:2}
-.brand{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);background:#fff;border-radius:50px;padding:8px 20px;margin:0 0 20px}
-.brand::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--orange)}
-.hero h1{color:#fff;font-size:clamp(3rem,13vw,5.4rem);line-height:1.02;margin-bottom:16px;letter-spacing:.5px}
-.tag{font-family:"Permanent Marker",cursive;font-size:clamp(1.5rem,5.5vw,2.2rem);color:var(--black);transform:rotate(-2deg);display:inline-block;margin:0 0 20px;line-height:1.2}
-.lede{font-size:1.12rem;color:var(--black);font-weight:500;max-width:32em;margin:0}
+.brand{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ocean);background:#fff;border-radius:50px;padding:8px 20px;margin:0 0 20px}
+.brand::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ocean)}
+.hero h1{color:#fff;font-size:clamp(2.6rem,11vw,4.8rem);line-height:1.02;margin-bottom:16px;letter-spacing:.5px}
+.tag{font-family:"Permanent Marker",cursive;font-size:clamp(1.5rem,5.5vw,2.2rem);color:var(--sky);transform:rotate(-2deg);display:inline-block;margin:0 0 20px;line-height:1.2}
+.lede{font-size:1.12rem;color:#fff;font-weight:500;max-width:32em;margin:0}
 
 /* APP */
 .app{padding-top:26px;padding-bottom:56px}
 .progress{display:flex;gap:8px;justify-content:center;margin:0 0 20px}
 .progress i{width:44px;height:6px;border-radius:3px;background:var(--line2)}
-.progress i.on{background:var(--orange)}
+.progress i.on{background:var(--ocean)}
 .screen{background:var(--white);border:2px solid var(--line);border-radius:16px;padding:30px 24px}
 .screen h2{font-size:clamp(1.7rem,6vw,2.4rem);margin-bottom:12px}
-.screen h2::after{content:"";display:block;width:64px;height:4px;background:var(--orange);margin-top:12px}
+.screen h2::after{content:"";display:block;width:64px;height:4px;background:var(--gold);margin-top:12px}
 .screen h2:focus{outline:none}
 .sub{color:var(--muted);margin:0 0 22px}
 .formerr{background:#FDE8E6;border-left:5px solid var(--err);border-radius:12px;padding:12px 16px;margin:20px 0 0;font-weight:700;color:var(--err)}
@@ -49,7 +50,8 @@ h1,h2,h3{font-family:"Anton",Impact,"Arial Narrow",sans-serif;font-weight:400;te
 .q{display:block;font-weight:700;margin-bottom:6px;font-size:1.05rem;color:var(--dark)}
 .hint{display:block;font-size:.95rem;color:var(--muted);margin:-2px 0 8px}
 input[type=text],input[type=email],input[type=date],select{width:100%;font:inherit;font-size:1.1rem;color:var(--dark);background:var(--cream);border:2px solid var(--line2);border-radius:14px;padding:14px 16px;transition:border-color .25s ease}
-input:focus,select:focus{border-color:var(--orange)}
+input:focus,select:focus{border-color:var(--ocean)}
+input:disabled{opacity:.45;cursor:not-allowed}
 .money{position:relative}
 .money span{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700;pointer-events:none}
 .money input{padding-left:30px}
@@ -62,54 +64,56 @@ input:focus,select:focus{border-color:var(--orange)}
 /* choices, chips, rhythm */
 .choices{display:grid;gap:10px}
 .choice{display:flex;gap:12px;align-items:center;background:var(--cream);border:2px solid var(--line);border-radius:16px;padding:13px 16px;cursor:pointer;font-size:1.05rem;transition:all .2s ease}
-.choice input{width:20px;height:20px;accent-color:var(--orange);flex:none}
-.choice:has(input:checked){border-color:var(--orange);background:var(--warm)}
+.choice input{width:20px;height:20px;accent-color:var(--ocean);flex:none}
+.choice:has(input:checked){border-color:var(--ocean);background:var(--sky)}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px}
-.chip{font:inherit;font-weight:700;font-size:1rem;color:var(--orange-text);background:#fff;border:2px solid var(--orange);border-radius:50px;padding:11px 20px;cursor:pointer;transition:all .2s ease}
+.chip{font:inherit;font-weight:700;font-size:1rem;color:var(--ocean-text);background:#fff;border:2px solid var(--ocean);border-radius:50px;padding:11px 20px;cursor:pointer;transition:all .2s ease}
 .chip:hover{transform:translateY(-2px)}
-.chip[aria-pressed="true"]{background:var(--orange);color:#fff}
+.chip[aria-pressed="true"]{background:var(--ocean);color:#fff}
 .amounts{display:grid;gap:14px;margin:0 0 6px}
 .amounts .field{margin:0}
 .rhs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.rh{font-family:"Anton",Impact,sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:1.1rem;color:var(--orange-text);background:#fff;border:2px solid var(--orange);border-radius:50px;padding:18px 8px;cursor:pointer;transition:all .2s ease;text-align:center}
+.rh{font-family:"Anton",Impact,sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:1.1rem;color:var(--ocean-text);background:#fff;border:2px solid var(--ocean);border-radius:50px;padding:18px 8px;cursor:pointer;transition:all .2s ease;text-align:center}
 .rh:hover{transform:translateY(-2px)}
-.rh[aria-pressed="true"]{background:var(--orange);color:#fff}
-.total{display:flex;justify-content:space-between;gap:12px;align-items:baseline;background:var(--warm);border-left:5px solid var(--orange);border-radius:12px;padding:14px 18px;margin:8px 0 6px;font-weight:700;color:var(--dark)}
-.total b{font-family:"Permanent Marker",cursive;font-weight:400;font-size:1.7rem;color:var(--orange)}
+.rh[aria-pressed="true"]{background:var(--ocean);color:#fff}
+.total{display:flex;justify-content:space-between;gap:12px;align-items:baseline;background:var(--sky);border-left:5px solid var(--ocean);border-radius:12px;padding:14px 18px;margin:8px 0 6px;font-weight:700;color:var(--dark)}
+.total b{font-family:"Permanent Marker",cursive;font-weight:400;font-size:1.7rem;color:var(--ocean)}
 
 /* buttons */
 .nav{display:flex;gap:12px;justify-content:space-between;margin-top:26px;flex-wrap:wrap}
 .nav .btn{flex:1 1 auto}
-.btn{font-family:"Anton",Impact,sans-serif;font-weight:400;font-size:1rem;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:var(--orange);border:0;border-radius:50px;padding:18px 36px;cursor:pointer;transition:all .25s ease;text-decoration:none;display:inline-block;text-align:center;box-shadow:0 6px 24px rgba(255,95,0,.3)}
-.btn:hover{background:var(--orange-dark);transform:translateY(-3px) scale(1.02);box-shadow:0 10px 36px rgba(255,95,0,.4)}
+.btn{font-family:"Anton",Impact,sans-serif;font-weight:400;font-size:1rem;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:var(--ocean);border:0;border-radius:50px;padding:18px 36px;cursor:pointer;transition:all .25s ease;text-decoration:none;display:inline-block;text-align:center;box-shadow:0 6px 24px rgba(31,95,139,.3)}
+.btn:hover{background:var(--ocean-dark);transform:translateY(-3px) scale(1.02);box-shadow:0 10px 36px rgba(31,95,139,.4)}
 .btn-sm{padding:14px 28px;font-size:.92rem}
-.btn-ghost{background:#fff;color:var(--orange-text);border:2px solid var(--orange);box-shadow:none}
-.btn-ghost:hover{background:var(--orange);color:#fff}
+.btn-ghost{background:#fff;color:var(--ocean-text);border:2px solid var(--ocean);box-shadow:none}
+.btn-ghost:hover{background:var(--ocean);color:#fff}
 .btn-black{background:var(--black);color:#fff;box-shadow:0 6px 24px rgba(0,0,0,.2)}
-.btn-black:hover{background:var(--dark);box-shadow:0 10px 36px rgba(0,0,0,.3)}
-.link-btn{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--orange-text);text-decoration:underline;cursor:pointer}
+.btn-black:hover{background:var(--ocean);box-shadow:0 10px 36px rgba(0,0,0,.3)}
+.btn-gold{background:var(--gold);color:var(--dark);box-shadow:0 6px 24px rgba(217,164,65,.35)}
+.btn-gold:hover{background:var(--gold-dark);color:var(--dark);box-shadow:0 10px 36px rgba(217,164,65,.45)}
+.link-btn{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--ocean-text);text-decoration:underline;cursor:pointer}
 
 /* results */
 .hero-res{position:relative;overflow:hidden;background:var(--black);color:#fff;border-radius:16px;padding:28px 24px;margin:0 0 20px}
-.hero-res::before{content:"";position:absolute;top:-70px;right:-70px;width:220px;height:220px;border:3px solid var(--orange);border-radius:50%;opacity:.16;pointer-events:none}
+.hero-res::before{content:"";position:absolute;top:-70px;right:-70px;width:220px;height:220px;border:3px solid var(--gold);border-radius:50%;opacity:.16;pointer-events:none}
 .hero-res>*{position:relative}
-.hero-res .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin:0 0 8px}
+.hero-res .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
 .hero-res h2{color:#fff;font-size:clamp(1.7rem,6.5vw,2.4rem);margin-bottom:12px}
 .hero-res h2::after{display:none}
-.hero-res .big{font-family:"Permanent Marker",cursive;font-size:clamp(3.4rem,15vw,6rem);color:var(--orange);line-height:1;margin:6px 0 4px;transform:rotate(-2deg);transform-origin:left center;display:inline-block}
+.hero-res .big{font-family:"Permanent Marker",cursive;font-size:clamp(3.4rem,15vw,6rem);color:var(--gold);line-height:1;margin:6px 0 4px;transform:rotate(-2deg);transform-origin:left center;display:inline-block}
 .hero-res .of{margin:4px 0 0;color:rgba(255,255,255,.88);font-size:1.08rem}
-.box,.split div{background:var(--warm);border-left:5px solid var(--orange);border-radius:12px;padding:14px 18px;margin:0 0 14px;font-weight:600;color:var(--dark)}
+.box,.split div{background:var(--warm);border-left:5px solid var(--gold);border-radius:12px;padding:14px 18px;margin:0 0 14px;font-weight:600;color:var(--dark)}
 .split{display:grid;gap:0}
-.split b{color:var(--orange-text)}
+.split b{color:var(--dark)}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border:2px solid var(--dark);border-radius:16px;overflow:hidden;background:#fff;margin:6px 0 18px}
 .stat{padding:16px 12px;border-right:2px solid var(--line);text-align:left}
 .stat:last-child{border-right:0}
 .stat span{display:block;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
-.stat b{font-family:"Permanent Marker",cursive;font-weight:400;font-size:1.5rem;color:var(--orange);line-height:1.2}
+.stat b{font-family:"Permanent Marker",cursive;font-weight:400;font-size:1.5rem;color:var(--ocean);line-height:1.2}
 .bar{height:12px;background:var(--line2);border-radius:6px;overflow:hidden;margin:6px 0 4px}
-.bar i{display:block;height:100%;background:var(--orange);border-radius:6px}
+.bar i{display:block;height:100%;background:var(--ocean);border-radius:6px}
 .barlbl{font-size:.95rem;color:var(--muted);margin:0 0 20px}
-.try{background:var(--warm);border:2px solid var(--orange);border-radius:16px;padding:20px 18px;margin:0 0 20px}
+.try{background:var(--sky);border:2px solid var(--ocean);border-radius:16px;padding:20px 18px;margin:0 0 20px}
 .try h3{font-size:1.35rem;margin-bottom:6px}
 .tryout{margin:12px 0 0;font-weight:600;color:var(--dark)}
 .comfort{background:#fff;border:2px solid var(--line2);border-radius:16px;padding:22px 20px;margin:0 0 20px}
@@ -122,37 +126,37 @@ input:focus,select:focus{border-color:var(--orange)}
 .crow .money{grid-column:1}
 .crow .link-btn{grid-column:2;padding-bottom:14px}
 
-/* gate: full orange, black button */
-.gate{position:relative;overflow:hidden;background:var(--orange);color:#fff;border-radius:16px;padding:26px 22px;margin:8px 0 0}
+/* gate: full ocean blue, gold button */
+.gate{position:relative;overflow:hidden;background:var(--ocean);color:#fff;border-radius:16px;padding:26px 22px;margin:8px 0 0}
 .gate::before{content:"";position:absolute;top:-80px;left:-80px;width:240px;height:240px;border:4px solid rgba(255,255,255,.12);border-radius:50%;pointer-events:none}
 .gate>*{position:relative}
 .gate h3{color:#fff;font-size:1.7rem;margin-bottom:8px}
-.gate .q{color:var(--black)}
-.gate p{color:var(--black)}
-.gate .err{color:var(--black)!important}
-.gate .field.bad input{border-color:var(--black)}
+.gate .q{color:#fff}
+.gate p{color:#fff}
+.gate .err{color:#fff!important}
+.gate .field.bad input{border-color:#fff}
 .gate input{background:#fff}
-.gate .fine{font-size:.95rem;color:var(--black);margin:12px 0 0}
+.gate .fine{font-size:.95rem;color:#fff;margin:12px 0 0}
 .gate .plan{margin:14px 0 18px}
-.gate .plan li{border-top-color:rgba(0,0,0,.25)}
-.gate .plan .m{color:var(--black)}
-.gate .plan .v{color:var(--black)}
-.gate .plan .b{background:rgba(0,0,0,.2)}
-.gate .plan .b i{background:var(--black)}
-.gate .plan .t{color:var(--black)}
-.gate .plan li.locked{display:block;font-weight:700;color:var(--black);padding:14px 0 0}
+.gate .plan li{border-top-color:rgba(255,255,255,.3)}
+.gate .plan .m{color:#fff}
+.gate .plan .v{color:#fff}
+.gate .plan .b{background:rgba(255,255,255,.3)}
+.gate .plan .b i{background:#fff}
+.gate .plan .t{color:#fff}
+.gate .plan li.locked{display:block;font-weight:700;color:#fff;padding:14px 0 0}
 
 /* plan */
 .planhead h3{font-size:1.7rem;margin:22px 0 6px}
 .plan{list-style:none;margin:16px 0 0;padding:0}
 .plan li{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:12px 0;border-top:2px solid var(--line);align-items:center}
 .plan .m{font-weight:700;color:var(--dark)}
-.plan .v{font-family:"Permanent Marker",cursive;font-size:1.5rem;color:var(--orange);text-align:right}
-.plan .t{grid-column:1 / -1;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange-text)}
+.plan .v{font-family:"Permanent Marker",cursive;font-size:1.5rem;color:var(--ocean);text-align:right}
+.plan .t{grid-column:1 / -1;font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ocean-text)}
 .plan .b{grid-column:1 / -1;height:8px;background:var(--line2);border-radius:4px;overflow:hidden}
-.plan .b i{display:block;height:100%;background:var(--orange);border-radius:4px}
+.plan .b i{display:block;height:100%;background:var(--ocean);border-radius:4px}
 .cta{position:relative;overflow:hidden;background:var(--black);color:#fff;border-radius:16px;padding:26px 22px;margin:22px 0 0}
-.cta::before{content:"";position:absolute;bottom:-90px;right:-70px;width:240px;height:240px;border:3px solid var(--orange);border-radius:50%;opacity:.16;pointer-events:none}
+.cta::before{content:"";position:absolute;bottom:-90px;right:-70px;width:240px;height:240px;border:3px solid var(--gold);border-radius:50%;opacity:.16;pointer-events:none}
 .cta>*{position:relative}
 .cta h3{color:#fff;font-size:1.6rem;margin-bottom:8px}
 .cta p{margin:0 0 16px;color:rgba(255,255,255,.88)}
@@ -160,7 +164,7 @@ input:focus,select:focus{border-color:var(--orange)}
 .cta .hint{color:rgba(255,255,255,.75);margin:12px 0 0}
 .disc{font-size:.9rem;color:var(--muted);margin:22px 0 0}
 footer{background:var(--black);color:rgba(255,255,255,.8);text-align:center;font-size:.9rem;line-height:1.8;padding:34px 22px calc(34px + env(safe-area-inset-bottom,0px))}
-footer a{color:var(--orange);font-weight:700;text-decoration:none}
+footer a{color:var(--gold);font-weight:700;text-decoration:none}
 footer p{margin:0 0 8px}
 @media (max-width:640px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:2px solid var(--line)}.row,.rhs{grid-template-columns:1fr}.screen{padding:26px 18px}.rh{padding:16px 8px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.btn:hover,.chip:hover,.rh:hover{transform:none}}
@@ -174,17 +178,17 @@ footer p{margin:0 0 8px}
   .app{padding:0}.wrap{padding:0;max-width:none}
   .screen{border:0;padding:0}
   .printonly h1{font-size:26pt;color:#000;margin:4pt 0}
-  .printonly .pk{font-size:9pt;letter-spacing:2px;text-transform:uppercase;color:#E04D00;font-weight:700;margin:0}
+  .printonly .pk{font-size:9pt;letter-spacing:2px;text-transform:uppercase;color:#1F5F8B;font-weight:700;margin:0}
   .hero-res{background:#fff!important;color:#000!important;border:3px solid #000;padding:14pt}
   .hero-res::before{display:none}
   .hero-res h2,.hero-res .of{color:#000!important}
-  .hero-res .eyebrow{color:#E04D00!important}
-  .hero-res .big{color:#E04D00!important;transform:none}
-  .box,.split div{background:#fff!important;border:1px solid #999;border-left:5px solid #E04D00}
+  .hero-res .eyebrow{color:#1F5F8B!important}
+  .hero-res .big{color:#1F5F8B!important;transform:none}
+  .box,.split div{background:#fff!important;border:1px solid #999;border-left:5px solid #1F5F8B}
   .stats{border:1px solid #000}
-  .stat b,.plan .v{color:#E04D00!important}
+  .stat b,.plan .v{color:#1F5F8B!important}
   .bar,.plan .b{border:1px solid #999;background:#fff!important}
-  .bar i,.plan .b i{background:#E04D00!important}
+  .bar i,.plan .b i{background:#1F5F8B!important}
   .plan li{break-inside:avoid}
   .pfoot{margin-top:18pt;font-size:9pt;color:#444;border-top:1px solid #999;padding-top:6pt}
 }
@@ -194,10 +198,10 @@ footer p{margin:0 0 8px}
 
 <header class="hero">
   <div class="wrap">
-    <h1>The Getaway Planner</h1>
-    <p class="brand">Brought to you by Elite Tripps™</p>
-    <p class="tag">Take your time. Take the trip.</p>
-    <p class="lede">Grown folks plan ahead. Tell me about the trip you have in mind, and I'll show you the runway. No rush, and no judgment.</p>
+    <h1>Grown Folks Getaway Planner</h1>
+    <p class="brand">Hosted by Elite Tripps™</p>
+    <p class="tag">Cruise together. Vacation your way.</p>
+    <p class="lede">Good trips start with a comfortable plan. Add your getaway costs and see what to set aside, at a pace that works for you.</p>
   </div>
   <svg class="wave" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true"><path style="fill:var(--cream)" d="M0,32 C240,64 480,0 720,26 C960,52 1200,6 1440,32 L1440,64 L0,64 Z"/></svg>
 </header>
@@ -233,7 +237,7 @@ footer p{margin:0 0 8px}
 
   <!-- 2: the extras -->
   <section class="screen" id="s2" hidden>
-    <h2 tabindex="-1">Now the fun extras</h2>
+    <h2 tabindex="-1">Let’s include the extras</h2>
     <p class="sub">Tap anything you'll spend on, then add your best guess. Skip whatever doesn't apply.</p>
     <div class="chips" id="chips"></div>
     <div class="amounts" id="amounts"></div>
@@ -257,24 +261,25 @@ footer p{margin:0 0 8px}
     <div class="field" id="f-travel"><label class="q" for="travelDate">When do you travel?</label>
       <span class="hint">The day you actually go.</span>
       <input type="date" id="travelDate"><p class="err">Please choose a date in the future.</p></div>
-    <div class="field" id="f-pay"><label class="q" for="payDate">When does your trip need to be paid off by?</label>
-      <span class="hint">Your final payment date. For a cruise, it's usually about four months before you sail. Not sure? Leave it blank and I'll estimate it.</span>
-      <input type="date" id="payDate"><p class="err" id="payErr">Please choose a future date.</p></div>
+    <div class="field" id="f-pay"><label class="q" for="payDate">When is your final payment due?</label>
+      <span class="hint">Use the deadline from your booking confirmation or travel provider. Payment deadlines vary by trip.</span>
+      <input type="date" id="payDate"><p class="err" id="payErr">Please choose a future date.</p>
+      <label class="choice" style="margin-top:10px"><input type="checkbox" id="payUnknown">I don’t know yet</label></div>
     <p class="formerr" id="s3err" role="alert" hidden></p>
     <div class="nav"><button type="button" class="btn btn-ghost" data-back="s2">Back</button><button type="button" class="btn" id="toRes">Show my plan</button></div>
   </section>
 
   <!-- 4: results -->
   <section class="screen" id="s4" hidden>
-    <h2 tabindex="-1" class="noprint" style="position:absolute;left:-9999px">Your results</h2>
-    <div class="printonly"><p class="pk">Grown Folks Getaway · Brought to you by Elite Tripps™</p><h1>The Getaway Planner</h1><p id="printDest" style="margin:0 0 12pt"></p></div>
+    <h2 tabindex="-1">Your getaway. Your savings plan.</h2>
+    <div class="printonly"><p class="pk">Hosted by Elite Tripps™</p><h1>Grown Folks Getaway Planner</h1><p id="printDest" style="margin:0 0 12pt"></p></div>
     <div id="resHead" aria-live="polite"></div>
     <div id="resBody"></div>
 
     <div class="comfort noprint" id="comfort">
-      <h3>Does that feel comfortable?</h3>
+      <h3>Does this amount work for you?</h3>
       <div class="cbtns"><button type="button" class="btn btn-sm" id="cYes">That works</button><button type="button" class="btn btn-sm btn-ghost" id="cNo">That's a stretch</button></div>
-      <div class="cmsg" id="cYesMsg" hidden><p><b>Wonderful.</b> You have a plan, and there's no rush. Unlock your printable plan below.</p></div>
+      <div class="cmsg" id="cYesMsg" hidden><p><b>Wonderful.</b> You have a plan, and there's no rush. Unlock your full savings roadmap below.</p></div>
       <div class="cmsg" id="cNoMsg" hidden>
         <p><b>That's completely normal.</b> You may need to cut back on a few things. Start with the extras that matter least, and keep the ones that make it feel like a vacation.</p>
         <div id="cList"></div>
@@ -284,28 +289,28 @@ footer p{margin:0 0 8px}
     </div>
 
     <div class="gate noprint" id="gate">
-      <h3>Want your printable plan?</h3>
-      <p style="margin:0 0 4px">See where you'll be each month, on one page you can print or save. Add your name and email to unlock it.</p>
+      <h3>Keep your getaway plan handy</h3>
+      <p style="margin:0 0 4px">Enter your name and email to unlock your full savings roadmap. Then print it or save it for later.</p>
       <div id="gatePreview"></div>
       <form id="gateForm" novalidate>
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <div class="field" id="f-name"><label class="q" for="gName">Your name</label><input type="text" id="gName" autocomplete="name"><p class="err">Please add your name.</p></div>
         <div class="field" id="f-email"><label class="q" for="gEmail">Your email</label><input type="email" id="gEmail" autocomplete="email"><p class="err">Please add a valid email.</p></div>
-        <button type="submit" class="btn btn-black" style="width:100%">Unlock my plan</button>
+        <button type="submit" class="btn btn-gold" style="width:100%">Show my full plan</button>
       </form>
       <p class="fine">I'll use this to follow up about your getaway.</p>
     </div>
 
     <div id="planBox" hidden></div>
-    <p class="disc">The Getaway Planner is a guide based on the numbers you enter. It isn't financial advice, and travel prices can change.</p>
+    <p class="disc">The Grown Folks Getaway Planner is a guide based on the numbers you enter. Suggested savings amounts are not scheduled payments or a provider-approved payment plan. It isn't financial advice, and travel prices can change.</p>
     <div class="nav noprint"><button type="button" class="btn btn-ghost" id="again">Change my numbers</button></div>
-    <p class="printonly pfoot">Grown Folks Getaway · Brought to you by Elite Tripps™ · www.elitetripps.com. A guide based on your numbers. Travel prices can change.</p>
+    <p class="printonly pfoot">Grown Folks Getaway Planner · Hosted by Elite Tripps™ · www.elitetripps.com. A guide based on your numbers. Suggested savings amounts are not scheduled payments or a provider-approved payment plan. Travel prices can change.</p>
   </section>
 </main>
 
 <footer>
   <p><a href="https://www.facebook.com/EliteTripps" target="_blank" rel="noopener">Follow Elite Tripps™ on Facebook</a></p>
-  <p>Grown Folks Getaway · Brought to you by Elite Tripps™</p>
+  <p>Grown Folks Getaway Planner · Hosted by Elite Tripps™</p>
 </footer>
 
 <script>
@@ -365,7 +370,18 @@ footer p{margin:0 0 8px}
     rhythm = b.dataset.rh; $$('.rh').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false')); $('#f-rh').classList.remove('bad');
   }));
 
+  // ---------- final payment: date or "I don't know yet" ----------
+  const payDateEl = $('#payDate'), payUnknownEl = $('#payUnknown');
+  if(payDateEl && payUnknownEl){
+    payUnknownEl.addEventListener('change', () => {
+      if(payUnknownEl.checked){ payDateEl.value = ''; payDateEl.disabled = true; bad('f-pay', false); }
+      else payDateEl.disabled = false;
+    });
+    payDateEl.addEventListener('input', () => { if(payDateEl.value && payUnknownEl.checked){ payUnknownEl.checked = false; payDateEl.disabled = false; } });
+  }
+
   // ---------- screens ----------
+  const UNKNOWN_MSG = 'This estimate spreads your savings until departure. Your provider may require payment earlier. Add your actual payment deadline to update your plan.';
   const SCREENS = ['s1','s2','s3','s4'];
   function show(id){
     SCREENS.forEach(s => $('#' + s).hidden = s !== id);
@@ -388,10 +404,12 @@ footer p{margin:0 0 8px}
     const now = today(), msgs = [], box = $('#s3err');
     const okRh = !!rhythm; bad('f-rh', !okRh);
     const tr = parseDate($('#travelDate').value); const okTr = !!(tr && tr > now); bad('f-travel', !okTr);
-    const pdv = val('payDate'), pd = parseDate(pdv); let okPay = true, payMsg = '';
-    if(pdv){
-      if(!(pd > now)){ okPay = false; payMsg = 'Please choose a future date.'; }
-      else if(okTr && pd > tr){ okPay = false; payMsg = 'Your trip should be paid off before you travel.'; }
+    const pu = $('#payUnknown'), unknown = !$('#payDate') || !!(pu && pu.checked);
+    const pdv = unknown ? '' : val('payDate'), pd = parseDate(pdv); let okPay = true, payMsg = '';
+    if(!unknown){
+      if(!pdv){ okPay = false; payMsg = 'Please add your final payment date, or choose I don’t know yet.'; }
+      else if(!(pd > now)){ okPay = false; payMsg = 'Please choose a future date.'; }
+      else if(okTr && pd > tr){ okPay = false; payMsg = 'Your final payment date can’t be after your travel date.'; }
     }
     const pe = $('#payErr'); if(pe && payMsg) pe.textContent = payMsg;
     bad('f-pay', !okPay);
@@ -426,13 +444,11 @@ footer p{margin:0 0 8px}
     const remaining = tripRemaining + extrasRemaining;
     const rh = rhythm, ppy = RH[rh].ppy, now = today();
     const travel = parseDate($('#travelDate').value);
-    let pay = parseDate(val('payDate')), assumed = false;
-    if(!pay){
-      const a = new Date(travel); a.setDate(a.getDate() - 120); a.setHours(23,59,59,0);
-      if(a > now){ pay = a; assumed = true; } else pay = travel;
-    }
+    const pu = $('#payUnknown'), unknown = !$('#payDate') || !!(pu && pu.checked);
+    let pay = unknown ? null : parseDate(val('payDate'));
+    if(!pay) pay = travel;
     const same = sameDay(pay, travel);
-    const c = {trip, extrasEarly:ex.early, extrasLate:ex.late, tripPart, extrasPart, total, dep, depAmt, saved, covered, tripRemaining, extrasRemaining, remaining, rh, ppy, travel, pay, assumed, same,
+    const c = {trip, extrasEarly:ex.early, extrasLate:ex.late, tripPart, extrasPart, total, dep, depAmt, saved, covered, tripRemaining, extrasRemaining, remaining, rh, ppy, travel, pay, unknown, same,
       depDue: dep === 'due' ? parseDate(val('depDate')) : null};
     c.nP = countPeriods(rh, pay); c.nT = countPeriods(rh, travel);
     c.lump = !same && c.nP < 1 && tripRemaining > 0;
@@ -459,35 +475,35 @@ footer p{margin:0 0 8px}
     const yourTrip = dest ? 'your ' + esc(dest) + ' getaway' : 'your getaway';
     let title = '', big = '', of = '', lines = [];
     if(c.remaining === 0){
-      title = "You're already covered."; of = 'Everything you listed is set aside. Book it, and enjoy the runway.';
+      title = "You're already covered."; of = 'Your savings goal is covered. Confirm current pricing and availability before booking.';
     } else if(!(c.nT >= 1)){
       title = "Let's talk."; of = "Your travel date is very close, so reach out and I'll help you find the best way forward.";
     } else if(c.same){
-      title = "Here's your number."; big = money(c.amt1); of = 'set aside ' + each + ' to have ' + yourTrip + ' covered by ' + fullDate(c.travel) + '.';
+      title = "Here's your number."; big = money(c.amt1); of = 'suggested savings ' + each + ' to have ' + yourTrip + ' covered by ' + fullDate(c.travel) + '.';
     } else if(c.tripRemaining === 0){
-      title = 'Your trip is covered. Now the fun part.'; big = money(c.amt2); of = 'set aside ' + each + ' for your extras, ready by ' + fullDate(c.travel) + '.';
+      title = 'Your trip balance is covered. Now the extras.'; big = money(c.amt2); of = 'suggested savings ' + each + ' for your extras, ready by ' + fullDate(c.travel) + '.';
     } else if(c.lump){
-      title = 'Your trip payment is coming up.'; big = money(c.tripRemaining); of = 'is due by ' + fullDate(c.pay) + (c.amt2 > 0 ? '. After that, set aside ' + money(c.amt2) + ' ' + each + ' for your extras, ready by ' + fullDate(c.travel) + '.' : '.');
+      title = 'Your payment deadline is close.'; big = money(c.tripRemaining); of = 'to have ready by ' + fullDate(c.pay) + (c.amt2 > 0 ? '. After that, a suggested ' + money(c.amt2) + ' ' + each + ' for your extras, ready by ' + fullDate(c.travel) + '.' : '.');
     } else {
-      title = "Here's your number."; big = money(c.amt1); of = 'set aside ' + each + ' right now.';
-      if(c.tripAmt > 0) lines.push('<div><b>Your trip:</b> ' + money(c.tripAmt) + ' ' + each + ', paid off by ' + fullDate(c.pay) + '.</div>');
-      if(c.extAmt > 0) lines.push('<div><b>Your extras:</b> ' + money(c.extAmt) + ' ' + each + ', ready by ' + fullDate(c.travel) + '.</div>');
+      title = "Here's your number."; big = money(c.amt1); of = 'suggested savings ' + each + ' right now.';
+      if(c.tripAmt > 0) lines.push('<div><b>Your trip balance:</b> a suggested ' + money(c.tripAmt) + ' ' + each + ', to be ready by ' + fullDate(c.pay) + '.</div>');
+      if(c.extAmt > 0) lines.push('<div><b>Your extras:</b> a suggested ' + money(c.extAmt) + ' ' + each + ', ready by ' + fullDate(c.travel) + '.</div>');
       lines.push(c.extAmt > 0
-        ? '<div><b>After ' + shortDate(c.pay) + ':</b> your trip is paid, and you only set aside ' + money(c.extAmt) + ' ' + each + ' until you go.</div>'
-        : '<div><b>After ' + shortDate(c.pay) + ':</b> your trip is paid, and you\'re done saving.</div>');
+        ? '<div><b>After ' + shortDate(c.pay) + ':</b> your trip balance is covered, and you only need a suggested ' + money(c.extAmt) + ' ' + each + ' for your extras until you go.</div>'
+        : '<div><b>After ' + shortDate(c.pay) + ':</b> your trip balance is covered, and your savings goal is done.</div>');
     }
-    $('#resHead').innerHTML = '<div class="hero-res"><p class="eyebrow">Your plan</p><h2>' + title + '</h2>' + (big ? '<p class="big">' + big + '</p>' : '') + '<p class="of">' + of + '</p></div>';
+    $('#resHead').innerHTML = '<div class="hero-res"><p class="eyebrow">Suggested savings</p><h2>' + title + '</h2>' + (big ? '<p class="big">' + big + '</p>' : '') + '<p class="of">' + of + '</p></div>';
 
     let body = '';
     if(lines.length) body += '<div class="split">' + lines.join('') + '</div>';
-    if(c.assumed && c.remaining > 0) body += '<div class="box">I estimated your trip is due about four months before you travel, on ' + fullDate(c.pay) + '. If yours is different, tap Change my numbers and add it.</div>';
+    if(c.unknown) body += '<div class="box">' + UNKNOWN_MSG + '</div>';
     if(c.dep === 'due' && c.depAmt > 0) body += '<div class="box">Your deposit of ' + money(c.depAmt) + ' is due' + (c.depDue ? ' by ' + fullDate(c.depDue) : ' soon') + '. Make that the first thing you set aside.</div>';
     if(c.remaining > 0 && c.nT >= 1 && !c.lump){
       const parts = []; if(c.alts['Weekly']) parts.push(money(c.alts['Weekly']) + ' a week'); if(c.alts['Every two weeks']) parts.push(money(c.alts['Every two weeks']) + ' every two weeks'); if(c.alts['Monthly']) parts.push(money(c.alts['Monthly']) + ' a month');
-      if(parts.length) body += '<div class="box">Same goal, your rhythm: ' + parts.join(', or ') + (c.same ? '.' : ' right now.') + '</div>';
+      if(parts.length) body += '<div class="box">Suggested savings in each rhythm: ' + parts.join(', or ') + (c.same ? '.' : ' right now.') + '</div>';
     }
     const pct = c.total > 0 ? Math.min(100, Math.round(c.covered / c.total * 100)) : 0;
-    body += '<div class="stats"><div class="stat"><span>Your getaway</span><b>' + money(c.total) + '</b></div><div class="stat"><span>Already set aside</span><b>' + money(c.covered) + '</b></div><div class="stat"><span>Still to save</span><b>' + money(c.remaining) + '</b></div><div class="stat"><span>' + (c.same ? 'You travel' : 'Trip is due') + '</span><b>' + shortDate(c.pay) + '</b></div></div>';
+    body += '<div class="stats"><div class="stat"><span>Your getaway</span><b>' + money(c.total) + '</b></div><div class="stat"><span>Already set aside</span><b>' + money(c.covered) + '</b></div><div class="stat"><span>Still to save</span><b>' + money(c.remaining) + '</b></div><div class="stat"><span>' + (c.same ? 'You travel' : 'Final payment due') + '</span><b>' + shortDate(c.pay) + '</b></div></div>';
     body += '<div class="bar" role="img" aria-label="' + pct + ' percent covered"><i style="width:' + pct + '%"></i></div><p class="barlbl">' + pct + '% covered so far</p>';
     if(c.remaining > 0){
       body += '<div class="try noprint"><h3>Have a different amount in mind?</h3><p class="sub" style="margin:0 0 10px">Enter what you\'d like to set aside ' + each + ', and see when you\'d be ready.</p><div class="money"><span>$</span><input type="text" id="tryAmt" inputmode="decimal" placeholder="0" aria-label="Amount to set aside"></div><p class="tryout" id="tryOut" aria-live="polite"></p></div>';
@@ -504,8 +520,9 @@ footer p{margin:0 0 8px}
     if(x <= 0){ out.textContent = ''; return; }
     if(c.tripRemaining > 0){
       const tp = Math.ceil(c.tripRemaining / x), tpd = addPeriods(today(), c.rh, tp);
-      if(tpd <= c.pay) parts.push('At ' + money(x) + ' ' + each + ', your trip is paid by ' + fullDate(tpd) + ', in time for ' + fullDate(c.pay) + '.');
-      else parts.push('At ' + money(x) + ' ' + each + ', your trip would be paid by ' + fullDate(tpd) + ', after ' + fullDate(c.pay) + '.' + (c.nP >= 1 ? ' To make that date, set aside about ' + money(Math.ceil(c.tripRemaining / c.nP)) + ' ' + each + ' for the trip.' : ''));
+      const dl = c.unknown ? 'your travel date, ' + fullDate(c.pay) : fullDate(c.pay);
+      if(tpd <= c.pay) parts.push('At ' + money(x) + ' ' + each + ', your trip balance would be covered by ' + fullDate(tpd) + ', in time for ' + dl + '.');
+      else parts.push('At ' + money(x) + ' ' + each + ', your trip balance would be covered by ' + fullDate(tpd) + ', after ' + dl + '.' + (c.nP >= 1 ? ' To make that date, a suggested ' + money(Math.ceil(c.tripRemaining / c.nP)) + ' ' + each + ' toward the trip would do it.' : ''));
     }
     const rd = addPeriods(today(), c.rh, Math.ceil(c.remaining / x));
     parts.push('Everything, extras included, would be ready by ' + fullDate(rd) + (rd > c.travel ? ', which is after you travel.' : '.'));
@@ -544,7 +561,7 @@ footer p{margin:0 0 8px}
     const evs = [];
     for(let i = 1; i <= 60; i++){ const d = addPeriods(now, 'Monthly', i); if(d >= c.travel) break; evs.push({d, label: monthYear(d)}); }
     const specials = [];
-    if(!c.same && c.tripRemaining > 0) specials.push({d:c.pay, label:fullDate(c.pay), tag:'Your trip is paid in full ✨', special:true});
+    if(!c.same && c.tripRemaining > 0) specials.push({d:c.pay, label:fullDate(c.pay), tag:'Your trip balance is covered ✨', special:true});
     specials.push({d:c.travel, label:fullDate(c.travel), tag:"You're ready. Pack your bags.", special:true, last:true});
     const keep = evs.filter(e => !specials.some(sp => Math.abs(sp.d - e.d) < 10 * DAY));
     const all = keep.concat(specials).sort((a, b) => a.d - b.d);
@@ -557,9 +574,9 @@ footer p{margin:0 0 8px}
       if(!e.special) tags.forEach(t => { if(pc >= t[0] && !hit.has(t[0])){ hit.add(t[0]); tag = t[1]; } });
       rows.push('<li><span class="m">' + e.label + '</span><span class="v">' + money(cum) + '</span><span class="b"><i style="width:' + Math.min(100, pc) + '%"></i></span>' + (tag ? '<span class="t">' + tag + '</span>' : '') + '</li>');
     });
-    const sub = c.same ? 'Saving about ' + money(r1) + ' a month.'
-      : (c.lump ? 'Your trip payment is due ' + fullDate(c.pay) + ', then about ' + money(r2) + ' a month for your extras.'
-        : 'Saving about ' + money(r1) + ' a month until ' + shortDate(c.pay) + (r2 > 0 ? ', then about ' + money(r2) + ' a month until you go.' : '.'));
+    const sub = c.same ? 'Suggested savings of about ' + money(r1) + ' a month.'
+      : (c.lump ? 'Your trip balance is needed by ' + fullDate(c.pay) + ', then suggested savings of about ' + money(r2) + ' a month for your extras.'
+        : 'Suggested savings of about ' + money(r1) + ' a month until ' + shortDate(c.pay) + (r2 > 0 ? ', then about ' + money(r2) + ' a month until you go.' : '.'));
     return {rows, sub};
   }
   function previewHtml(c){
@@ -569,10 +586,10 @@ footer p{margin:0 0 8px}
   const PRINT_HINT = 'On your phone, tap Share or Print, then choose Save as PDF.';
   function buildPlan(c){
     const p = planParts(c);
-    return '<div class="planhead"><h3>Your month-by-month plan</h3><p class="sub" style="margin:0 0 12px">' + p.sub + ' Here\'s the runway.</p>' +
+    return '<div class="planhead"><h3>Your month-by-month plan</h3><p class="sub" style="margin:0 0 12px">' + p.sub + ' Here\'s the runway.</p>' + (c.unknown ? '<div class="box noprint">' + UNKNOWN_MSG + '</div>' : '') +
       '<div class="noprint"><button type="button" class="btn btn-sm" data-print>Print or save my plan</button><p class="hint" style="margin:8px 0 0">' + PRINT_HINT + '</p></div></div>' +
       '<ol class="plan">' + p.rows.join('') + '</ol>' +
-      '<div class="cta noprint"><h3>Ready to find the trip that fits your number?</h3><p>Let\'s talk. I plan trips for grown folks who like to do it right.</p><div class="actions"><a class="btn" href="https://www.elitetripps.com" target="_blank" rel="noopener">Talk to Sabrina</a><button type="button" class="btn btn-ghost" data-print>Print or save my plan</button></div><p class="hint">' + PRINT_HINT + '</p></div>';
+      '<div class="cta noprint"><h3>Ready for your next Grown Folks Getaway?</h3><p>Explore curated getaways with comfort, good company, and room to do your own thing.</p><div class="actions"><a class="btn btn-gold" href="https://www.elitetripps.com/" target="_blank" rel="noopener">Explore Grown Folks Getaways</a><button type="button" class="btn btn-ghost" data-print>Print or save my plan</button></div><p class="hint">' + PRINT_HINT + '</p></div>';
   }
   function unlock(){
     $('#gate').hidden = true;
@@ -590,7 +607,7 @@ footer p{margin:0 0 8px}
     if(!okN){ $('#gName').focus(); return; } if(!okE){ $('#gEmail').focus(); return; }
     const c = window._plan, btn = $('#gateForm button'); btn.disabled = true; btn.textContent = 'One moment...';
     const data = new FormData();
-    data.set('_subject', 'New Getaway Planner lead | Grown Folks Getaway');
+    data.set('_subject', 'New Grown Folks Getaway Planner lead | Hosted by Elite Tripps™');
     data.set('_replyto', email); data.set('Name', name); data.set('Email', email);
     if($('#dest')) data.set('Destination', val('dest').trim() || 'Not shared');
     data.set('Trip Cost', String(c.trip)); data.set('Extras Total', String(c.extrasEarly + c.extrasLate)); data.set('Total Getaway Cost', String(c.total));
@@ -599,14 +616,14 @@ footer p{margin:0 0 8px}
     data.set('Deposit Status', c.dep === 'none' ? 'No deposit yet' : c.dep === 'due' ? 'Deposit still due' : 'Deposit already paid');
     data.set('Deposit Amount', String(c.depAmt)); data.set('Deposit Due Date', c.depDue ? fullDate(c.depDue) : 'Not entered');
     data.set('Saving Rhythm', c.rh);
-    data.set('Travel Date', fullDate(c.travel)); data.set('Trip Paid Off By', fullDate(c.pay)); data.set('Pay-Off Date Estimated', c.assumed ? 'Yes' : 'No');
+    data.set('Travel Date', fullDate(c.travel)); data.set('Trip Paid Off By', c.unknown ? 'Not provided (estimate runs through travel date)' : fullDate(c.pay)); data.set('Pay-Off Date Estimated', c.unknown ? 'Yes' : 'No');
     data.set('Amount Per Period Until Trip Is Due', c.amt1 ? String(c.amt1) : ''); data.set('Amount Per Period After Trip Is Due', c.amt2 ? String(c.amt2) : '');
     data.set('Felt Comfortable', $('#cNoMsg').hidden ? ($('#cYesMsg').hidden ? 'Not answered' : 'Yes') : 'Said it was a stretch');
     try{
       const res = await fetch(FORM_URL, {method:'POST', body:data, headers:{'Accept':'application/json'}});
       if(!res.ok) throw new Error('Formspree error');
     }catch(err){
-      btn.disabled = false; btn.textContent = 'Unlock my plan';
+      btn.disabled = false; btn.textContent = 'Show my full plan';
       alert('Something went wrong. Please try again in a moment.'); return;
     }
     unlock();
