@@ -697,20 +697,19 @@
   height: 18px;
   fill: #fff;
 }
- /* Upcoming Trips */
-.trips-grid { display: grid; gap: var(--space-6); margin-top: var(--space-10); max-width: 620px; margin-inline: auto; }
-.trip-card { background: var(--color-surface-2); border: 1px solid var(--color-gold-border); border-radius: var(--radius-xl); padding: clamp(var(--space-8), 4vw, var(--space-12)); text-align: center; }
-.trip-card__tag { font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-gold); margin-bottom: var(--space-3); }
-.trip-card__title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; color: var(--color-text-navy); margin-bottom: var(--space-3); }
-.trip-card__details { font-size: var(--text-sm); color: var(--color-text-muted); letter-spacing: 0.04em; }
-.trip-card__tagline { font-family: var(--font-display); font-style: italic; font-size: var(--text-lg); color: var(--color-text-navy); margin-top: var(--space-5); }
-.trip-card__note { font-size: var(--text-xs); font-style: italic; color: var(--color-text-faint); margin-top: var(--space-2); }
-.trip-card__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; margin-top: var(--space-8); }
-.btn-outline-navy { display: inline-block; border: 1px solid var(--color-navy); color: var(--color-navy); font-size: var(--text-sm); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: var(--space-4) var(--space-10); border-radius: var(--radius-sm); }
-.btn-outline-navy:hover { background: var(--color-navy); color: var(--color-text-inverse); }
-.trip-card__planner { display: inline-block; margin-top: var(--space-6); font-size: var(--text-sm); color: var(--color-text-muted); text-decoration: none; border-bottom: 1px solid var(--color-gold-border); }
-.trip-card__planner:hover { color: var(--color-gold); }
 
+    /* Upcoming Trips */
+    .trips-grid { display: grid; gap: var(--space-6); margin-top: var(--space-10); max-width: 620px; margin-inline: auto; }
+    .trip-card { background: var(--color-surface-2); border: 1px solid var(--color-gold-border); border-radius: var(--radius-xl); padding: clamp(var(--space-8), 4vw, var(--space-12)); text-align: center; }
+    .trip-card__tag { font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-gold); margin-bottom: var(--space-3); }
+    .trip-card__title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; color: var(--color-text-navy); margin-bottom: var(--space-3); }
+    .trip-card__details { font-size: var(--text-sm); color: var(--color-text-muted); letter-spacing: 0.04em; }
+    .trip-card__tagline { font-family: var(--font-display); font-style: italic; font-size: var(--text-lg); color: var(--color-text-navy); margin-top: var(--space-5); }
+    .trip-card__note { font-size: var(--text-xs); font-style: italic; color: var(--color-text-faint); margin-top: var(--space-2); }
+    .trip-card__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; margin-top: var(--space-8); }
+    .btn-disabled { display: inline-block; border: 1px dashed var(--color-gold-border); color: var(--color-text-faint); font-size: var(--text-sm); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: var(--space-4) var(--space-10); border-radius: var(--radius-sm); cursor: not-allowed; }
+    .trip-card__planner { display: inline-block; margin-top: var(--space-6); font-size: var(--text-sm); color: var(--color-text-muted); text-decoration: none; border-bottom: 1px solid var(--color-gold-border); }
+    .trip-card__planner:hover { color: var(--color-gold); }
   </style>
 </head>
 <body>
@@ -728,28 +727,6 @@
   </header>
 
   <main id="main-content">
-    <section class="section section--ivory" id="upcoming-trips" aria-labelledby="trips-heading">
-  <div class="container">
-    <p class="section-label reveal" style="text-align:center;">Upcoming Group Trips</p>
-    <h2 class="section__heading section__heading--center reveal" id="trips-heading">Trips you can join</h2>
-    <div class="gold-rule gold-rule--center reveal"></div>
-    <div class="trips-grid">
-      <article class="trip-card reveal">
-        <p class="trip-card__tag">Grown Folks Getaway</p>
-        <h3 class="trip-card__title">New Year's at Sea</h3>
-        <p class="trip-card__details">Virgin Voyages · Dec 26, 2027 to Jan 2, 2028 · Departs San Juan</p>
-        <p class="trip-card__tagline">Cruise together. Vacation your way.</p>
-        <p class="trip-card__note">Flights are booked on your own.</p>
-        <div class="trip-card__actions">
-          <a href="https://www.elitetripps.com/grown-folks-new-years-2028.html" class="btn-gold">Join the Interest List</a>
-          <a href="https://www.elitetripps.com/grown-folks-new-years-2028-booking.html" class="btn-outline-navy">Ready to Book</a>
-        </div>
-        <a href="https://www.elitetripps.com/the-getaway-planner.html" class="trip-card__planner">Plan your savings with the Getaway Planner</a>
-      </article>
-    </div>
-  </div>
-</section>
-
     <section class="hero" aria-labelledby="hero-heading">
       <div class="container">
         <p class="hero__label">Your journey begins here</p>
@@ -762,6 +739,29 @@
         </p>
         <div class="hero__cta-wrap">
           <a href="#inquiry-form" class="btn-gold">Let's get you booked</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPCOMING TRIPS -->
+    <section class="section section--ivory" id="upcoming-trips" aria-labelledby="trips-heading">
+      <div class="container">
+        <p class="section-label reveal" style="text-align:center;">Upcoming Group Trips</p>
+        <h2 class="section__heading section__heading--center reveal" id="trips-heading">Trips you can join</h2>
+        <div class="gold-rule gold-rule--center reveal"></div>
+        <div class="trips-grid">
+          <article class="trip-card reveal">
+            <p class="trip-card__tag">Grown Folks Getaway</p>
+            <h3 class="trip-card__title">New Year's at Sea</h3>
+            <p class="trip-card__details">Virgin Voyages · Dec 26, 2027 to Jan 2, 2028 · Departs San Juan</p>
+            <p class="trip-card__tagline">Cruise together. Vacation your way.</p>
+            <p class="trip-card__note">Flights are booked on your own.</p>
+            <div class="trip-card__actions">
+              <a href="https://www.elitetripps.com/grown-folks-new-years-2028.html" class="btn-gold">Join the Interest List</a>
+              <span class="btn-disabled" aria-disabled="true">Booking Opens Oct 9</span>
+            </div>
+            <a href="https://www.elitetripps.com/the-getaway-planner.html" class="trip-card__planner">Plan your savings with the Getaway Planner</a>
+          </article>
         </div>
       </div>
     </section>
