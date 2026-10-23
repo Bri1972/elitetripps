@@ -112,6 +112,7 @@ section .intro{color:var(--muted);margin:0 0 28px;max-width:38em}
 .cabins.three{grid-template-columns:repeat(3,1fr)}
 .cabins.four{grid-template-columns:repeat(2,1fr)}
 .choice:has(input:disabled){opacity:.45}
+.cabin .dep-note{font-size:.86rem;line-height:1.5;color:var(--body);margin:-6px 0 18px}
 .cabin .per.fine{font-size:.8rem;margin:-6px 0 14px}
 @media (min-width:761px){.cabins.four .blurb{min-height:calc(4 * 1.6em)}}
 .cabin{background:#fff;border:1px solid var(--line-light);border-top:4px solid var(--burgundy);padding:22px 20px;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
@@ -353,9 +354,10 @@ footer p{margin:0 0 10px}
         <p class="per">per person, based on two travelers sharing a cabin. Taxes and fees included.</p>
         <dl>
           <div><dt>Total per cabin</dt><dd>$4,900</dd></div>
-          <div><dt>Deposit</dt><dd>$925 per cabin</dd></div>
-          <div><dt>Deposit per person</dt><dd>$462.50</dd></div>
+          <div><dt>Total cabin deposit</dt><dd>$925</dd></div>
+          <div><dt>Per-person share</dt><dd>$462.50</dd></div>
         </dl>
+        <p class="dep-note">Both travelers' deposit shares must be paid within 24 hours of receiving the payment link. The full cabin deposit is required to secure the reservation. Paying only one person's share does not secure the cabin.</p>
         <button type="button" class="btn btn-sm pick" data-cabin="Sea Terrace balcony" data-sailors="2">Book this cabin</button>
       </div>
       <div class="cabin">
@@ -367,9 +369,10 @@ footer p{margin:0 0 10px}
         <p class="per">per person, based on two travelers sharing a cabin. Taxes and fees included.</p>
         <dl>
           <div><dt>Total per cabin</dt><dd>$5,040</dd></div>
-          <div><dt>Deposit</dt><dd>$950 per cabin</dd></div>
-          <div><dt>Deposit per person</dt><dd>$475</dd></div>
+          <div><dt>Total cabin deposit</dt><dd>$950</dd></div>
+          <div><dt>Per-person share</dt><dd>$475</dd></div>
         </dl>
+        <p class="dep-note">Both travelers' deposit shares must be paid within 24 hours of receiving the payment link. The full cabin deposit is required to secure the reservation. Paying only one person's share does not secure the cabin.</p>
         <button type="button" class="btn btn-sm pick" data-cabin="Central Sea Terrace balcony" data-sailors="2">Book this cabin</button>
       </div>
     </div>
@@ -841,6 +844,7 @@ footer p{margin:0 0 10px}
   const END = new Date(2027, 7, 15, 23, 59, 59);
   const NAMES = {'Sea Terrace balcony':'The Sea Terrace','Central Sea Terrace balcony':'Central Sea Terrace','Sea View':'The Sea View','Insider':'The Insider','Solo Insider':'Solo Insider'};
   const nm = t => NAMES[t] || t;
+  const DEPNOTE = "Both travelers' deposit shares must be paid within 24 hours of receiving the payment link. The full cabin deposit is required to secure the reservation. Paying only one person's share does not secure the cabin.";
   const CENTRAL_SOLO = 'Central Sea Terrace is booked for two. For one traveler, choose The Sea Terrace, or I can help you find a cabin mate.';
   function priceFor(type, sailors){
     if(sailors === 2){
@@ -895,6 +899,7 @@ footer p{margin:0 0 10px}
     if(sailors === 2){
       rows += '<li><span>Cabin total</span><b>' + money(p.total) + '</b></li>';
       rows += '<li><span>Total per person</span><b>' + money(totalPP) + '</b></li>';
+      rows += '<li><span>Total cabin deposit</span><b>' + money(p.dep) + '</b></li>';
       rows += '<li><span>Deposit per person</span><b>' + money(depPP) + '</b></li>';
     } else {
       rows += '<li><span>Your total</span><b>' + money(totalPP) + '</b></li>';
@@ -903,7 +908,7 @@ footer p{margin:0 0 10px}
     rows += '<li><span>Left after deposit</span><b>' + money(restPP) + '</b></li>';
     if(count) rows += '<li><span>' + ({Weekly:'Weeks to save','Every two weeks':'Saving periods',Monthly:'Months to save'}[rhythm]) + '</span><b>' + count + '</b></li>';
     rows += '<li><span>Final payment date</span><b>Aug 15, 2027</b></li>';
-    out.innerHTML = '<div class="pres stripes"><p class="lbl">Your plan</p><p class="big">' + big + '</p><p class="of">' + label + '</p><ul>' + rows + '</ul>' + cta + '</div>';
+    out.innerHTML = '<div class="pres stripes"><p class="lbl">Your plan</p><p class="big">' + big + '</p><p class="of">' + label + '</p><ul>' + rows + '</ul>' + (sailors === 2 ? '<p class="of" style="font-size:.86rem;margin:12px 0 0">' + DEPNOTE + '</p>' : '') + cta + '</div>';
     wireGo();
   }
   function wireGo(){ const g = $('#pGo'); if(g) g.addEventListener('click', syncFromPlanner); }
@@ -962,7 +967,7 @@ footer p{margin:0 0 10px}
       else {
         const p = priceFor(type, +sailors);
         if(!p) txt = "I'll confirm pricing for this cabin with you.";
-        else if(sailors === '2') txt = nm(type) + ', two of us: ' + money(p.total) + ' per cabin. Deposit: ' + money(p.dep) + ' per cabin (' + money(p.dep / 2) + ' per person).';
+        else if(sailors === '2') txt = nm(type) + ', two of us: ' + money(p.total) + ' per cabin. Total cabin deposit: ' + money(p.dep) + ' (' + money(p.dep / 2) + ' per person). ' + DEPNOTE;
         else if(type === 'Solo Insider') txt = 'Solo Insider, one traveler. Essential Fare, taxes and fees included: ' + money(p.total) + '. Your deposit: ' + money(p.dep) + ', due within 24 hours of receiving your payment link. Remaining balance: ' + money(p.total - p.dep) + ' by August 15, 2027. Price subject to availability and change.';
         else txt = nm(type) + ', just you. Total: ' + money(p.total) + '. Your deposit: ' + money(p.dep) + '.';
       }
