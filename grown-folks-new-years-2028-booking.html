@@ -112,6 +112,8 @@ section .intro{color:var(--muted);margin:0 0 28px;max-width:38em}
 .cabins.three{grid-template-columns:repeat(3,1fr)}
 .cabins.four{grid-template-columns:repeat(2,1fr)}
 .choice:has(input:disabled){opacity:.45}
+.cabin .per.fine{font-size:.8rem;margin:-6px 0 14px}
+@media (min-width:761px){.cabins.four .blurb{min-height:calc(4 * 1.6em)}}
 .cabin{background:#fff;border:1px solid var(--line-light);border-top:4px solid var(--burgundy);padding:22px 20px;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
 .cabin:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(230,136,199,.28)}
 .cabin h4{font-size:1.3rem;color:var(--burgundy)}
@@ -374,43 +376,50 @@ footer p{margin:0 0 10px}
 
     <h3 class="sub-h">Traveling on your own?</h3>
     <p class="intro" style="margin-bottom:16px">One traveler in the cabin.</p>
+    <div class="note-box" style="margin-bottom:22px"><b>Traveling solo? Don't wait too long to choose your cabin.</b> Dedicated solo cabins are limited and often sell out early. If having your own space matters to you, I recommend submitting your booking request early.</div>
     <div class="cabins four">
       <div class="cabin">
         <div class="ph" role="group" aria-label="Photos of The Sea Terrace"><img class="on" src="gfg-ny28-sea-terrace-balcony.jpg" alt="A Sea Terrace balcony with two chairs and a red hammock overlooking the ocean" loading="lazy" decoding="async"><img data-src="gfg-ny28-sea-terrace-bedroom.jpg" alt="A Sea Terrace cabin with a large bed and a balcony door" decoding="async"><img data-src="gfg-ny28-sea-terrace-bathroom.jpg" alt="A cabin bathroom with a vanity and a shower" decoding="async"><div class="dots"></div></div>
         <h4>The Sea Terrace</h4>
         <p class="tag">Balcony · Just me</p>
+        <p class="blurb">Your own balcony cabin. Most Sea Terrace balconies come with Virgin's signature red hammock.</p>
         <div class="price">$4,733</div>
-        <p class="per">your total</p>
-        <dl><div><dt>Your deposit</dt><dd>$915</dd></div></dl>
+        <p class="per">Essential Fare, total with taxes and fees</p>
+        <dl><div><dt>Your deposit</dt><dd>$915</dd></div><div><dt>Due</dt><dd>Within 24 hours of receiving your payment link</dd></div><div><dt>Remaining balance</dt><dd>$3,818</dd></div><div><dt>Final payment</dt><dd>August 15, 2027</dd></div></dl>
+        <p class="per fine">Price subject to availability and change.</p>
         <button type="button" class="btn btn-sm pick" data-cabin="Sea Terrace balcony" data-sailors="1">Book this cabin</button>
       </div>
       <div class="cabin">
         <div class="ph" role="group" aria-label="Photos of The Sea View"><img class="on" src="gfg-ny28-sea-view-1.jpg" alt="The Sea View cabin with a large bed and a round window" loading="lazy" decoding="async"><img data-src="gfg-ny28-sea-view-2.jpg" alt="The Sea View cabin seen from the doorway, with a round window in the background" decoding="async"><div class="dots"></div></div>
         <h4>The Sea View</h4>
         <p class="tag">Window · Just me</p>
+        <p class="blurb">A cozy cabin with a round window to the sea, priced for one traveler.</p>
         <div class="price">$4,313</div>
-        <p class="per">your total</p>
-        <dl><div><dt>Your deposit</dt><dd>$830</dd></div></dl>
+        <p class="per">Essential Fare, total with taxes and fees</p>
+        <dl><div><dt>Your deposit</dt><dd>$830</dd></div><div><dt>Due</dt><dd>Within 24 hours of receiving your payment link</dd></div><div><dt>Remaining balance</dt><dd>$3,483</dd></div><div><dt>Final payment</dt><dd>August 15, 2027</dd></div></dl>
+        <p class="per fine">Price subject to availability and change.</p>
         <button type="button" class="btn btn-sm pick" data-cabin="Sea View" data-sailors="1">Book this cabin</button>
       </div>
       <div class="cabin">
-        <div class="ph single" role="group" aria-label="Photo of The Insider"><img class="on" src="gfg-ny28-insider-solo.jpg" alt="The Insider solo cabin with a single bed, a vanity, and a mirror" loading="lazy" decoding="async"><div class="dots"></div></div>
+        <div class="ph single" role="group" aria-label="Photo of The Insider"><img class="on" src="gfg-ny28-insider.jpg" alt="The Insider interior cabin with a large bed, a vanity with a round mirror, and a view down the cabin" loading="lazy" decoding="async"><div class="dots"></div></div>
         <h4>The Insider</h4>
         <p class="tag">No window · Just me</p>
+        <p class="blurb">A regular interior cabin priced for one traveler. A roomier layout and a larger bed than the Solo Insider.</p>
         <div class="price">$3,612</div>
-        <p class="per">your total</p>
-        <dl><div><dt>Your deposit</dt><dd>$689</dd></div></dl>
+        <p class="per">Essential Fare, total with taxes and fees</p>
+        <dl><div><dt>Your deposit</dt><dd>$689</dd></div><div><dt>Due</dt><dd>Within 24 hours of receiving your payment link</dd></div><div><dt>Remaining balance</dt><dd>$2,923</dd></div><div><dt>Final payment</dt><dd>August 15, 2027</dd></div></dl>
+        <p class="per fine">Price subject to availability and change.</p>
         <button type="button" class="btn btn-sm pick" data-cabin="Insider" data-sailors="1">Book this cabin</button>
       </div>
       <div class="cabin">
         <div class="ph single" role="group" aria-label="Photo of The Solo Insider"><img class="on" src="gfg-ny28-insider-solo.jpg" alt="The Solo Insider cabin with a single bed, a vanity, and a mirror" loading="lazy" decoding="async"><div class="dots"></div></div>
         <h4>Solo Insider</h4>
         <p class="tag">One traveler per cabin</p>
-        <p class="blurb">Interior cabin, no window.</p>
+        <p class="blurb">A compact, cocoon-like interior cabin with no window, designed just for one traveler. Dedicated solo cabins are limited and often sell out early.</p>
         <div class="price">$2,170</div>
         <p class="per">Essential Fare, total with taxes and fees</p>
         <dl><div><dt>Your deposit</dt><dd>$425</dd></div><div><dt>Due</dt><dd>Within 24 hours of receiving your payment link</dd></div><div><dt>Remaining balance</dt><dd>$1,745</dd></div><div><dt>Final payment</dt><dd>August 15, 2027</dd></div></dl>
-        <p class="per" style="margin:-6px 0 14px;font-size:.82rem">Price subject to availability and change.</p>
+        <p class="per fine">Price subject to availability and change.</p>
         <button type="button" class="btn btn-sm pick" data-cabin="Solo Insider" data-sailors="1">Book this cabin</button>
       </div>
     </div>
@@ -740,7 +749,7 @@ footer p{margin:0 0 10px}
 <section class="cream refer" id="refer">
   <div class="wrap">
     <h2>Know someone who'd love this sailing?</h2>
-    <p class="intro">Your best travel buddy. Your sister. The friend who's always saying "we need a trip." Send them the interest list so they're first to know.</p>
+    <p class="intro">Your best travel buddy. Your sister. The friend who's always saying "we need a trip." Send them this page.</p>
     <p class="intro">Grown folks trips are better with good people. If someone you share this with books, I'll make sure you're thanked. 🥂</p>
     <div class="share-btns"></div>
     <p class="copied" role="status" aria-live="polite"></p>
@@ -1023,8 +1032,8 @@ footer p{margin:0 0 10px}
   form.addEventListener('input', clear); form.addEventListener('change', clear);
 
   // Share buttons
-  const pageUrl = 'https://www.elitetripps.com/grown-folks-new-years-2028.html';
-  const shareMsg = "Grown Folks Getaway: a 7-night adults-only New Year's cruise out of San Juan. Christmas night in Puerto Rico, New Year's on the water. Join the interest list:";
+  const pageUrl = location.href.split('#')[0];
+  const shareMsg = "Grown Folks Getaway: a 7-night adults-only New Year's cruise out of San Juan. Christmas night in Puerto Rico, New Year's on the water. Take a look:";
   $$('.share-btns').forEach(box => {
     const items = [];
     if(navigator.share) items.push(['Share this page', () => navigator.share({title:'Grown Folks Getaway', text:shareMsg, url:pageUrl}).catch(() => {})]);
