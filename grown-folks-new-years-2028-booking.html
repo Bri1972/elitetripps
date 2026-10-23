@@ -110,6 +110,8 @@ section .intro{color:var(--muted);margin:0 0 28px;max-width:38em}
 /* CABINS */
 .cabins{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:0 0 34px}
 .cabins.three{grid-template-columns:repeat(3,1fr)}
+.cabins.four{grid-template-columns:repeat(2,1fr)}
+.choice:has(input:disabled){opacity:.45}
 .cabin{background:#fff;border:1px solid var(--line-light);border-top:4px solid var(--burgundy);padding:22px 20px;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
 .cabin:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(230,136,199,.28)}
 .cabin h4{font-size:1.3rem;color:var(--burgundy)}
@@ -235,7 +237,7 @@ footer p{margin:0 0 10px}
 .follow{display:inline-block;font-weight:700;letter-spacing:2px;color:var(--black);background:var(--gold);text-decoration:none;padding:14px 24px;margin:0 6px 22px;transition:all .25s ease}
 .follow:hover{background:#fff;transform:translateY(-2px)}
 
-@media (max-width:760px){.cabins,.cabins.three,.pctl,.row,.facts,.choices.two{grid-template-columns:1fr}.form-card{padding:26px 18px}.flutes{width:72px}.countdown{gap:12px}}
+@media (max-width:760px){.cabins,.cabins.three,.cabins.four,.pctl,.row,.facts,.choices.two{grid-template-columns:1fr}.form-card{padding:26px 18px}.flutes{width:72px}.countdown{gap:12px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
@@ -335,7 +337,7 @@ footer p{margin:0 0 10px}
     <div class="star-rule"><svg viewBox="-10 -10 20 20" aria-hidden="true"><path d="M0,-9 Q1.2,-1.2 9,0 Q1.2,1.2 0,9 Q-1.2,1.2 -9,0 Q-1.2,-1.2 0,-9Z" fill="currentColor"/></svg></div>
     <h2>Choose your cabin</h2>
     <p class="intro">Prices are total cabin prices in USD. Your deposit holds your cabin, and your final payment is due August 15, 2027.</p>
-    <div class="note-box" style="margin-bottom:26px"><b>Rates are held for a limited number of cabins.</b> If they sell out, prices can go up. Once you say yes, your cabin is held for 24 hours. Pay your deposit in that window to lock in today's rate.</div>
+    <div class="note-box" style="margin-bottom:26px"><b>Rates are held for a limited number of cabins.</b> If they sell out, prices can go up. Once you say yes, I'll send your payment link. Pay your deposit within 24 hours of receiving it to lock in today's rate.</div>
 
     <h3 class="sub-h">Two in a cabin</h3>
     <p class="intro" style="margin-bottom:16px">Balcony cabins at the group rate.</p>
@@ -345,10 +347,10 @@ footer p{margin:0 0 10px}
         <h4>The Sea Terrace</h4>
         <p class="tag">Balcony · Two in a cabin</p>
         <p class="blurb">Your balcony cabin. Most Sea Terrace balconies come with Virgin's signature red hammock.</p>
-        <div class="price">$4,900</div>
-        <p class="per">per cabin, taxes and fees included</p>
+        <div class="price">$2,450</div>
+        <p class="per">per person, based on two travelers sharing a cabin. Taxes and fees included.</p>
         <dl>
-          <div><dt>Per person</dt><dd>$2,450</dd></div>
+          <div><dt>Total per cabin</dt><dd>$4,900</dd></div>
           <div><dt>Deposit</dt><dd>$925 per cabin</dd></div>
           <div><dt>Deposit per person</dt><dd>$462.50</dd></div>
         </dl>
@@ -359,10 +361,10 @@ footer p{margin:0 0 10px}
         <h4>Central Sea Terrace</h4>
         <p class="tag">Balcony · Two in a cabin</p>
         <p class="blurb">The same room as the Sea Terrace, located mid-ship, closer to the elevators and the action. About $70 more per person.</p>
-        <div class="price">$5,040</div>
-        <p class="per">per cabin, taxes and fees included</p>
+        <div class="price">$2,520</div>
+        <p class="per">per person, based on two travelers sharing a cabin. Taxes and fees included.</p>
         <dl>
-          <div><dt>Per person</dt><dd>$2,520</dd></div>
+          <div><dt>Total per cabin</dt><dd>$5,040</dd></div>
           <div><dt>Deposit</dt><dd>$950 per cabin</dd></div>
           <div><dt>Deposit per person</dt><dd>$475</dd></div>
         </dl>
@@ -372,7 +374,7 @@ footer p{margin:0 0 10px}
 
     <h3 class="sub-h">Traveling on your own?</h3>
     <p class="intro" style="margin-bottom:16px">One traveler in the cabin.</p>
-    <div class="cabins three">
+    <div class="cabins four">
       <div class="cabin">
         <div class="ph" role="group" aria-label="Photos of The Sea Terrace"><img class="on" src="gfg-ny28-sea-terrace-balcony.jpg" alt="A Sea Terrace balcony with two chairs and a red hammock overlooking the ocean" loading="lazy" decoding="async"><img data-src="gfg-ny28-sea-terrace-bedroom.jpg" alt="A Sea Terrace cabin with a large bed and a balcony door" decoding="async"><img data-src="gfg-ny28-sea-terrace-bathroom.jpg" alt="A cabin bathroom with a vanity and a shower" decoding="async"><div class="dots"></div></div>
         <h4>The Sea Terrace</h4>
@@ -400,11 +402,22 @@ footer p{margin:0 0 10px}
         <dl><div><dt>Your deposit</dt><dd>$689</dd></div></dl>
         <button type="button" class="btn btn-sm pick" data-cabin="Insider" data-sailors="1">Book this cabin</button>
       </div>
+      <div class="cabin">
+        <div class="ph single" role="group" aria-label="Photo of The Solo Insider"><img class="on" src="gfg-ny28-insider-solo.jpg" alt="The Solo Insider cabin with a single bed, a vanity, and a mirror" loading="lazy" decoding="async"><div class="dots"></div></div>
+        <h4>Solo Insider</h4>
+        <p class="tag">One traveler per cabin</p>
+        <p class="blurb">Interior cabin, no window.</p>
+        <div class="price">$2,170</div>
+        <p class="per">Essential Fare, total with taxes and fees</p>
+        <dl><div><dt>Your deposit</dt><dd>$425</dd></div><div><dt>Due</dt><dd>Within 24 hours of receiving your payment link</dd></div><div><dt>Remaining balance</dt><dd>$1,745</dd></div><div><dt>Final payment</dt><dd>August 15, 2027</dd></div></dl>
+        <p class="per" style="margin:-6px 0 14px;font-size:.82rem">Price subject to availability and change.</p>
+        <button type="button" class="btn btn-sm pick" data-cabin="Solo Insider" data-sailors="1">Book this cabin</button>
+      </div>
     </div>
 
     <div class="note-box"><b>Want to share and save?</b> Sharing a balcony cabin brings you to the two-person rate. I can help you find a cabin mate, though a match isn't guaranteed.</div>
     <p class="credit">Photos courtesy of Virgin Voyages.</p>
-    <div class="note-box"><b>Solo Sea View and Insider cabins are booked outside the group.</b> You'll join the group dinners and events, but the bar tab and Wi-Fi are group perks.</div>
+    <div class="note-box"><b>Cabins booked individually are booked outside the group.</b> That includes the Sea View, Insider, and Solo Insider. You'll join the group dinners and events, but negotiated group amenities, like the bar tab and Wi-Fi, don't automatically apply.</div>
   </div>
 </section>
 
@@ -412,9 +425,9 @@ footer p{margin:0 0 10px}
   <div class="wrap">
     <div class="star-rule"><svg viewBox="-10 -10 20 20" aria-hidden="true"><path d="M0,-9 Q1.2,-1.2 9,0 Q1.2,1.2 0,9 Q-1.2,1.2 -9,0 Q-1.2,-1.2 0,-9Z" fill="currentColor"/></svg></div>
     <h2>What's included with the group</h2>
-    <p class="intro">The extras that come with sailing together.</p>
-    <div class="perk"><span class="n">1</span><div><h3>$100 Bar Tab</h3><p>Every group balcony cabin gets a $100 bar tab to use onboard.</p><span class="tg">Group balcony cabins</span></div></div>
-    <div class="perk"><span class="n">2</span><div><h3>Wi-Fi</h3><p>Classic Wi-Fi for one device per person, included with the group rate.</p><span class="tg">Group cabins</span></div></div>
+    <p class="intro">The extras that come with the group rate. Cabins booked individually don't automatically receive them.</p>
+    <div class="perk"><span class="n">1</span><div><h3>$100 Bar Tab</h3><p>Every group balcony cabin gets a $100 bar tab to use onboard.</p><span class="tg">Group-rate balcony cabins</span></div></div>
+    <div class="perk"><span class="n">2</span><div><h3>Wi-Fi</h3><p>Classic Wi-Fi for one device per person, included with the group rate.</p><span class="tg">Group-rate cabins</span></div></div>
     <div class="perk"><span class="n">3</span><div><h3>Dinner with the group</h3><p>Traveling on your own or with a friend, there's always a seat at the group table if you want one.</p><span class="tg">Everyone traveling with the group</span></div></div>
 
     <h3 class="own-h">Plan for these on your own</h3>
@@ -438,7 +451,7 @@ footer p{margin:0 0 10px}
     <div class="planner">
       <div class="pctl">
         <div class="field" style="margin:0"><label class="q" for="pCabin">Cabin</label>
-          <select id="pCabin"><option value="Sea Terrace balcony">The Sea Terrace (balcony)</option><option value="Central Sea Terrace balcony">Central Sea Terrace (balcony)</option><option value="Sea View">The Sea View (window)</option><option value="Insider">The Insider (no window)</option></select></div>
+          <select id="pCabin"><option value="Sea Terrace balcony">The Sea Terrace (balcony)</option><option value="Central Sea Terrace balcony">Central Sea Terrace (balcony)</option><option value="Sea View">The Sea View (window)</option><option value="Insider">The Insider (no window)</option><option value="Solo Insider">Solo Insider (no window, one traveler)</option></select></div>
         <div class="field" style="margin:0"><label class="q" for="pSailors">Who's in the cabin</label>
           <select id="pSailors"><option value="2">Two of us</option><option value="1">Just me</option></select></div>
         <div class="field" style="margin:0"><label class="q" for="pRhythm">How you'd like to save</label>
@@ -566,6 +579,7 @@ footer p{margin:0 0 10px}
             <label class="choice"><input type="radio" name="Cabin Type" value="Central Sea Terrace balcony">Central Sea Terrace (balcony)</label>
             <label class="choice"><input type="radio" name="Cabin Type" value="Sea View">The Sea View (window)</label>
             <label class="choice"><input type="radio" name="Cabin Type" value="Insider">The Insider (no window)</label>
+            <label class="choice"><input type="radio" name="Cabin Type" value="Solo Insider">Solo Insider (no window, one traveler)</label>
             <label class="choice"><input type="radio" name="Cabin Type" value="Not sure yet">Not sure yet</label>
           </div>
           <span class="err">Please choose one.</span>
@@ -578,6 +592,7 @@ footer p{margin:0 0 10px}
             <label class="choice"><input type="radio" name="Number of Sailors" value="1">Just me</label>
             <label class="choice"><input type="radio" name="Number of Sailors" value="3 or more">More than two</label>
           </div>
+          <span class="hint" id="soloHint" style="margin:10px 0 0" hidden>Solo Insider is one traveler per cabin.</span>
           <span class="err">Please choose one.</span>
         </div>
 
@@ -725,7 +740,7 @@ footer p{margin:0 0 10px}
 <section class="cream refer" id="refer">
   <div class="wrap">
     <h2>Know someone who'd love this sailing?</h2>
-    <p class="intro">Your best travel buddy. Your sister. The friend who's always saying "we need a trip." Send them this page.</p>
+    <p class="intro">Your best travel buddy. Your sister. The friend who's always saying "we need a trip." Send them the interest list so they're first to know.</p>
     <p class="intro">Grown folks trips are better with good people. If someone you share this with books, I'll make sure you're thanked. 🥂</p>
     <div class="share-btns"></div>
     <p class="copied" role="status" aria-live="polite"></p>
@@ -815,7 +830,7 @@ footer p{margin:0 0 10px}
   // Money + payment planner
   const money = n => '$' + (Number.isInteger(n) ? n.toLocaleString('en-US') : n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
   const END = new Date(2027, 7, 15, 23, 59, 59);
-  const NAMES = {'Sea Terrace balcony':'The Sea Terrace','Central Sea Terrace balcony':'Central Sea Terrace','Sea View':'The Sea View','Insider':'The Insider'};
+  const NAMES = {'Sea Terrace balcony':'The Sea Terrace','Central Sea Terrace balcony':'Central Sea Terrace','Sea View':'The Sea View','Insider':'The Insider','Solo Insider':'Solo Insider'};
   const nm = t => NAMES[t] || t;
   const CENTRAL_SOLO = 'Central Sea Terrace is booked for two. For one traveler, choose The Sea Terrace, or I can help you find a cabin mate.';
   function priceFor(type, sailors){
@@ -827,6 +842,7 @@ footer p{margin:0 0 10px}
     if(type === 'Sea Terrace balcony') return {total:4733, dep:915};
     if(type === 'Sea View') return {total:4313, dep:830};
     if(type === 'Insider') return {total:3612, dep:689};
+    if(type === 'Solo Insider') return {total:2170, dep:425};
     return null;
   }
   function countPayments(rhythm){
@@ -883,7 +899,12 @@ footer p{margin:0 0 10px}
   }
   function wireGo(){ const g = $('#pGo'); if(g) g.addEventListener('click', syncFromPlanner); }
   let usedRhythm = false;
-  ['pCabin','pSailors','pRhythm'].forEach(id => $('#' + id).addEventListener('change', () => { if(id === 'pRhythm') usedRhythm = true; renderPlanner(); }));
+  function lockPlanner(){
+    const isSolo = $('#pCabin').value === 'Solo Insider';
+    if(isSolo) $('#pSailors').value = '1';
+    [...$('#pSailors').options].forEach(o => { o.disabled = isSolo && o.value !== '1'; });
+  }
+  ['pCabin','pSailors','pRhythm'].forEach(id => $('#' + id).addEventListener('change', () => { if(id === 'pRhythm') usedRhythm = true; lockPlanner(); renderPlanner(); }));
 
   // Form helpers
   const form = $('#bookingForm');
@@ -899,7 +920,7 @@ footer p{margin:0 0 10px}
   $$('.pick').forEach(b => b.addEventListener('click', () => {
     setRadio('Cabin Type', b.dataset.cabin);
     setRadio('Number of Sailors', b.dataset.sailors);
-    $('#pCabin').value = b.dataset.cabin; $('#pSailors').value = b.dataset.sailors; renderPlanner();
+    if([...$('#pCabin').options].some(o => o.value === b.dataset.cabin)){ $('#pCabin').value = b.dataset.cabin; $('#pSailors').value = b.dataset.sailors; lockPlanner(); renderPlanner(); }
     setPicked(true);
     $('#booking').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
   }));
@@ -912,9 +933,16 @@ footer p{margin:0 0 10px}
   function setPicked(on){ picked = on; cabinQs.hidden = on; cabinPicked.hidden = !on; condition(); }
   $('#changeCabin').addEventListener('click', () => { setPicked(false); cabinQs.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'}); });
   function condition(){
-    const sailors = (form.querySelector('input[name="Number of Sailors"]:checked') || {}).value;
+    let sailors = (form.querySelector('input[name="Number of Sailors"]:checked') || {}).value;
     const type = (form.querySelector('input[name="Cabin Type"]:checked') || {}).value;
-    const solo = sailors === '1';
+    if(type === 'Solo Insider'){
+      const one = $$('input[name="Number of Sailors"]', form).find(x => x.value === '1');
+      if(one && !one.checked) one.checked = true;
+      sailors = '1';
+    }
+    $$('input[name="Number of Sailors"]', form).forEach(x => { x.disabled = (type === 'Solo Insider' && x.value !== '1'); });
+    $('#soloHint').hidden = type !== 'Solo Insider';
+    const solo = sailors === '1' && type !== 'Solo Insider';
     mate.hidden = !solo; mate.dataset.required = solo ? 'true' : 'false';
     if(!solo){ $$('input', mate).forEach(i => i.checked = false); mate.classList.remove('invalid'); }
     moreNote.hidden = sailors !== '3 or more';
@@ -926,6 +954,7 @@ footer p{margin:0 0 10px}
         const p = priceFor(type, +sailors);
         if(!p) txt = "I'll confirm pricing for this cabin with you.";
         else if(sailors === '2') txt = nm(type) + ', two of us: ' + money(p.total) + ' per cabin. Deposit: ' + money(p.dep) + ' per cabin (' + money(p.dep / 2) + ' per person).';
+        else if(type === 'Solo Insider') txt = 'Solo Insider, one traveler. Essential Fare, taxes and fees included: ' + money(p.total) + '. Your deposit: ' + money(p.dep) + ', due within 24 hours of receiving your payment link. Remaining balance: ' + money(p.total - p.dep) + ' by August 15, 2027. Price subject to availability and change.';
         else txt = nm(type) + ', just you. Total: ' + money(p.total) + '. Your deposit: ' + money(p.dep) + '.';
       }
     }
@@ -994,8 +1023,8 @@ footer p{margin:0 0 10px}
   form.addEventListener('input', clear); form.addEventListener('change', clear);
 
   // Share buttons
-  const pageUrl = location.href.split('#')[0];
-  const shareMsg = "Grown Folks Getaway: a 7-night adults-only New Year's cruise out of San Juan. Christmas night in Puerto Rico, New Year's on the water. Take a look:";
+  const pageUrl = 'https://www.elitetripps.com/grown-folks-new-years-2028.html';
+  const shareMsg = "Grown Folks Getaway: a 7-night adults-only New Year's cruise out of San Juan. Christmas night in Puerto Rico, New Year's on the water. Join the interest list:";
   $$('.share-btns').forEach(box => {
     const items = [];
     if(navigator.share) items.push(['Share this page', () => navigator.share({title:'Grown Folks Getaway', text:shareMsg, url:pageUrl}).catch(() => {})]);
@@ -1015,6 +1044,7 @@ footer p{margin:0 0 10px}
   form.addEventListener('submit', async e => {
     e.preventDefault();
     if(!validate()) return;
+    { const t = (form.querySelector('input[name="Cabin Type"]:checked') || {}).value, n = (form.querySelector('input[name="Number of Sailors"]:checked') || {}).value; if(t === 'Solo Insider' && n !== '1'){ $('#soloHint').hidden = false; return; } }
     const btn = form.querySelector('button[type="submit"]');
     btn.textContent = 'Sending...'; btn.disabled = true;
 
