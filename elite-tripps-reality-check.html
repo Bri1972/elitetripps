@@ -2,611 +2,854 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-<title>Elite Tripps™ Reality Check | www.EliteTripps.com</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Can I Afford This Trip? | Elite Tripps™ Reality Check</title>
+<meta name="description" content="A simple, honest reality check on whether you can afford your next trip, and what it would take to save for it." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  html, body { min-height: 100vh; }
+  :root{
+    --blush:#fce8e8;
+    --panel:#ffffff;
+    --pink:#F5507A;
+    --pink-deep:#c93a62;
+    --mint:#4ECDC4;
+    --mint-deep:#1f7d77;
+    --burgundy:#5a1a33;
+    --text:#3a1a2a;
+    --muted:#6e4256;
+    --line:#e4b8c6;
+    --field-line:#c98ea3;
+    --tint:#fdf0f3;
+    --mint-tint:#e6f7f5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  [hidden]{display:none !important;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'DM Sans',system-ui,sans-serif;
+    font-size:16px;line-height:1.55;color:var(--text);
+    min-height:100vh;overflow-x:hidden;
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba(78,205,196,0.14) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 100%, rgba(245,80,122,0.14) 0%, transparent 50%),
+      var(--blush);
+  }
+  .page{max-width:520px;margin:0 auto;padding:18px 14px 40px;}
 
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(22px); }
-to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes shimmer {
-0%   { background-position: -200% center; }
-100% { background-position:  200% center; }
-}
-@keyframes pulse {
-0%, 100% { box-shadow: 0 4px 24px rgba(245,80,122,0.35); }
-50%       { box-shadow: 0 4px 44px rgba(245,80,122,0.65); }
-}
+  /* HEADER */
+  .header{text-align:center;padding:10px 6px 16px;}
+  .title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(2rem,8vw,2.6rem);line-height:1.1;color:var(--burgundy);}
+  .brand{margin-top:6px;font-size:1rem;font-weight:600;color:var(--mint-deep);}
+  .tagline{margin-top:4px;font-size:1rem;color:var(--muted);}
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  background:
-    radial-gradient(ellipse at 15% 0%,   rgba(78,205,196,0.18) 0%, transparent 45%),
-    radial-gradient(ellipse at 85% 100%, rgba(245,80,122,0.2) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%,  rgba(255,210,210,0.25) 0%, transparent 60%),
-    #fce8e8;
-  color: #3a1a2a;
-}
+  /* PANEL */
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 6px 24px rgba(90,26,51,0.08);padding:22px 18px 26px;}
+  .intro{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;color:var(--burgundy);text-align:center;margin-bottom:6px;}
+  .section-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.45rem;color:var(--burgundy);margin:26px 0 12px;padding-top:16px;border-top:1px solid var(--line);}
+  .section-title:first-of-type{border-top:0;padding-top:0;margin-top:14px;}
 
-/* ── HEADER ── */
-.header {
-  position: sticky; top: 0; z-index: 20;
-  background: rgba(245,80,122,0.92);
-  border-bottom: 2px solid rgba(78,205,196,0.4);
-  padding: 1.1rem 1.4rem; text-align: center;
-  backdrop-filter: blur(12px);
-}
-.header-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 7vw, 2.8rem);
-  font-weight: 700; line-height: 1.05; letter-spacing: 0.01em;
-  background: linear-gradient(135deg, #fff 0%, #F5F5A0 35%, #4ECDC4 70%, #fff 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 3s linear infinite;
-}
-.header-sub-app {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem; font-weight: 700;
-  color: #fff; letter-spacing: 0.05em;
-  margin-top: 0.2rem;
-}
-.header-sub {
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.9);
-  margin-top: 0.35rem; line-height: 1.5;
-}
+  /* FIELDS */
+  .field{margin-bottom:20px;}
+  .field-label{display:block;font-size:1.05rem;font-weight:600;color:var(--burgundy);margin-bottom:4px;}
+  .hint{font-size:0.95rem;color:var(--muted);margin-bottom:8px;line-height:1.5;}
+  input[type="text"],input[type="email"],input[type="date"]{
+    width:100%;height:52px;background:#fff;
+    border:2px solid var(--field-line);border-radius:12px;
+    padding:0 14px;font:inherit;font-size:1.05rem;color:var(--text);
+    -webkit-appearance:none;appearance:none;
+  }
+  input[type="date"]{color-scheme:light;}
+  input::placeholder{color:#a57a8a;opacity:1;}
+  input:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 3px rgba(245,80,122,0.2);}
+  input:focus-visible{outline:3px solid var(--mint);outline-offset:2px;}
+  input.invalid{border-color:var(--pink-deep);}
+  .money{position:relative;}
+  .money .sym{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:700;color:var(--mint-deep);pointer-events:none;}
+  .money input{padding-left:30px;}
+  .error{display:none;color:var(--pink-deep);font-size:0.95rem;font-weight:600;margin-top:6px;line-height:1.5;}
+  .error.show{display:block;}
 
-/* ── WRAPPER ── */
-.wrapper {
-  max-width: 440px; margin: 0 auto;
-  padding: 1.5rem 1.1rem 3rem;
-  animation: fadeUp 0.4s ease;
-}
+  /* CHOICE BUTTONS (deposit, extras, date type) */
+  .choice-stack{display:grid;gap:10px;margin-bottom:12px;}
+  .choice{
+    display:flex;align-items:center;gap:12px;width:100%;min-height:54px;padding:12px 14px;
+    border:2px solid var(--field-line);border-radius:12px;background:#fff;
+    color:var(--text);font:inherit;font-size:1rem;font-weight:500;text-align:left;cursor:pointer;
+  }
+  .choice:hover{border-color:var(--pink);}
+  .choice .dot{width:22px;height:22px;border-radius:50%;border:2px solid #b07b8f;flex-shrink:0;display:grid;place-items:center;}
+  .choice[aria-pressed="true"]{border-color:var(--pink);background:var(--tint);color:var(--burgundy);font-weight:700;box-shadow:inset 5px 0 0 var(--pink);}
+  .choice[aria-pressed="true"] .dot{border-color:var(--pink);background:var(--pink);}
+  .choice[aria-pressed="true"] .dot::after{content:"";width:8px;height:8px;border-radius:50%;background:#fff;}
+  .choice:focus-visible,.btn:focus-visible,.switch:focus-visible,.chip:focus-visible,a:focus-visible{outline:3px solid var(--mint);outline-offset:2px;}
 
-.intro-text {
-  text-align: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem; line-height: 1.75;
-  color: #7a2a42;
-  margin: 1.4rem auto 2rem; max-width: 360px;
-  letter-spacing: 0.02em;
-}
+  /* NOTES */
+  .note{background:var(--mint-tint);border:2px solid #9fd9d4;border-radius:12px;padding:12px 14px;font-size:0.95rem;color:var(--mint-deep);line-height:1.55;margin-bottom:12px;}
+  .note strong{color:var(--burgundy);}
 
-.section-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.8rem; letter-spacing: 0.22em;
-  text-transform: uppercase; color: #F5507A;
-  text-align: center; margin: 1.5rem 0 1.1rem;
-}
+  /* EXTRAS */
+  .extra{margin-bottom:10px;}
+  .extra-amt{margin-top:8px;}
+  .extras-total{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--burgundy);margin-top:10px;}
 
-/* ── FIELDS ── */
-.field { margin-bottom: 1.25rem; }
-.field label {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.9rem; letter-spacing: 0.13em;
-  text-transform: uppercase; color: #7a2a42;
-  font-weight: 700; margin-bottom: 0.4rem;
-}
-.field .hint {
-  font-size: 0.9rem;
-  color: #9a5a6a;
-  margin-bottom: 0.45rem; line-height: 1.55;
-}
-.field-error { font-size: 0.85rem; color: #F5507A; margin-top: 0.35rem; }
+  /* INSURANCE */
+  .switch-card{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--mint-tint);border:2px solid #9fd9d4;border-radius:12px;padding:14px;margin-bottom:22px;}
+  .switch-text{flex:1;min-width:0;}
+  .switch-title{font-weight:700;color:var(--burgundy);font-size:1.02rem;}
+  .switch-hint{font-size:0.92rem;color:var(--muted);line-height:1.5;margin-top:2px;}
+  .switch-control{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+  .switch-state{font-weight:700;color:var(--mint-deep);min-width:26px;text-align:right;}
+  .switch{width:56px;height:32px;border-radius:999px;border:0;background:var(--mint-deep);position:relative;cursor:pointer;flex-shrink:0;transition:background .2s;}
+  .switch[aria-checked="false"]{background:#8d7a83;}
+  .switch .knob{position:absolute;top:4px;left:28px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.2);transition:left .2s;}
+  .switch[aria-checked="false"] .knob{left:4px;}
 
-.input-wrap { position: relative; }
-.input-wrap .prefix {
-  position: absolute; left: 0.9rem; top: 50%;
-  transform: translateY(-50%);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem; color: #4ECDC4; pointer-events: none; z-index: 2;
-}
+  /* BUTTONS */
+  .btn{display:block;width:100%;min-height:58px;border:0;border-radius:14px;font:inherit;font-size:1.1rem;font-weight:700;color:#fff;background:var(--pink-deep);cursor:pointer;box-shadow:0 6px 18px rgba(201,58,98,0.28);margin-top:8px;}
+  .btn:hover{background:#b3305a;}
+  .btn:active{transform:scale(0.98);}
+  .btn:disabled{opacity:0.7;cursor:wait;}
+  .btn-ghost{display:block;width:100%;min-height:50px;border-radius:12px;border:2px solid var(--field-line);background:#fff;color:var(--burgundy);font:inherit;font-size:1rem;font-weight:600;cursor:pointer;margin-top:14px;}
 
-input[type="text"],
-input[type="email"],
-input[type="date"] {
-  width: 100%;
-  background: #fff;
-  border: 2px solid rgba(245,80,122,0.25);
-  border-radius: 10px;
-  padding: 0.82rem 1rem;
-  color: #3a1a2a;
-  font-size: 1rem;
-  font-family: 'DM Sans', sans-serif;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  -webkit-appearance: none;
-}
-input[type="text"].has-prefix,
-input[type="email"].has-prefix { padding-left: 2rem; }
-input:focus { border-color: #F5507A; box-shadow: 0 0 0 3px rgba(245,80,122,0.1); }
-input::placeholder { color: #d4a0b0; }
-input[type="date"] { color-scheme: light; color: #3a1a2a; }
-input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.5; }
+  /* RESULTS */
+  .result-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:2rem;text-align:center;color:var(--burgundy);margin-bottom:14px;}
+  .verdict{border-radius:16px;padding:20px 18px;text-align:center;margin-bottom:16px;}
+  .verdict-emoji{font-size:2.6rem;line-height:1;margin-bottom:6px;}
+  .verdict-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.6rem;line-height:1.2;}
+  .verdict-message{font-size:1rem;margin-top:8px;line-height:1.6;}
+  .deposit-alert{background:#fff6cc;border:2px solid #d8c24a;border-radius:12px;padding:14px;margin-bottom:16px;}
+  .deposit-alert-label{font-weight:700;color:#6b5600;margin-bottom:4px;}
+  .deposit-alert-text{font-size:0.98rem;color:#4d3e00;line-height:1.55;}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+  .stat-card{background:#fff;border:2px solid var(--line);border-radius:12px;padding:12px;text-align:center;}
+  .stat-label{font-size:0.92rem;font-weight:600;color:var(--muted);}
+  .stat-value{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--burgundy);margin-top:2px;}
+  .progress-card{background:#fff;border:2px solid var(--line);border-radius:12px;padding:14px;margin-bottom:16px;}
+  .progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-weight:600;color:var(--burgundy);}
+  .progress-track{height:12px;background:#f6dde5;border-radius:6px;overflow:hidden;}
+  .progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--pink),var(--mint));transition:width .9s ease;}
+  .progress-note{font-size:0.95rem;color:var(--muted);margin-top:8px;}
+  .progress-note strong{color:var(--burgundy);}
+  .options-label{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.3rem;color:var(--burgundy);margin:6px 0 10px;}
+  .option{background:#fff;border:2px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px;}
+  .option-num{font-weight:700;color:var(--pink-deep);font-size:0.95rem;}
+  .option-text{margin-top:4px;line-height:1.55;}
+  .connect-card{background:#fff;border:2px solid var(--line);border-radius:16px;padding:18px;text-align:center;margin-bottom:16px;}
+  .connect-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.3rem;color:var(--burgundy);margin-bottom:6px;}
+  .connect-text{font-size:0.98rem;color:var(--muted);line-height:1.6;margin-bottom:12px;}
+  .link-btn{display:block;width:100%;min-height:50px;padding:12px;border-radius:12px;border:2px solid var(--field-line);background:#fff;color:var(--burgundy);font-weight:600;text-decoration:none;text-align:center;margin-bottom:8px;display:flex;align-items:center;justify-content:center;}
+  .link-btn.mint{border-color:#9fd9d4;background:var(--mint-tint);color:var(--mint-deep);}
 
-/* ── DEPOSIT TOGGLE ── */
-.deposit-toggle-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; margin-bottom: 0.9rem; }
-.dep-btn {
-  flex: 1; padding: 0.75rem 0.3rem; border-radius: 10px;
-  border: 2px solid rgba(245,80,122,0.18);
-  background: rgba(255,255,255,0.5);
-  color: #c49aaa; font-size: 0.85rem;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer; text-align: center; transition: all 0.2s; line-height: 1.4;
-}
-.dep-btn.active {
-  background: rgba(245,80,122,0.12); border-color: #F5507A;
-  color: #7a2a42; font-weight: 600;
-}
+  /* EMAIL GATE */
+  .gate{background:var(--tint);border:2px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;}
+  .gate-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.4rem;color:var(--burgundy);}
+  .gate-sub{font-size:0.98rem;color:var(--muted);margin:4px 0 14px;line-height:1.55;}
+  .gate input{margin-bottom:10px;background:#fff;}
+  .gate-msg{color:var(--pink-deep);font-weight:600;font-size:0.95rem;margin-bottom:8px;line-height:1.5;}
+  .plan-note{background:#fff6cc;border:2px solid #d8c24a;border-radius:12px;padding:12px;font-size:0.95rem;color:#4d3e00;margin-bottom:14px;}
 
-/* ── SPENDING CHIPS ── */
-.chip-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.55rem; flex-wrap: wrap; }
-.chip {
-  padding: 0.45rem 0.8rem; border-radius: 20px;
-  border: 2px solid rgba(78,205,196,0.4);
-  background: rgba(78,205,196,0.08);
-  color: #2a8a84; font-size: 0.85rem;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer; transition: all 0.18s; white-space: nowrap; flex-shrink: 0;
-}
-.chip.selected { background: rgba(245,80,122,0.1); border-color: #F5507A; color: #7a2a42; }
-.chip-input-wrap { position: relative; flex: 1; min-width: 100px; }
-.chip-input-wrap .prefix {
-  position: absolute; left: 0.75rem; top: 50%;
-  transform: translateY(-50%);
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1rem; color: #4ECDC4; pointer-events: none; z-index: 2;
-}
-.chip-amt-input {
-  width: 100%; background: #fff;
-  border: 2px solid rgba(245,80,122,0.25); border-radius: 8px;
-  padding: 0.5rem 0.75rem 0.5rem 1.8rem;
-  color: #3a1a2a; font-size: 0.95rem;
-  font-family: "DM Sans", sans-serif; outline: none;
-}
-.chip-amt-input:focus { border-color: #F5507A; }
-.chip-total { font-size: 0.85rem; color: #F5507A; font-family: 'Cormorant Garamond', serif; margin-top: 0.6rem; font-weight: 600; }
+  /* PLAN */
+  .plan-card{background:#fff;border:2px solid var(--line);border-radius:16px;padding:16px;margin-bottom:16px;}
+  .plan-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.35rem;color:var(--burgundy);margin-bottom:8px;}
+  .plan-list{max-height:260px;overflow-y:auto;}
+  .milestone-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid #f1d4dd;}
+  .milestone-month{color:var(--muted);}
+  .milestone-amt{font-weight:700;color:var(--burgundy);}
+  .milestone-check{font-size:0.9rem;color:var(--mint-deep);font-weight:700;margin-left:6px;}
+  .milestone-dep{font-size:0.9rem;color:var(--pink-deep);font-weight:700;margin-left:6px;}
+  .cta-card{background:var(--mint-tint);border:2px solid #9fd9d4;border-radius:16px;padding:18px;text-align:center;margin-bottom:16px;}
+  .cta-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.3rem;color:var(--burgundy);margin-bottom:6px;}
+  .cta-sub{font-size:0.98rem;color:var(--muted);margin-bottom:12px;line-height:1.55;}
+  .btn-book{display:flex;align-items:center;justify-content:center;min-height:54px;border-radius:12px;background:var(--mint-deep);color:#fff;font-weight:700;text-decoration:none;text-align:center;padding:12px;}
 
-/* ── INSURANCE TOGGLE ── */
-.toggle-card {
-  background: rgba(78,205,196,0.08);
-  border: 2px solid rgba(78,205,196,0.3);
-  border-radius: 10px; padding: 0.9rem 1rem;
-  display: flex; align-items: flex-start; gap: 0.8rem;
-  margin-bottom: 1.2rem; cursor: pointer;
-}
-.toggle-track {
-  width: 44px; height: 24px; border-radius: 12px; border: none;
-  cursor: pointer; position: relative; flex-shrink: 0;
-  margin-top: 2px; transition: background 0.2s;
-}
-.toggle-thumb {
-  position: absolute; top: 3px; width: 18px; height: 18px;
-  border-radius: 50%; background: #fff; transition: left 0.2s;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
-}
-.toggle-label {
-  font-family: 'Cormorant Garamond', serif; font-size: 0.9rem;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: #2a8a84; font-weight: 600; margin-bottom: 0.25rem;
-}
-.toggle-hint { font-size: 0.88rem; color: #9a5a6a; line-height: 1.55; }
+  .footer{text-align:center;padding:24px 10px 0;font-size:0.95rem;color:var(--muted);}
+  .footer a{color:var(--pink-deep);font-weight:700;text-decoration:none;}
+  .footer .small{margin-top:4px;font-size:0.9rem;}
+  .footer .small a{color:var(--mint-deep);}
 
-/* ── BUTTONS ── */
-.btn-primary {
-  width: 100%; padding: 1.1rem; border-radius: 12px; border: none;
-  background: linear-gradient(135deg, #F5507A, #4ECDC4);
-  color: #fff; font-size: 1rem; font-weight: 700;
-  font-family: 'Cormorant Garamond', serif; letter-spacing: 0.12em;
-  text-transform: uppercase; cursor: pointer; margin-top: 0.5rem;
-  animation: pulse 2.5s ease-in-out infinite; transition: transform 0.12s;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.12);
-}
-.btn-primary:active { transform: scale(0.97); }
-
-.btn-ghost {
-  width: 100%; padding: 0.8rem; border-radius: 10px;
-  border: 2px solid rgba(245,80,122,0.25); background: transparent;
-  color: #9a5a6a; font-size: 0.9rem;
-  font-family: 'DM Sans', sans-serif; cursor: pointer;
-  margin-top: 0.8rem; transition: all 0.2s;
-}
-.btn-ghost:hover { color: #7a2a42; border-color: #F5507A; }
-
-/* ── RESULTS ── */
-.verdict-banner { border-radius: 16px; padding: 1.4rem; margin-bottom: 1.1rem; text-align: center; animation: fadeUp 0.45s ease; }
-.verdict-emoji { font-size: 3rem; margin-bottom: 0.45rem; }
-.verdict-title { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 700; line-height: 1.2; }
-.verdict-message { font-size: 0.95rem; margin-top: 0.7rem; line-height: 1.65; }
-
-.deposit-alert {
-  background: rgba(245,245,160,0.4); border: 2px solid rgba(200,180,30,0.35);
-  border-radius: 12px; padding: 0.9rem 1rem; margin-bottom: 1.1rem;
-}
-.deposit-alert-label { font-family: 'Cormorant Garamond', serif; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7a6a00; margin-bottom: 0.4rem; font-weight: 700; }
-.deposit-alert-text { font-size: 0.9rem; color: #5a4a00; line-height: 1.55; }
-
-.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-bottom: 1.1rem; }
-.stat-card { background: #fff; border: 2px solid rgba(245,80,122,0.18); border-radius: 12px; padding: 0.85rem; text-align: center; box-shadow: 0 2px 12px rgba(245,80,122,0.08); }
-.stat-label { font-family: 'Cormorant Garamond', serif; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F5507A; }
-.stat-value { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 700; color: #3a1a2a; margin-top: 0.28rem; }
-
-.progress-card { background: #fff; border: 2px solid rgba(245,80,122,0.15); border-radius: 12px; padding: 1rem; margin-bottom: 1.1rem; box-shadow: 0 2px 12px rgba(245,80,122,0.07); }
-.progress-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
-.progress-row span:first-child { font-family: 'Cormorant Garamond', serif; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F5507A; font-weight: 700; }
-.progress-row span:last-child { font-size: 0.85rem; color: #9a5a6a; font-weight: 600; }
-.progress-track { height: 8px; background: rgba(245,80,122,0.1); border-radius: 4px; overflow: hidden; }
-.progress-fill { height: 100%; border-radius: 4px; transition: width 0.9s ease; }
-.progress-note { font-size: 0.85rem; color: #9a5a6a; margin-top: 0.5rem; }
-.progress-note strong { color: #3a1a2a; }
-
-.scenarios-label { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; letter-spacing: 0.13em; text-transform: uppercase; color: #F5507A; font-weight: 700; margin-bottom: 0.7rem; }
-.scenario-item { background: #fff; border: 2px solid rgba(245,80,122,0.15); border-radius: 10px; padding: 0.9rem; margin-bottom: 0.6rem; box-shadow: 0 2px 8px rgba(245,80,122,0.06); }
-.scenario-num { font-family: 'Cormorant Garamond', serif; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: #F5507A; font-weight: 700; }
-.scenario-text { font-size: 0.92rem; color: #3a1a2a; margin-top: 0.3rem; line-height: 1.55; }
-
-/* ── GATE ── */
-.gate-card { background: rgba(255,255,255,0.6); border: 2px solid rgba(245,80,122,0.2); border-radius: 16px; padding: 1.2rem; margin-bottom: 1.1rem; }
-.gate-title { font-family: 'Cormorant Garamond', serif; font-size: 0.88rem; letter-spacing: 0.13em; text-transform: uppercase; color: #F5507A; font-weight: 700; margin-bottom: 0.3rem; }
-.gate-sub { font-size: 0.9rem; color: #9a5a6a; margin-bottom: 1rem; line-height: 1.55; }
-.gate-card input { background: #fff; border: 2px solid rgba(245,80,122,0.2); border-radius: 10px; padding: 0.78rem 1rem; color: #3a1a2a; font-size: 1rem; font-family: 'DM Sans', sans-serif; outline: none; width: 100%; margin-bottom: 0.6rem; transition: border-color 0.2s; }
-.gate-card input:focus { border-color: #F5507A; }
-.gate-card input::placeholder { color: #d4a0b0; }
-.btn-gate { width: 100%; padding: 0.88rem; border-radius: 10px; border: none; font-size: 0.95rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
-.btn-gate.active { background: linear-gradient(135deg, #F5507A, #4ECDC4); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-.btn-gate.inactive { background: rgba(0,0,0,0.06); color: rgba(58,26,42,0.3); cursor: not-allowed; }
-
-/* ── CONNECT ── */
-.connect-card { background: #fff; border: 2px solid rgba(245,80,122,0.18); border-radius: 16px; padding: 1.2rem; text-align: center; margin-bottom: 1.1rem; box-shadow: 0 2px 16px rgba(245,80,122,0.08); }
-
-/* ── MILESTONES ── */
-.milestones-card { background: #fff; border: 2px solid rgba(245,80,122,0.15); border-radius: 16px; padding: 1.1rem; margin-bottom: 1rem; box-shadow: 0 2px 16px rgba(245,80,122,0.06); }
-.milestones-title { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; letter-spacing: 0.13em; text-transform: uppercase; color: #F5507A; font-weight: 700; margin-bottom: 0.7rem; }
-.milestones-list { max-height: 210px; overflow-y: auto; }
-.milestone-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid rgba(245,80,122,0.1); }
-.milestone-month { font-size: 0.88rem; color: #9a5a6a; }
-.milestone-amt { font-size: 0.9rem; color: #3a1a2a; font-weight: 600; }
-.milestone-check { font-size: 0.78rem; color: #4ECDC4; margin-left: 0.4rem; font-weight: 700; }
-.milestone-dep { font-size: 0.78rem; color: #F5507A; margin-left: 0.4rem; font-weight: 600; }
-
-/* ── CTA ── */
-.cta-card { background: linear-gradient(135deg, rgba(245,80,122,0.1), rgba(78,205,196,0.1)); border: 2px solid rgba(245,80,122,0.2); border-radius: 16px; padding: 1.3rem; text-align: center; margin-bottom: 1rem; }
-.cta-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 700; color: #F5507A; margin-bottom: 0.35rem; }
-.cta-sub { font-size: 0.9rem; color: #9a5a6a; margin-bottom: 1rem; line-height: 1.55; }
-.btn-book { display: block; width: 100%; padding: 1rem; border-radius: 10px; background: linear-gradient(135deg, #F5507A, #4ECDC4); color: #fff; font-size: 0.95rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; text-align: center; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-.btn-book:active { opacity: 0.85; }
-
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(245,80,122,0.3); border-radius: 2px; }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+  }
 </style>
 </head>
 <body>
+<div class="page">
 
-<div class="header">
-  <div class="header-title">ELITE TRIPPS™</div>
-  <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.2rem,4vw,1.6rem); font-weight:700; letter-spacing:0.04em; background:linear-gradient(135deg,#fff 0%,#F5F5A0 40%,#4ECDC4 80%,#fff 100%); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:shimmer 3s linear infinite; margin-bottom:0.1rem;">Reality Check</div>
-  <div class="header-sub-app">Budget App</div>
-  <div class="header-sub">Think the trip is out of your budget? Let's see what's actually possible.</div>
-</div>
+  <header class="header">
+    <h1 class="title">Think a Trip Is Out of Reach?</h1>
+    <p class="brand">Elite Tripps™ Reality Check</p>
+  </header>
 
-<div class="wrapper" id="form-view">
-  <p class="intro-text">Go ahead… drop your details below and let's see what it would really take to make this trip happen ✨</p>
+  <main class="panel">
 
-  <p class="section-label">— Trip Details —</p>
+    <!-- ============ FORM VIEW ============ -->
+    <div id="form-view">
+      <p class="intro">Let's see what it would take to make it happen. Enter your trip cost, savings, and final payment date. We'll calculate your total, your deposit timing, and the monthly savings each option requires.</p>
 
-  <div class="field">
-    <label>Total Trip Cost</label>
-    <p class="hint">Include everything you know — cruise, hotel, flights, fees, etc.</p>
-    <div class="input-wrap"><span class="prefix">$</span>
-      <input type="text" class="has-prefix" id="tripCost" inputmode="numeric" placeholder="3,000" />
-    </div>
-    <p class="field-error" id="err-tripCost" style="display:none">Please enter your trip cost</p>
-  </div>
+      <h2 class="section-title">Trip details</h2>
 
-  <div class="field">
-    <label>Deposit Status</label>
-    <p class="hint">Where are you with the deposit on this trip?</p>
-    <div class="deposit-toggle-row">
-      <button class="dep-btn" id="dep-none" onclick="setDepositStatus('none')">No deposit<br>required</button>
-      <button class="dep-btn active" id="dep-due" onclick="setDepositStatus('due')">Deposit<br>still due</button>
-      <button class="dep-btn" id="dep-paid" onclick="setDepositStatus('paid')">Deposit<br>already paid</button>
-    </div>
-    <div id="deposit-due-fields">
-      <p class="hint" style="margin-bottom:0.5rem;">How much is the deposit?</p>
-      <div class="input-wrap" style="margin-bottom:0.9rem;"><span class="prefix">$</span>
-        <input type="text" class="has-prefix" id="depositAmount" inputmode="numeric" placeholder="200" />
+      <div class="field">
+        <label class="field-label" for="tripCost">Total trip cost</label>
+        <p class="hint" id="tripCost-hint">Enter the full trip price before subtracting your deposit or savings. You'll add any costs not included in that price below.</p>
+        <div class="money">
+          <span class="sym" aria-hidden="true">$</span>
+          <input type="text" class="money-in" id="tripCost" inputmode="numeric" placeholder="3,000" aria-describedby="tripCost-hint err-tripCost" />
+        </div>
+        <p class="error" id="err-tripCost" role="alert"></p>
       </div>
-      <p class="hint" style="margin-bottom:0.5rem;">When is it due?</p>
-      <div style="display:flex; gap:0.55rem; margin-bottom:0.7rem;">
-        <button class="dep-btn active" id="ddate-specific" onclick="setDepositDateType('specific')">I have a<br>specific date</button>
-        <button class="dep-btn" id="ddate-24hrs" onclick="setDepositDateType('24hrs')">Due 24hrs<br>after booking</button>
+
+      <div class="field">
+        <p class="field-label" id="dep-label">Does this trip require a deposit?</p>
+        <div class="choice-stack" role="group" aria-labelledby="dep-label">
+          <button type="button" class="choice" data-dep="none" aria-pressed="false" onclick="setDepositStatus('none')"><span class="dot" aria-hidden="true"></span>No deposit needed</button>
+          <button type="button" class="choice" data-dep="due" aria-pressed="true" onclick="setDepositStatus('due')"><span class="dot" aria-hidden="true"></span>Yes, I still need to pay it</button>
+          <button type="button" class="choice" data-dep="paid" aria-pressed="false" onclick="setDepositStatus('paid')"><span class="dot" aria-hidden="true"></span>I've already paid it</button>
+        </div>
+
+        <div id="deposit-due-fields">
+          <label class="field-label" for="depositAmount" style="margin-top:6px;">How much is the deposit?</label>
+          <div class="money">
+            <span class="sym" aria-hidden="true">$</span>
+            <input type="text" class="money-in" id="depositAmount" inputmode="numeric" placeholder="200" aria-describedby="err-depositAmount" />
+          </div>
+          <p class="error" id="err-depositAmount" role="alert"></p>
+
+          <p class="field-label" id="ddate-label" style="margin-top:16px;">When is it due?</p>
+          <div class="choice-stack" role="group" aria-labelledby="ddate-label">
+            <button type="button" class="choice" data-ddate="specific" aria-pressed="true" onclick="setDepositDateType('specific')"><span class="dot" aria-hidden="true"></span>On a specific date</button>
+            <button type="button" class="choice" data-ddate="24hrs" aria-pressed="false" onclick="setDepositDateType('24hrs')"><span class="dot" aria-hidden="true"></span>Within 24 hours of booking</button>
+          </div>
+
+          <div id="deposit-date-picker">
+            <label class="field-label" for="depositDueDate">Deposit due date</label>
+            <input type="date" id="depositDueDate" aria-describedby="err-depositDueDate" />
+            <p class="error" id="err-depositDueDate" role="alert"></p>
+            <p class="hint" style="margin-top:8px;">⚡ Your first savings goal: have your deposit ready by this date.</p>
+          </div>
+
+          <div id="deposit-24hrs-note" class="note" hidden>
+            ⚡ No date needed. Just make sure you have this amount ready <strong>before</strong> you book. It's due the moment you commit.
+          </div>
+        </div>
+
+        <div id="deposit-paid-fields" hidden>
+          <label class="field-label" for="depositPaid">How much deposit did you already pay?</label>
+          <div class="money">
+            <span class="sym" aria-hidden="true">$</span>
+            <input type="text" class="money-in" id="depositPaid" inputmode="numeric" placeholder="200" aria-describedby="err-depositPaid" />
+          </div>
+          <p class="error" id="err-depositPaid" role="alert"></p>
+        </div>
       </div>
-      <div id="deposit-date-picker">
-        <input type="date" id="depositDueDate" />
-        <p class="hint" style="margin-top:0.45rem;">⚡ Your deposit deadline becomes your first savings milestone.</p>
+
+      <div class="field">
+        <label class="field-label" for="alreadySaved">Amount already saved</label>
+        <p class="hint">Enter what you've already set aside for this trip. Every bit counts. Don't include a deposit you've already paid.</p>
+        <div class="money">
+          <span class="sym" aria-hidden="true">$</span>
+          <input type="text" class="money-in" id="alreadySaved" inputmode="numeric" placeholder="0" />
+        </div>
       </div>
-      <div id="deposit-24hrs-note" style="display:none; background:rgba(78,205,196,0.08); border:2px solid rgba(78,205,196,0.25); border-radius:10px; padding:0.75rem 1rem;">
-        <p style="font-size:0.9rem; color:#2a8a84; line-height:1.55;">⚡ No date needed — just make sure you have this amount ready <strong>before</strong> you book. It'll be due the moment you commit.</p>
+
+      <h2 class="section-title">Additional trip costs</h2>
+      <p class="hint">Select anything you still need to budget for that isn't included in the trip price above. Don't count the same expense twice.</p>
+
+      <div id="extras">
+        <!-- Each extra: a toggle button and an amount field that appears when tapped -->
+        <div class="extra">
+          <button type="button" class="choice" id="extra-btn-flights" aria-pressed="false" aria-controls="extra-amt-flights" onclick="toggleExtra('flights')"><span class="dot" aria-hidden="true"></span>✈️ Flights</button>
+          <div class="extra-amt" id="extra-amt-flights" hidden>
+            <label class="field-label" for="extra-val-flights" style="font-size:0.95rem;">Flights: estimated amount</label>
+            <div class="money"><span class="sym" aria-hidden="true">$</span><input type="text" class="money-in extra-val" id="extra-val-flights" inputmode="numeric" placeholder="e.g. 350" /></div>
+          </div>
+        </div>
+        <div class="extra">
+          <button type="button" class="choice" id="extra-btn-food" aria-pressed="false" aria-controls="extra-amt-food" onclick="toggleExtra('food')"><span class="dot" aria-hidden="true"></span>🍽️ Food</button>
+          <div class="extra-amt" id="extra-amt-food" hidden>
+            <label class="field-label" for="extra-val-food" style="font-size:0.95rem;">Food: estimated amount</label>
+            <div class="money"><span class="sym" aria-hidden="true">$</span><input type="text" class="money-in extra-val" id="extra-val-food" inputmode="numeric" placeholder="e.g. 200" /></div>
+          </div>
+        </div>
+        <div class="extra">
+          <button type="button" class="choice" id="extra-btn-excursions" aria-pressed="false" aria-controls="extra-amt-excursions" onclick="toggleExtra('excursions')"><span class="dot" aria-hidden="true"></span>🏄 Excursions</button>
+          <div class="extra-amt" id="extra-amt-excursions" hidden>
+            <label class="field-label" for="extra-val-excursions" style="font-size:0.95rem;">Excursions: estimated amount</label>
+            <div class="money"><span class="sym" aria-hidden="true">$</span><input type="text" class="money-in extra-val" id="extra-val-excursions" inputmode="numeric" placeholder="e.g. 150" /></div>
+          </div>
+        </div>
+        <div class="extra">
+          <button type="button" class="choice" id="extra-btn-shopping" aria-pressed="false" aria-controls="extra-amt-shopping" onclick="toggleExtra('shopping')"><span class="dot" aria-hidden="true"></span>🛍️ Shopping</button>
+          <div class="extra-amt" id="extra-amt-shopping" hidden>
+            <label class="field-label" for="extra-val-shopping" style="font-size:0.95rem;">Shopping: estimated amount</label>
+            <div class="money"><span class="sym" aria-hidden="true">$</span><input type="text" class="money-in extra-val" id="extra-val-shopping" inputmode="numeric" placeholder="e.g. 100" /></div>
+          </div>
+        </div>
+        <div class="extra">
+          <button type="button" class="choice" id="extra-btn-airport" aria-pressed="false" aria-controls="extra-amt-airport" onclick="toggleExtra('airport')"><span class="dot" aria-hidden="true"></span>🚖 Airport rides</button>
+          <div class="extra-amt" id="extra-amt-airport" hidden>
+            <label class="field-label" for="extra-val-airport" style="font-size:0.95rem;">Airport rides: estimated amount</label>
+            <div class="money"><span class="sym" aria-hidden="true">$</span><input type="text" class="money-in extra-val" id="extra-val-airport" inputmode="numeric" placeholder="e.g. 80" /></div>
+          </div>
+        </div>
+        <div class="extra">
+          <button type="button" class="choice" id="extra-btn-spa" aria-pressed="false" aria-controls="extra-amt-spa" onclick="toggleExtra('spa')"><span class="dot" aria-hidden="true"></span>💆 Spa and self-care</button>
+          <div class="extra-amt" id="extra-amt-spa" hidden>
+            <label class="field-label" for="extra-val-spa" style="font-size:0.95rem;">Spa and self-care: estimated amount</label>
+            <div class="money"><span class="sym" aria-hidden="true">$</span><input type="text" class="money-in extra-val" id="extra-val-spa" inputmode="numeric" placeholder="e.g. 100" /></div>
+          </div>
+        </div>
+        <div class="extra">
+          <button type="button" class="choice" id="extra-btn-outfits" aria-pressed="false" aria-controls="extra-amt-outfits" onclick="toggleExtra('outfits')"><span class="dot" aria-hidden="true"></span>👙 Pre-trip outfits</button>
+          <div class="extra-amt" id="extra-amt-outfits" hidden>
+            <label class="field-label" for="extra-val-outfits" style="font-size:0.95rem;">Pre-trip outfits: estimated amount</label>
+            <div class="money"><span class="sym" aria-hidden="true">$</span><input type="text" class="money-in extra-val" id="extra-val-outfits" inputmode="numeric" placeholder="e.g. 150" /></div>
+          </div>
+        </div>
+        <div class="extra">
+          <button type="button" class="choice" id="extra-btn-baggage" aria-pressed="false" aria-controls="extra-amt-baggage" onclick="toggleExtra('baggage')"><span class="dot" aria-hidden="true"></span>🧳 Baggage fees</button>
+          <div class="extra-amt" id="extra-amt-baggage" hidden>
+            <label class="field-label" for="extra-val-baggage" style="font-size:0.95rem;">Baggage fees: estimated amount</label>
+            <div class="money"><span class="sym" aria-hidden="true">$</span><input type="text" class="money-in extra-val" id="extra-val-baggage" inputmode="numeric" placeholder="e.g. 60" /></div>
+          </div>
+        </div>
+        <div class="extra">
+          <button type="button" class="choice" id="extra-btn-misc" aria-pressed="false" aria-controls="extra-amt-misc" onclick="toggleExtra('misc')"><span class="dot" aria-hidden="true"></span>✨ Other</button>
+          <div class="extra-amt" id="extra-amt-misc" hidden>
+            <label class="field-label" for="extra-val-misc" style="font-size:0.95rem;">Other: estimated amount</label>
+            <div class="money"><span class="sym" aria-hidden="true">$</span><input type="text" class="money-in extra-val" id="extra-val-misc" inputmode="numeric" placeholder="Anything else" /></div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div id="deposit-paid-fields" style="display:none;">
-      <p class="hint" style="margin-bottom:0.5rem;">How much was the deposit you already paid?</p>
-      <div class="input-wrap"><span class="prefix">$</span>
-        <input type="text" class="has-prefix" id="depositPaid" inputmode="numeric" placeholder="200" />
+      <p class="extras-total" id="extra-total" aria-live="polite" hidden></p>
+
+      <h2 class="section-title">Travel insurance</h2>
+      <div class="switch-card">
+        <div class="switch-text">
+          <p class="switch-title" id="ins-title">Include travel insurance in my budget</p>
+          <p class="switch-hint" id="ins-hint">For this estimate, we'll budget 8% of your trip cost for travel insurance. This isn't an insurance quote.</p>
+        </div>
+        <div class="switch-control">
+          <span class="switch-state" id="ins-state" aria-hidden="true">On</span>
+          <button type="button" class="switch" id="ins-switch" role="switch" aria-checked="true" aria-labelledby="ins-title" onclick="toggleInsurance()"><span class="knob"></span></button>
+        </div>
       </div>
+
+      <h2 class="section-title">Your savings plan</h2>
+
+      <div class="field">
+        <label class="field-label" for="monthlySavings">Monthly savings amount</label>
+        <p class="hint">What amount fits your budget each month? Enter 0 if you're not able to save right now.</p>
+        <div class="money">
+          <span class="sym" aria-hidden="true">$</span>
+          <input type="text" class="money-in" id="monthlySavings" inputmode="numeric" placeholder="100" aria-describedby="err-monthlySavings" />
+        </div>
+        <p class="error" id="err-monthlySavings" role="alert"></p>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="targetDate">Final payment due date</label>
+        <p class="hint">When does the remaining trip balance need to be paid in full?</p>
+        <input type="date" id="targetDate" aria-describedby="err-targetDate" />
+        <p class="error" id="err-targetDate" role="alert"></p>
+      </div>
+
+      <button type="button" class="btn" id="check-btn" onclick="runCheck()">Give me my reality check ✨</button>
+      <p class="hint" style="text-align:center;margin-top:10px;">Free. Your full month-by-month plan unlocks with your email.</p>
     </div>
 
-  </div>
+    <!-- ============ RESULTS VIEW ============ -->
+    <div id="result-view" hidden>
+      <h2 class="result-title">Your Reality Check</h2>
 
-  <div class="field">
-    <label>Amount Already Saved</label>
-    <p class="hint">Any money already set aside for this trip. Even $50 counts!</p>
-    <div class="input-wrap"><span class="prefix">$</span>
-      <input type="text" class="has-prefix" id="alreadySaved" inputmode="numeric" placeholder="0" />
+      <div class="verdict" id="verdict-banner" role="status" aria-live="polite">
+        <div class="verdict-emoji" id="verdict-emoji" aria-hidden="true"></div>
+        <div class="verdict-title" id="verdict-title"></div>
+        <div class="verdict-message" id="verdict-message"></div>
+      </div>
+
+      <div class="deposit-alert" id="deposit-alert" hidden>
+        <div class="deposit-alert-label">⚡ First priority: your deposit</div>
+        <div class="deposit-alert-text" id="deposit-alert-text"></div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Total trip cost</div><div class="stat-value" id="stat-total"></div></div>
+        <div class="stat-card"><div class="stat-label">Still need to save</div><div class="stat-value" id="stat-needed"></div></div>
+        <div class="stat-card"><div class="stat-label">Months until final payment</div><div class="stat-value" id="stat-months-avail"></div></div>
+        <div class="stat-card"><div class="stat-label">Months needed to save</div><div class="stat-value" id="stat-months-save"></div></div>
+      </div>
+
+      <div class="progress-card">
+        <div class="progress-row"><span>Savings progress</span><span id="progress-pct"></span></div>
+        <div class="progress-track" role="img" aria-label="Savings progress bar" id="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+        <p class="progress-note">Already have <strong id="prog-have"></strong> of <strong id="prog-total"></strong></p>
+      </div>
+
+      <div id="scenarios-wrap" hidden>
+        <p class="options-label">Your options</p>
+        <div id="scenarios-list"></div>
+      </div>
+
+      <div class="connect-card">
+        <p class="connect-title">Enjoyed this? Let's connect! 🌸</p>
+        <p class="connect-text">Follow me on Facebook for more, and if this helped, share it with a friend who needs a reality check too. 😉</p>
+        <a class="link-btn" href="https://www.facebook.com/sabrinanicholsjohnson" target="_blank" rel="noopener">👉 Follow Sabrina on Facebook</a>
+        <a class="link-btn mint" href="https://m.facebook.com/groups/elitetripps/?ref=share" target="_blank" rel="noopener">✈️ Join the Elite Tripps™ Facebook Group</a>
+      </div>
+
+      <section class="gate" id="gate-section" aria-labelledby="gate-title">
+        <p class="gate-title" id="gate-title">📬 Get your full savings plan</p>
+        <p class="gate-sub">Add your first name and email, and I'll send your month-by-month breakdown straight to you.</p>
+        <form id="gate-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleGateSubmit(event)" novalidate>
+          <label class="field-label" for="gate-name" style="font-size:1rem;">First name</label>
+          <input type="text" name="name" id="gate-name" placeholder="Your first name" autocomplete="given-name" />
+          <label class="field-label" for="gate-email" style="font-size:1rem;">Email address</label>
+          <input type="email" name="email" id="gate-email" placeholder="you@example.com" autocomplete="email" />
+          <p class="gate-msg" id="gate-msg" role="alert" hidden></p>
+          <input type="hidden" name="trip_total" id="hidden-total" />
+          <input type="hidden" name="amount_needed" id="hidden-needed" />
+          <input type="hidden" name="verdict" id="hidden-verdict" />
+          <input type="hidden" name="monthly_savings" id="hidden-monthly" />
+          <input type="hidden" name="months_available" id="hidden-months-avail" />
+          <input type="hidden" name="months_needed" id="hidden-months-need" />
+          <input type="hidden" name="deposit_status" id="hidden-deposit-status" />
+          <input type="hidden" name="deposit_amount" id="hidden-deposit-amt" />
+          <input type="hidden" name="access_key" value="63b2dfd1-76d6-409c-826e-0bf68e45f526" />
+          <input type="hidden" name="subject" value="New Reality Check Lead 🎉" />
+          <input type="hidden" name="from_name" value="Can I Afford This Trip? (Elite Tripps™ Reality Check)" />
+          <input type="checkbox" name="botcheck" value="" style="display:none" tabindex="-1" autocomplete="off" />
+          <button type="submit" class="btn" id="btn-gate">Send my plan ✨</button>
+        </form>
+      </section>
+
+      <div id="milestones-section" hidden>
+        <p class="plan-note" id="plan-note" hidden></p>
+        <div class="plan-card">
+          <p class="plan-title">📅 Your month-by-month plan</p>
+          <div class="plan-list" id="milestones-list"></div>
+        </div>
+        <div class="cta-card">
+          <p class="cta-title" id="cta-title">Ready to make this trip happen? ✈️</p>
+          <p class="cta-sub" id="cta-sub">Let Sabrina help you find the perfect trip at the right price.</p>
+          <a href="https://www.elitetripps.com" target="_blank" rel="noopener" class="btn-book" id="cta-btn">Book with Sabrina → elitetripps.com</a>
+        </div>
+      </div>
+
+      <button type="button" class="btn-ghost" onclick="resetForm()">← Start over</button>
     </div>
-  </div>
 
-  <div class="field">
-    <label>Extra Spending Money</label>
-    <p class="hint">Tap everything that applies — money beyond the base trip cost.</p>
-    <p class="hint" style="margin-bottom:0.5rem;">Tap a category to add it, then enter your estimated amount.</p>
-    <div id="spending-chips">
-      <div class="chip-row" id="chip-flights"><button class="chip" onclick="toggleChipRow('flights')">✈️ Flights</button><div class="chip-input-wrap" id="chip-input-flights" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-flights" inputmode="numeric" placeholder="e.g. 350" oninput="formatChipInput(this); recalcChips()" /></div></div>
-      <div class="chip-row" id="chip-food"><button class="chip" onclick="toggleChipRow('food')">🍽️ Food</button><div class="chip-input-wrap" id="chip-input-food" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-food" inputmode="numeric" placeholder="e.g. 200" oninput="formatChipInput(this); recalcChips()" /></div></div>
-      <div class="chip-row" id="chip-excursions"><button class="chip" onclick="toggleChipRow('excursions')">🏄 Excursions</button><div class="chip-input-wrap" id="chip-input-excursions" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-excursions" inputmode="numeric" placeholder="e.g. 150" oninput="formatChipInput(this); recalcChips()" /></div></div>
-      <div class="chip-row" id="chip-shopping"><button class="chip" onclick="toggleChipRow('shopping')">🛍️ Shopping</button><div class="chip-input-wrap" id="chip-input-shopping" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-shopping" inputmode="numeric" placeholder="e.g. 100" oninput="formatChipInput(this); recalcChips()" /></div></div>
-      <div class="chip-row" id="chip-airport"><button class="chip" onclick="toggleChipRow('airport')">🚖 Airport Rides</button><div class="chip-input-wrap" id="chip-input-airport" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-airport" inputmode="numeric" placeholder="e.g. 80" oninput="formatChipInput(this); recalcChips()" /></div></div>
-      <div class="chip-row" id="chip-spa"><button class="chip" onclick="toggleChipRow('spa')">💆 Spa/Self-care</button><div class="chip-input-wrap" id="chip-input-spa" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-spa" inputmode="numeric" placeholder="e.g. 100" oninput="formatChipInput(this); recalcChips()" /></div></div>
-      <div class="chip-row" id="chip-outfits"><button class="chip" onclick="toggleChipRow('outfits')">👙 Pre-Trip Outfits</button><div class="chip-input-wrap" id="chip-input-outfits" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-outfits" inputmode="numeric" placeholder="e.g. 150" oninput="formatChipInput(this); recalcChips()" /></div></div>
-      <div class="chip-row" id="chip-baggage"><button class="chip" onclick="toggleChipRow('baggage')">🧳 Baggage Fees</button><div class="chip-input-wrap" id="chip-input-baggage" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-baggage" inputmode="numeric" placeholder="e.g. 60" oninput="formatChipInput(this); recalcChips()" /></div></div>
-      <div class="chip-row" id="chip-misc"><button class="chip" onclick="toggleChipRow('misc')">✨ Miscellaneous</button><div class="chip-input-wrap" id="chip-input-misc" style="display:none;"><span class="prefix">$</span><input type="text" class="has-prefix chip-amt-input" id="chip-val-misc" inputmode="numeric" placeholder="anything else" oninput="formatChipInput(this); recalcChips()" /></div></div>
-    </div>
-    <p class="chip-total" id="chip-total" style="display:none;"></p>
-    <input type="hidden" id="extraSpending" value="0" />
-  </div>
+  </main>
 
-  <div class="toggle-card" onclick="toggleInsurance()">
-    <button class="toggle-track" id="ins-track" style="background:#4ECDC4;" onclick="event.stopPropagation(); toggleInsurance()">
-      <span class="toggle-thumb" id="ins-thumb" style="left:23px;"></span>
-    </button>
-    <div>
-      <p class="toggle-label">Add Travel Insurance</p>
-      <p class="toggle-hint">Recommended. Adds ~8% of trip cost. Real talk — don't skip this. ✈️</p>
-    </div>
-  </div>
-
-  <p class="section-label">— Your Savings Plan —</p>
-
-  <div class="field">
-    <label>Monthly Savings Amount</label>
-    <p class="hint">Be honest. What can you ACTUALLY put aside each month?</p>
-    <div class="input-wrap"><span class="prefix">$</span>
-      <input type="text" class="has-prefix" id="monthlySavings" inputmode="numeric" placeholder="100" />
-    </div>
-    <p class="field-error" id="err-monthlySavings" style="display:none">Please enter your monthly savings amount</p>
-  </div>
-
-  <div class="field">
-    <label>Final Payment Due Date</label>
-    <p class="hint">When is the final payment due for this trip?</p>
-    <input type="date" id="targetDate" />
-    <p class="field-error" id="err-targetDate" style="display:none">Please pick your due date</p>
-  </div>
-
-  <button class="btn-primary" onclick="runCheck()">Give Me My Reality Check ✨</button>
-</div>
-
-<!-- RESULTS -->
-<div class="wrapper" id="result-view" style="display:none">
-  <div class="verdict-banner" id="verdict-banner">
-    <div class="verdict-emoji" id="verdict-emoji"></div>
-    <div class="verdict-title" id="verdict-title"></div>
-    <div class="verdict-message" id="verdict-message"></div>
-  </div>
-
-  <div class="deposit-alert" id="deposit-alert" style="display:none">
-    <div class="deposit-alert-label">⚡ First Priority — Your Deposit</div>
-    <div class="deposit-alert-text" id="deposit-alert-text"></div>
-  </div>
-
-  <div class="stat-grid">
-    <div class="stat-card"><div class="stat-label">Total Trip Cost</div><div class="stat-value" id="stat-total"></div></div>
-    <div class="stat-card"><div class="stat-label">Still Need to Save</div><div class="stat-value" id="stat-needed"></div></div>
-    <div class="stat-card"><div class="stat-label">Months Available</div><div class="stat-value" id="stat-months-avail"></div></div>
-    <div class="stat-card"><div class="stat-label">Months to Save</div><div class="stat-value" id="stat-months-save"></div></div>
-  </div>
-
-  <div class="progress-card">
-    <div class="progress-row"><span>Savings Progress</span><span id="progress-pct"></span></div>
-    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
-    <p class="progress-note">Already have: <strong id="prog-have"></strong> of <strong id="prog-total"></strong></p>
-  </div>
-
-  <div id="scenarios-wrap" style="display:none; margin-bottom:1.1rem;">
-    <p class="scenarios-label">Your Options</p>
-    <div id="scenarios-list"></div>
-  </div>
-
-  <div class="connect-card">
-    <p style="font-size:1.4rem; margin-bottom:0.4rem;">🌸</p>
-    <p style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:700; color:#F5507A; margin-bottom:0.4rem;">Enjoyed this? Let's connect!</p>
-    <p style="font-size:0.9rem; color:#9a5a6a; line-height:1.65; margin-bottom:1rem; font-family:'DM Sans',sans-serif;">Follow me on Facebook for more — and if this helped you, share it with a friend who needs a reality check too. 😉</p>
-    <a href="https://www.facebook.com/sabrinanicholsjohnson" target="_blank" style="display:block; width:100%; box-sizing:border-box; padding:0.88rem; border-radius:10px; border:2px solid rgba(245,80,122,0.25); background:rgba(245,80,122,0.06); color:#7a2a42; font-size:0.9rem; font-weight:600; font-family:'DM Sans',sans-serif; text-decoration:none; text-align:center; margin-bottom:0.5rem;">👉 Follow Sabrina on Facebook</a>
-    <a href="https://m.facebook.com/groups/elitetripps/?ref=share" target="_blank" style="display:block; width:100%; box-sizing:border-box; padding:0.88rem; border-radius:10px; border:2px solid rgba(78,205,196,0.35); background:rgba(78,205,196,0.08); color:#2a8a84; font-size:0.9rem; font-weight:600; font-family:'DM Sans',sans-serif; text-decoration:none; text-align:center;">✈️ Join the Elite Tripps™ Facebook Group</a>
-  </div>
-
-  <div class="gate-card" id="gate-section">
-    <p class="gate-title">📬 Get Your Full Savings Plan</p>
-    <p class="gate-sub">Drop your name and email — I'll send your month-by-month breakdown straight to you.</p>
-    <form id="gate-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleGateSubmit(event)">
-      <input type="text"  name="name"  id="gate-name"  placeholder="Your first name"    oninput="checkGate()" autocomplete="given-name" />
-      <input type="email" name="email" id="gate-email" placeholder="Your email address" oninput="checkGate()" autocomplete="email" />
-      <input type="hidden" name="trip_total"       id="hidden-total" />
-      <input type="hidden" name="amount_needed"    id="hidden-needed" />
-      <input type="hidden" name="verdict"          id="hidden-verdict" />
-      <input type="hidden" name="monthly_savings"  id="hidden-monthly" />
-      <input type="hidden" name="months_available" id="hidden-months-avail" />
-      <input type="hidden" name="months_needed"    id="hidden-months-need" />
-      <input type="hidden" name="deposit_status"   id="hidden-deposit-status" />
-      <input type="hidden" name="deposit_amount"   id="hidden-deposit-amt" />
-      <input type="hidden" name="access_key"  value="63b2dfd1-76d6-409c-826e-0bf68e45f526" />
-      <input type="hidden" name="subject"     value="New Elite Tripps™ Reality Check Lead 🎉" />
-      <input type="hidden" name="from_name"   value="Elite Tripps Reality Check" />
-      <input type="hidden" name="botcheck"    value="" style="display:none" />
-      <button type="submit" class="btn-gate inactive" id="btn-gate">Send My Plan ✨</button>
-    </form>
-  </div>
-
-  <div id="milestones-section" style="display:none;">
-    <div class="milestones-card">
-      <p class="milestones-title">📅 Your Month-by-Month Plan</p>
-      <div class="milestones-list" id="milestones-list"></div>
-    </div>
-    <div class="cta-card">
-      <p class="cta-title" id="cta-title">Ready to make this trip happen? ✈️</p>
-      <p class="cta-sub" id="cta-sub">Let Sabrina help you find the perfect trip at the right price.</p>
-      <a href="https://www.elitetripps.com" target="_blank" class="btn-book" id="cta-btn">Book with Sabrina → www.EliteTripps.com</a>
-    </div>
-  </div>
-
-  <button class="btn-ghost" onclick="resetForm()">← Start Over</button>
-</div>
-
-<div style="text-align:center; padding:1.5rem 1rem 2rem; border-top:2px solid rgba(245,80,122,0.12); margin-top:1rem;">
-  <p style="font-family:'Cormorant Garamond',serif; font-size:0.9rem; color:rgba(58,26,42,0.45); letter-spacing:0.08em;">Created by <a href="https://www.facebook.com/sabrinanicholsjohnson" target="_blank" style="color:#F5507A; text-decoration:none; font-weight:700;">Sabrina Nichols Johnson</a></p>
-  <p style="font-size:0.8rem; color:rgba(58,26,42,0.35); margin-top:0.3rem;"><a href="https://www.elitetripps.com" target="_blank" style="color:#4ECDC4; text-decoration:none;">www.elitetripps.com</a></p>
+  <footer class="footer">
+    <p>Created by <a href="https://www.facebook.com/sabrinanicholsjohnson" target="_blank" rel="noopener">Sabrina Nichols Johnson</a></p>
+    <p class="small"><a href="https://www.elitetripps.com" target="_blank" rel="noopener">www.elitetripps.com</a></p>
+  </footer>
 </div>
 
 <script>
-  let insuranceOn=true, depositStatus='due', chipTotal=0, calcResult={};
-  const monthNames=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-
+  let insuranceOn = true;
+  let depositStatus = 'due';
   let depositDateType = 'specific';
+  let chipTotal = 0;
+  let calcResult = {};
+  const INSURANCE_RATE = 0.08;
+  const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const extraKeys = ['flights','food','excursions','shopping','airport','spa','outfits','baggage','misc'];
+  const $ = id => document.getElementById(id);
+
+  // Parse YYYY-MM-DD as a local date (avoids timezone shifts)
+  function parseLocal(str){ const [y,m,d] = str.split('-').map(Number); return new Date(y, m-1, d); }
+  function today0(){ const t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate()); }
+
+  function money(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+
+  function formatCurrency(input){
+    const raw = input.value.replace(/[^0-9]/g,'');
+    input.value = raw ? parseInt(raw,10).toLocaleString('en-US') : '';
+  }
+  function parseCurrency(id){
+    const el = $(id);
+    return el && el.value ? parseFloat(el.value.replace(/[^0-9.]/g,'')) || 0 : 0;
+  }
+
+  document.querySelectorAll('.money-in').forEach(el => {
+    el.addEventListener('input', () => { formatCurrency(el); updateInsuranceHint(); recalcExtras(); });
+  });
+
+  // Block past dates in the picker
+  (function(){
+    const t = today0();
+    const min = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;
+    ['targetDate','depositDueDate'].forEach(id => { const el = $(id); if (el) el.min = min; });
+  })();
 
   function setDepositStatus(s){
-    depositStatus=s;
-    ['none','due','paid'].forEach(x=>document.getElementById('dep-'+x).classList.toggle('active',x===s));
-    document.getElementById('deposit-due-fields').style.display=s==='due'?'block':'none';
-    document.getElementById('deposit-paid-fields').style.display=s==='paid'?'block':'none';
+    depositStatus = s;
+    document.querySelectorAll('[data-dep]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.dep === s)));
+    $('deposit-due-fields').hidden = s !== 'due';
+    $('deposit-paid-fields').hidden = s !== 'paid';
+  }
+  function setDepositDateType(t){
+    depositDateType = t;
+    document.querySelectorAll('[data-ddate]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.ddate === t)));
+    $('deposit-date-picker').hidden = t !== 'specific';
+    $('deposit-24hrs-note').hidden = t !== '24hrs';
   }
   setDepositStatus('due');
+  setDepositDateType('specific');
 
-  function setDepositDateType(t){
-    depositDateType=t;
-    ['specific','24hrs'].forEach(x=>document.getElementById('ddate-'+x).classList.toggle('active',x===t));
-    document.getElementById('deposit-date-picker').style.display=t==='specific'?'block':'none';
-    document.getElementById('deposit-24hrs-note').style.display=t==='24hrs'?'block':'none';
+  function updateInsuranceHint(){
+    const cost = parseCurrency('tripCost');
+    const hint = $('ins-hint');
+    hint.textContent = cost > 0
+      ? `For this estimate, we'll budget 8% of your trip cost for travel insurance, about ${money(cost * INSURANCE_RATE)}. This isn't an insurance quote.`
+      : 'For this estimate, we\'ll budget 8% of your trip cost for travel insurance. This isn\'t an insurance quote.';
   }
-
   function toggleInsurance(){
-    insuranceOn=!insuranceOn;
-    document.getElementById('ins-track').style.background=insuranceOn?'#4ECDC4':'rgba(0,0,0,0.1)';
-    document.getElementById('ins-thumb').style.left=insuranceOn?'23px':'3px';
+    insuranceOn = !insuranceOn;
+    const sw = $('ins-switch');
+    sw.setAttribute('aria-checked', String(insuranceOn));
+    $('ins-state').textContent = insuranceOn ? 'On' : 'Off';
   }
 
-  const chipKeys=['flights','food','excursions','shopping','airport','spa','outfits','baggage','misc'];
-
-  function toggleChipRow(key){
-    const btn=document.querySelector(`#chip-${key} .chip`);
-    const inputWrap=document.getElementById(`chip-input-${key}`);
-    const isOpen=inputWrap.style.display!=='none';
-    if(isOpen){inputWrap.style.display='none';btn.classList.remove('selected');document.getElementById(`chip-val-${key}`).value='';}
-    else{inputWrap.style.display='flex';btn.classList.add('selected');setTimeout(()=>document.getElementById(`chip-val-${key}`).focus(),50);}
-    recalcChips();
+  function toggleExtra(key){
+    const btn = $('extra-btn-' + key);
+    const wrap = $('extra-amt-' + key);
+    const open = btn.getAttribute('aria-pressed') === 'true';
+    if (open){
+      btn.setAttribute('aria-pressed','false');
+      wrap.hidden = true;
+      $('extra-val-' + key).value = '';
+    } else {
+      btn.setAttribute('aria-pressed','true');
+      wrap.hidden = false;
+      setTimeout(() => $('extra-val-' + key).focus(), 50);
+    }
+    recalcExtras();
+  }
+  function recalcExtras(){
+    chipTotal = extraKeys.reduce((sum, key) => {
+      const el = $('extra-val-' + key);
+      return sum + (el && el.value ? parseFloat(el.value.replace(/[^0-9.]/g,'')) || 0 : 0);
+    }, 0);
+    const t = $('extra-total');
+    if (chipTotal > 0){ t.hidden = false; t.textContent = 'Total extras: ' + money(chipTotal); }
+    else { t.hidden = true; }
   }
 
-  function formatChipInput(input){let raw=input.value.replace(/[^0-9]/g,'');input.value=raw?parseInt(raw,10).toLocaleString('en-US'):'';}
-
-  function recalcChips(){
-    chipTotal=chipKeys.reduce((sum,key)=>{const el=document.getElementById(`chip-val-${key}`);return sum+(el&&el.value?parseFloat(el.value.replace(/[^0-9.]/g,''))||0:0);},0);
-    const t=document.getElementById('chip-total');
-    if(chipTotal>0){t.style.display='block';t.textContent='Total extras: $'+chipTotal.toLocaleString();}
-    else t.style.display='none';
-    document.getElementById('extraSpending').value=chipTotal;
+  function showErr(id, msg){
+    const e = $('err-' + id);
+    const f = $(id);
+    if (msg){
+      e.textContent = msg;
+      e.classList.add('show');
+      if (f){ f.classList.add('invalid'); f.setAttribute('aria-invalid','true'); }
+      return true;
+    }
+    e.textContent = '';
+    e.classList.remove('show');
+    if (f){ f.classList.remove('invalid'); f.removeAttribute('aria-invalid'); }
+    return false;
   }
-
-  function formatCurrency(input){let raw=input.value.replace(/[^0-9]/g,'');input.value=raw?parseInt(raw,10).toLocaleString('en-US'):'';}
-  function parseCurrency(id){const el=document.getElementById(id);return el&&el.value?parseFloat(el.value.replace(/[^0-9.]/g,''))||0:0;}
-
-  ['tripCost','depositAmount','depositPaid','alreadySaved','extraSpending','monthlySavings'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',()=>formatCurrency(el));});
-
-  (function(){const d=new Date();const min=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;['targetDate','depositDueDate'].forEach(id=>{const el=document.getElementById(id);if(el)el.min=min;});})();
 
   function validate(){
-    let ok=true;
-    if(!parseCurrency('tripCost')){document.getElementById('err-tripCost').style.display='block';ok=false;}else document.getElementById('err-tripCost').style.display='none';
-    if(!parseCurrency('monthlySavings')){document.getElementById('err-monthlySavings').style.display='block';ok=false;}else document.getElementById('err-monthlySavings').style.display='none';
-    if(!document.getElementById('targetDate').value){document.getElementById('err-targetDate').style.display='block';ok=false;}else document.getElementById('err-targetDate').style.display='none';
+    const now = today0();
+    const checks = [];
+
+    checks.push(['tripCost', parseCurrency('tripCost') > 0 ? '' : 'Enter your total trip cost. Include everything you know.']);
+
+    if (depositStatus === 'due'){
+      checks.push(['depositAmount', parseCurrency('depositAmount') > 0 ? '' : 'Enter how much the deposit is, or choose "No deposit required."']);
+      if (depositDateType === 'specific'){
+        const d = $('depositDueDate').value;
+        let msg = '';
+        if (!d) msg = 'Pick the date your deposit is due, or choose "Due 24 hours after booking."';
+        else if (parseLocal(d) < now) msg = 'That deposit date has already passed. Pick today or a later date.';
+        checks.push(['depositDueDate', msg]);
+      }
+    }
+    if (depositStatus === 'paid'){
+      checks.push(['depositPaid', parseCurrency('depositPaid') > 0 ? '' : 'Enter the deposit amount you already paid.']);
+    }
+
+    checks.push(['monthlySavings', $('monthlySavings').value.trim() === '' ? 'Enter what you can set aside each month. If it\'s $0 for now, type 0.' : '']);
+
+    const td = $('targetDate').value;
+    let tdMsg = '';
+    if (!td) tdMsg = 'Pick your final payment due date.';
+    else if (parseLocal(td) < now) tdMsg = 'That date has already passed. Pick a future date.';
+    checks.push(['targetDate', tdMsg]);
+
+    if (td && depositStatus === 'due' && depositDateType === 'specific' && $('depositDueDate').value){
+      if (parseLocal($('depositDueDate').value) > parseLocal(td)){
+        checks.push(['depositDueDate', 'Your deposit date is after your final payment date. Check both dates.']);
+      }
+    }
+
+    let ok = true, first = null;
+    checks.forEach(([id, msg]) => {
+      if (showErr(id, msg)){ ok = false; if (!first) first = id; }
+    });
+    if (!ok){
+      const el = $(first);
+      el.focus();
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+    }
     return ok;
   }
 
   function calculate(){
-    const tripCost=parseCurrency('tripCost'),alreadySaved=parseCurrency('alreadySaved'),extraSpend=chipTotal||parseCurrency('extraSpending'),monthlySav=parseCurrency('monthlySavings'),targetDate=document.getElementById('targetDate').value;
-    let depositPaidAmt=0,depositDueAmt=0,depositDueDate=null;
-    if(depositStatus==='paid')depositPaidAmt=parseCurrency('depositPaid');
-    else if(depositStatus==='due'){depositDueAmt=parseCurrency('depositAmount');depositDueDate=depositDateType==='specific'?document.getElementById('depositDueDate').value:null;}
+    const tripCost = parseCurrency('tripCost');
+    const alreadySaved = parseCurrency('alreadySaved');
+    const extraSpend = chipTotal;
+    const monthlySav = parseCurrency('monthlySavings');
+    const targetDate = $('targetDate').value;
 
-    const insuranceAmt=insuranceOn?tripCost*0.08:0,totalCost=tripCost+insuranceAmt+extraSpend,alreadyHave=alreadySaved+depositPaidAmt,amountNeeded=Math.max(totalCost-alreadyHave,0),progressPct=Math.min(Math.round((alreadyHave/totalCost)*100),100);
-    const today=new Date(),target=new Date(targetDate),msPerMonth=1000*60*60*24*30.44,monthsAvail=Math.max(Math.round((target-today)/msPerMonth),0),monthsToSave=monthlySav>0?Math.ceil(amountNeeded/monthlySav):Infinity;
-    let depositUrgency=null;
-    if(depositStatus==='due'&&depositDueAmt>0){if(depositDateType==='24hrs'){depositUrgency={amt:depositDueAmt,monthsAway:0,date:null,canCover:alreadyHave>=depositDueAmt,monthlyNeeded:depositDueAmt,is24hrs:true};}else if(depositDueDate){const depDate=new Date(depositDueDate),mAway=Math.max(Math.round((depDate-today)/msPerMonth),0),canCover=(mAway*monthlySav+alreadyHave)>=depositDueAmt,mNeeded=mAway>0?Math.ceil((depositDueAmt-alreadyHave)/mAway):depositDueAmt;depositUrgency={amt:depositDueAmt,monthsAway:mAway,date:depositDueDate,canCover,monthlyNeeded:mNeeded,is24hrs:false};}}
-    const milestones=[],depDate2=depositDueDate?new Date(depositDueDate):null;let running=alreadyHave;
-    for(let i=1;i<=Math.max(monthsToSave===Infinity?24:monthsToSave,monthsAvail,12);i++){const d=new Date(today.getFullYear(),today.getMonth()+i,1);running+=monthlySav;const isDepMonth=depDate2&&d.getMonth()===depDate2.getMonth()&&d.getFullYear()===depDate2.getFullYear()&&depositStatus==='due';milestones.push({label:`${monthNames[d.getMonth()]} ${d.getFullYear()}`,total:Math.round(running),hit:Math.round(running)>=Math.round(amountNeeded),isDepositMonth:isDepMonth});}
-    let verdict,message,scenarios;
-    if(monthsToSave<=monthsAvail){verdict='green';const buf=monthsAvail-monthsToSave;message=`You can absolutely do this trip! At $${monthlySav.toLocaleString()}/month you'll be fully funded ${monthsToSave} month${monthsToSave!==1?'s':''} before your trip — that's a ${buf}-month cushion. Stay consistent and this is YOURS. 🎉`;}
-    else if(monthlySav>0&&monthsToSave<=monthsAvail*1.5){verdict='yellow';const needMo=monthsAvail>0?Math.ceil(amountNeeded/monthsAvail):0,nd=new Date(today.getFullYear(),today.getMonth()+monthsToSave,1);message=`You're close, sis — but something needs to shift. At your current rate you'll come up short by your target date. Here's how to fix it:`;scenarios=[`💰 Save more: Bump your monthly savings to $${needMo.toLocaleString()}/month and you'll hit your goal right on time.`,`📅 Adjust your date: Keep saving $${monthlySav.toLocaleString()}/month and push your trip to ${monthNames[nd.getMonth()]} ${nd.getFullYear()} — fully funded.`];}
-    else{verdict='red';const realisticTrip=Math.round(monthlySav*monthsAvail+alreadyHave),needMo=monthsAvail>0?Math.ceil(amountNeeded/monthsAvail):0;message=`Real talk — this trip at this budget isn't happening by that date at your current savings rate. But that doesn't mean you can't travel. Here's what IS realistic:`;scenarios=[`✈️ Adjust the trip: A $${realisticTrip.toLocaleString()} trip IS doable by your date. Want help finding options in that range?`,`💪 Level up: You'd need $${needMo.toLocaleString()}/month to make this exact trip happen on time. If that's possible — let's map it out.`];}
-    return{verdict,message,scenarios,totalCost:Math.round(totalCost),amountNeeded:Math.round(amountNeeded),alreadyHave:Math.round(alreadyHave),monthsAvail,monthsToSave,progressPct,milestones,depositUrgency};
+    let depositPaidAmt = 0, depositDueAmt = 0, depositDueDate = null;
+    if (depositStatus === 'paid') depositPaidAmt = parseCurrency('depositPaid');
+    else if (depositStatus === 'due'){
+      depositDueAmt = parseCurrency('depositAmount');
+      depositDueDate = depositDateType === 'specific' ? $('depositDueDate').value : null;
+    }
+
+    const insuranceAmt = insuranceOn ? tripCost * INSURANCE_RATE : 0;
+    const totalCost = tripCost + insuranceAmt + extraSpend;
+    const alreadyHave = alreadySaved + depositPaidAmt;
+    const amountNeeded = Math.max(totalCost - alreadyHave, 0);
+    const progressPct = Math.min(Math.round((alreadyHave / totalCost) * 100), 100);
+
+    const today = today0();
+    const target = parseLocal(targetDate);
+    const msPerMonth = 1000 * 60 * 60 * 24 * 30.44;
+    const monthsAvail = Math.max(Math.round((target - today) / msPerMonth), 0);
+    const monthsToSave = monthlySav > 0 ? Math.ceil(amountNeeded / monthlySav) : Infinity;
+
+    let depositUrgency = null;
+    if (depositStatus === 'due' && depositDueAmt > 0){
+      if (depositDateType === '24hrs'){
+        depositUrgency = { amt: depositDueAmt, monthsAway: 0, canCover: alreadyHave >= depositDueAmt, monthlyNeeded: depositDueAmt, is24hrs: true };
+      } else if (depositDueDate){
+        const depDate = parseLocal(depositDueDate);
+        const mAway = Math.max(Math.round((depDate - today) / msPerMonth), 0);
+        const canCover = (mAway * monthlySav + alreadyHave) >= depositDueAmt;
+        const mNeeded = mAway > 0 ? Math.ceil((depositDueAmt - alreadyHave) / mAway) : depositDueAmt;
+        depositUrgency = { amt: depositDueAmt, monthsAway: mAway, date: depositDueDate, canCover, monthlyNeeded: mNeeded, is24hrs: false };
+      }
+    }
+
+    const milestones = [];
+    const depDate2 = depositDueDate ? parseLocal(depositDueDate) : null;
+    let running = alreadyHave;
+    const horizon = Math.max(monthsToSave === Infinity ? 24 : monthsToSave, monthsAvail, 12);
+    for (let i = 1; i <= horizon; i++){
+      const d = new Date(today.getFullYear(), today.getMonth() + i, 1);
+      running += monthlySav;
+      const isDepMonth = depDate2 && d.getMonth() === depDate2.getMonth() && d.getFullYear() === depDate2.getFullYear() && depositStatus === 'due';
+      milestones.push({ label: `${monthNames[d.getMonth()]} ${d.getFullYear()}`, total: Math.round(running), hit: Math.round(running) >= Math.round(amountNeeded), isDepositMonth: isDepMonth });
+    }
+
+    let verdict, message, scenarios = [];
+    if (monthsToSave <= monthsAvail){
+      verdict = 'green';
+      const buf = monthsAvail - monthsToSave;
+      message = `You can absolutely do this trip! At ${money(monthlySav)}/month you'll be fully funded ${monthsToSave} month${monthsToSave !== 1 ? 's' : ''} before your trip. That's a ${buf}-month cushion. Stay consistent and this is yours. 🎉`;
+    } else if (monthlySav > 0 && monthsToSave <= monthsAvail * 1.5){
+      verdict = 'yellow';
+      const needMo = monthsAvail > 0 ? Math.ceil(amountNeeded / monthsAvail) : 0;
+      const nd = new Date(today.getFullYear(), today.getMonth() + monthsToSave, 1);
+      message = "You're close, sis, but something needs to shift. At your current rate you'll come up short by your target date. Here's how to fix it:";
+      scenarios = [
+        `💰 Save more: bump your monthly savings to ${money(needMo)}/month and you'll hit your goal right on time.`,
+        `📅 Adjust your date: keep saving ${money(monthlySav)}/month and push your trip to ${monthNames[nd.getMonth()]} ${nd.getFullYear()}. You'll be fully funded.`
+      ];
+    } else {
+      verdict = 'red';
+      const realisticTrip = Math.round(monthlySav * monthsAvail + alreadyHave);
+      const needMo = monthsAvail > 0 ? Math.ceil(amountNeeded / monthsAvail) : 0;
+      message = "Real talk. This trip at this budget isn't happening by that date at your current savings rate. But that doesn't mean you can't travel. Here's what is realistic:";
+      if (realisticTrip > 0){
+        scenarios.push(`✈️ Adjust the trip: a ${money(realisticTrip)} trip is doable by your date. Want help finding options in that range?`);
+      } else {
+        scenarios.push('✈️ Adjust the trip: even a small monthly amount adds up. Try a smaller trip or a later date and run the numbers again.');
+      }
+      if (monthsAvail > 0){
+        scenarios.push(`💪 Level up: you'd need ${money(needMo)}/month to make this exact trip happen on time. If that's possible, let's map it out.`);
+      } else {
+        scenarios.push('📅 Move the date: your final payment date is too soon to build this up. Pick a later date and check again.');
+      }
+    }
+
+    return { verdict, message, scenarios, totalCost: Math.round(totalCost), amountNeeded: Math.round(amountNeeded), alreadyHave: Math.round(alreadyHave), monthsAvail, monthsToSave, progressPct, milestones, depositUrgency };
   }
 
-  const vCfg={
-    green:{emoji:'✅',label:"Sis, You're Good! 🎉",color:'#2a8a84',bg:'rgba(78,205,196,0.1)',border:'rgba(78,205,196,0.35)',msgColor:'#1a5c58'},
-    yellow:{emoji:'⚠️',label:"Something's Gotta Shift 💡",color:'#8a7000',bg:'rgba(245,245,160,0.35)',border:'rgba(200,180,30,0.4)',msgColor:'#5a4a00'},
-    red:{emoji:'🚨',label:"Let's Be Real, Sis 💬",color:'#F5507A',bg:'rgba(245,80,122,0.08)',border:'rgba(245,80,122,0.28)',msgColor:'#7a2a42'}
+  const vCfg = {
+    green:  { emoji:'✅', label:"Sis, you're good! 🎉",          color:'#1f5f5b', bg:'#e6f7f5', border:'#9fd9d4' },
+    yellow: { emoji:'⚠️', label:"Something's gotta shift 💡",     color:'#6b5600', bg:'#fff6cc', border:'#d8c24a' },
+    red:    { emoji:'🚨', label:"Let's be real, sis 💬",          color:'#a02a50', bg:'#fdf0f3', border:'#e4b8c6' }
   };
 
-  function runCheck(){if(!validate()){window.scrollTo({top:0,behavior:'smooth'});return;}calcResult=calculate();renderResults();document.getElementById('form-view').style.display='none';document.getElementById('result-view').style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
-
-  function renderResults(){
-    const r=calcResult,v=vCfg[r.verdict];
-    const banner=document.getElementById('verdict-banner');banner.style.background=v.bg;banner.style.border=`2px solid ${v.border}`;banner.style.borderRadius='16px';
-    document.getElementById('verdict-emoji').textContent=v.emoji;const te=document.getElementById('verdict-title');te.textContent=v.label;te.style.color=v.color;
-    const vm=document.getElementById('verdict-message');vm.textContent=r.message;vm.style.color=v.msgColor;
-    if(r.depositUrgency){const du=r.depositUrgency;document.getElementById('deposit-alert').style.display='block';document.getElementById('deposit-alert-text').textContent=du.is24hrs?(du.canCover?`Your $${du.amt.toLocaleString()} deposit is due within 24hrs of booking. ✅ You already have enough saved to cover it — you're good to book!`:`Your $${du.amt.toLocaleString()} deposit is due within 24hrs of booking. ⚠️ You don't have this amount saved yet. Build this up FIRST before you book.`):(du.canCover?`Your $${du.amt.toLocaleString()} deposit is due in ${du.monthsAway} month${du.monthsAway!==1?'s':''}. ✅ At your savings rate you can cover it — just set that money aside first.`:`Your $${du.amt.toLocaleString()} deposit is due in ${du.monthsAway} month${du.monthsAway!==1?'s':''}. ⚠️ You'll need to save at least $${du.monthlyNeeded.toLocaleString()}/month to cover it on time. This is your FIRST priority.`);}else document.getElementById('deposit-alert').style.display='none';
-    document.getElementById('stat-total').textContent=`$${r.totalCost.toLocaleString()}`;document.getElementById('stat-needed').textContent=`$${r.amountNeeded.toLocaleString()}`;document.getElementById('stat-months-avail').textContent=`${r.monthsAvail} mo`;document.getElementById('stat-months-save').textContent=r.monthsToSave===Infinity?'∞':`${r.monthsToSave} mo`;
-    document.getElementById('progress-pct').textContent=`${r.progressPct}%`;document.getElementById('progress-fill').style.width=`${r.progressPct}%`;document.getElementById('progress-fill').style.background=`linear-gradient(90deg, #F5507A, #4ECDC4)`;document.getElementById('prog-have').textContent=`$${r.alreadyHave.toLocaleString()}`;document.getElementById('prog-total').textContent=`$${r.totalCost.toLocaleString()}`;
-    if(r.scenarios&&r.scenarios.length){document.getElementById('scenarios-wrap').style.display='block';document.getElementById('scenarios-list').innerHTML=r.scenarios.map((s,i)=>`<div class="scenario-item"><div class="scenario-num">Option ${i+1}</div><div class="scenario-text">${s}</div></div>`).join('');}
-    document.getElementById('hidden-total').value=`$${r.totalCost.toLocaleString()}`;document.getElementById('hidden-needed').value=`$${r.amountNeeded.toLocaleString()}`;document.getElementById('hidden-verdict').value=r.verdict.toUpperCase();document.getElementById('hidden-monthly').value=`$${parseCurrency('monthlySavings').toLocaleString()}/month`;document.getElementById('hidden-months-avail').value=`${r.monthsAvail} months`;document.getElementById('hidden-months-need').value=r.monthsToSave===Infinity?'Cannot save enough':`${r.monthsToSave} months`;document.getElementById('hidden-deposit-status').value=depositStatus==='none'?'No deposit required':depositStatus==='paid'?'Deposit already paid':`Deposit still due: $${parseCurrency('depositAmount').toLocaleString()}`;document.getElementById('hidden-deposit-amt').value=depositStatus==='due'?`$${parseCurrency('depositAmount').toLocaleString()} due`:depositStatus==='paid'?`$${parseCurrency('depositPaid').toLocaleString()} paid`:'N/A';
-    const ctaCopy={green:{title:"You're ready! Let's lock in your trip. ✈️",sub:"You've got a solid plan. Let Sabrina help you find the perfect trip and make it official.",btn:"Let's Book Your Trip → EliteTripps.com"},yellow:{title:"You're close — let me help you make it work. 💡",sub:"A few small adjustments and this trip is yours. Sabrina can help you find the right fit for your budget.",btn:"Let's Make It Work → EliteTripps.com"},red:{title:"Let me help you find something in your budget. 🙌🏽",sub:"Don't give up on the trip — give up on that price point. Sabrina specializes in real options for real budgets.",btn:"Find My Budget Trip → EliteTripps.com"}};
-    const cta=ctaCopy[r.verdict];document.getElementById('cta-title').textContent=cta.title;document.getElementById('cta-sub').textContent=cta.sub;document.getElementById('cta-btn').textContent=cta.btn;
-    document.getElementById('milestones-list').innerHTML=r.milestones.slice(0,18).map(m=>`<div class="milestone-row"><span class="milestone-month">${m.label}</span><span><span class="milestone-amt">$${m.total.toLocaleString()}</span>${m.hit?'<span class="milestone-check">✓ Goal!</span>':''}${m.isDepositMonth?'<span class="milestone-dep">⚡ Deposit Due</span>':''}</span></div>`).join('');
+  function runCheck(){
+    if (!validate()) return;
+    calcResult = calculate();
+    renderResults();
+    $('form-view').hidden = true;
+    $('result-view').hidden = false;
+    window.scrollTo({top:0, behavior:'smooth'});
+    $('result-view').focus?.();
   }
 
-  function checkGate(){const n=document.getElementById('gate-name').value.trim(),e=document.getElementById('gate-email').value.trim();document.getElementById('btn-gate').className=`btn-gate ${n&&e.includes('@')&&e.includes('.')?'active':'inactive'}`;}
+  function renderResults(){
+    const r = calcResult, v = vCfg[r.verdict];
+    const banner = $('verdict-banner');
+    banner.style.background = v.bg;
+    banner.style.border = `2px solid ${v.border}`;
+    $('verdict-emoji').textContent = v.emoji;
+    const te = $('verdict-title');
+    te.textContent = v.label;
+    te.style.color = v.color;
+    const vm = $('verdict-message');
+    vm.textContent = r.message;
+    vm.style.color = v.color;
+
+    if (r.depositUrgency){
+      const du = r.depositUrgency;
+      const when = du.monthsAway === 0 ? 'this month' : `in ${du.monthsAway} month${du.monthsAway !== 1 ? 's' : ''}`;
+      let text;
+      if (du.is24hrs){
+        text = du.canCover
+          ? `Your ${money(du.amt)} deposit is due within 24 hours of booking. ✅ You already have enough saved to cover it. You're good to book!`
+          : `Your ${money(du.amt)} deposit is due within 24 hours of booking. ⚠️ You don't have this amount saved yet. Build it up first, then book.`;
+      } else if (du.canCover){
+        text = `Your ${money(du.amt)} deposit is due ${when}. ✅ At your savings rate you can cover it. Just set that money aside first.`;
+      } else if (du.monthsAway === 0){
+        text = `Your ${money(du.amt)} deposit is due ${when}. ⚠️ You don't have enough saved yet. This is your first priority.`;
+      } else {
+        text = `Your ${money(du.amt)} deposit is due ${when}. ⚠️ You'll need to save at least ${money(du.monthlyNeeded)}/month to cover it on time. This is your first priority.`;
+      }
+      $('deposit-alert-text').textContent = text;
+      $('deposit-alert').hidden = false;
+    } else {
+      $('deposit-alert').hidden = true;
+    }
+
+    $('stat-total').textContent = money(r.totalCost);
+    $('stat-needed').textContent = money(r.amountNeeded);
+    $('stat-months-avail').textContent = `${r.monthsAvail} mo`;
+    $('stat-months-save').textContent = r.monthsToSave === Infinity ? 'Not yet' : `${r.monthsToSave} mo`;
+
+    $('progress-pct').textContent = `${r.progressPct}%`;
+    $('progress-track').setAttribute('aria-label', `Savings progress: ${r.progressPct}%`);
+    $('progress-fill').style.width = `${r.progressPct}%`;
+    $('prog-have').textContent = money(r.alreadyHave);
+    $('prog-total').textContent = money(r.totalCost);
+
+    if (r.scenarios.length){
+      $('scenarios-wrap').hidden = false;
+      $('scenarios-list').innerHTML = r.scenarios.map((s, i) =>
+        `<div class="option"><div class="option-num">Option ${i+1}</div><div class="option-text"></div></div>`
+      ).join('');
+      document.querySelectorAll('#scenarios-list .option-text').forEach((el, i) => { el.textContent = r.scenarios[i]; });
+    } else {
+      $('scenarios-wrap').hidden = true;
+    }
+
+    $('hidden-total').value = money(r.totalCost);
+    $('hidden-needed').value = money(r.amountNeeded);
+    $('hidden-verdict').value = r.verdict.toUpperCase();
+    $('hidden-monthly').value = `${money(parseCurrency('monthlySavings'))}/month`;
+    $('hidden-months-avail').value = `${r.monthsAvail} months`;
+    $('hidden-months-need').value = r.monthsToSave === Infinity ? 'Not yet at this savings rate' : `${r.monthsToSave} months`;
+    $('hidden-deposit-status').value =
+      depositStatus === 'none' ? 'No deposit required' :
+      depositStatus === 'paid' ? 'Deposit already paid' :
+      depositDateType === '24hrs' ? 'Deposit due within 24 hours of booking' :
+      `Deposit still due: ${money(parseCurrency('depositAmount'))}`;
+    $('hidden-deposit-amt').value =
+      depositStatus === 'due' ? `${money(parseCurrency('depositAmount'))} due` :
+      depositStatus === 'paid' ? `${money(parseCurrency('depositPaid'))} paid` : 'N/A';
+
+    const ctaCopy = {
+      green:  { title:"You're ready! Let's lock in your trip. ✈️", sub:"You've got a solid plan. Let Sabrina help you find the perfect trip and make it official.", btn:"Let's book your trip → elitetripps.com" },
+      yellow: { title:"You're close. Let me help you make it work. 💡", sub:"A few small adjustments and this trip is yours. Sabrina can help you find the right fit for your budget.", btn:"Let's make it work → elitetripps.com" },
+      red:    { title:"Let me help you find something in your budget. 🙌🏽", sub:"Don't give up on the trip. Give up on that price point. Sabrina specializes in real options for real budgets.", btn:"Find my budget trip → elitetripps.com" }
+    };
+    const cta = ctaCopy[r.verdict];
+    $('cta-title').textContent = cta.title;
+    $('cta-sub').textContent = cta.sub;
+    $('cta-btn').textContent = cta.btn;
+
+    $('milestones-list').innerHTML = r.milestones.slice(0, 18).map(m =>
+      `<div class="milestone-row"><span class="milestone-month">${m.label}</span><span><span class="milestone-amt">${money(m.total)}</span>${m.hit ? '<span class="milestone-check">✓ Goal!</span>' : ''}${m.isDepositMonth ? '<span class="milestone-dep">⚡ Deposit due</span>' : ''}</span></div>`
+    ).join('');
+  }
 
   async function handleGateSubmit(e){
-    e.preventDefault();const n=document.getElementById('gate-name').value.trim(),em=document.getElementById('gate-email').value.trim();if(!n||!em.includes('@'))return;
-    const btn=document.getElementById('btn-gate');btn.textContent='Sending... ⏳';btn.className='btn-gate inactive';
-    try{const form=document.getElementById('gate-form');await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});}catch(err){}
-    document.getElementById('gate-section').style.display='none';document.getElementById('milestones-section').style.display='block';setTimeout(()=>document.getElementById('milestones-section').scrollIntoView({behavior:'smooth',block:'start'}),100);
+    e.preventDefault();
+    const form = $('gate-form');
+    const n = $('gate-name').value.trim();
+    const em = $('gate-email').value.trim();
+    const msg = $('gate-msg');
+
+    if (!n || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){
+      msg.textContent = !n
+        ? 'Add your first name so we know who to send this to.'
+        : 'Check your email address. It should look like name@example.com.';
+      msg.hidden = false;
+      (n ? $('gate-email') : $('gate-name')).focus();
+      return;
+    }
+    msg.hidden = true;
+
+    const btn = $('btn-gate');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    let sent = false;
+    try {
+      const res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{ Accept:'application/json' } });
+      const data = await res.json().catch(() => ({}));
+      sent = res.ok && data.success !== false;
+    } catch (err){
+      sent = false;
+    }
+
+    $('gate-section').hidden = true;
+    const note = $('plan-note');
+    if (!sent){
+      note.textContent = "We couldn't send a copy to your email right now, but your full plan is below. Save this page or try again later.";
+      note.hidden = false;
+    } else {
+      note.hidden = true;
+    }
+    $('milestones-section').hidden = false;
+    setTimeout(() => $('milestones-section').scrollIntoView({behavior:'smooth', block:'start'}), 100);
   }
 
   function resetForm(){
-    document.getElementById('result-view').style.display='none';document.getElementById('form-view').style.display='block';document.getElementById('gate-section').style.display='block';document.getElementById('milestones-section').style.display='none';document.getElementById('scenarios-wrap').style.display='none';
-    document.getElementById('gate-name').value='';document.getElementById('gate-email').value='';document.getElementById('btn-gate').className='btn-gate inactive';document.getElementById('btn-gate').textContent='Send My Plan ✨';
-    chipKeys.forEach(key=>{const btn=document.querySelector(`#chip-${key} .chip`);if(btn)btn.classList.remove('selected');const wrap=document.getElementById(`chip-input-${key}`);if(wrap)wrap.style.display='none';const val=document.getElementById(`chip-val-${key}`);if(val)val.value='';});
-    chipTotal=0;document.getElementById('chip-total').style.display='none';document.getElementById('extraSpending').value='0';setDepositStatus('due');setDepositDateType('specific');window.scrollTo({top:0,behavior:'smooth'});
+    $('result-view').hidden = true;
+    $('form-view').hidden = false;
+    $('gate-section').hidden = false;
+    $('milestones-section').hidden = true;
+    $('scenarios-wrap').hidden = true;
+    $('gate-name').value = '';
+    $('gate-email').value = '';
+    $('gate-msg').hidden = true;
+    const btn = $('btn-gate');
+    btn.disabled = false;
+    btn.textContent = 'Send my plan ✨';
+
+    extraKeys.forEach(key => {
+      $('extra-btn-' + key).setAttribute('aria-pressed','false');
+      $('extra-amt-' + key).hidden = true;
+      $('extra-val-' + key).value = '';
+    });
+    recalcExtras();
+    setDepositStatus('due');
+    setDepositDateType('specific');
+    window.scrollTo({top:0, behavior:'smooth'});
   }
 </script>
-
 </body>
 </html>
