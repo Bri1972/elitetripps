@@ -63,6 +63,21 @@ h1,h2,h3,h4{font-family:"Playfair Display",Georgia,"Times New Roman",serif;font-
 .btn-ghost{background:transparent;color:var(--burgundy);border:2px solid var(--burgundy)}
 .btn-ghost:hover{background:var(--burgundy);color:#fff}
 .btn-sm{padding:14px 18px;font-size:.78rem}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.75)}
+.btn-outline:hover{background:#fff;color:var(--burgundy)}
+.pay-strip{background:var(--burgundy);color:#fff;padding:52px 0;overflow:hidden}
+.pay-strip h2{color:#fff;font-style:italic;font-weight:800;margin-bottom:16px}
+.pay-lead{font-size:1.25rem;font-weight:700;color:var(--gold);margin:0 0 12px}
+.pay-strip p{margin:0 0 12px;color:var(--body-light)}
+.pay-strip a.txt{color:var(--gold);font-weight:700}
+.pay-strip .pay-fine{font-size:.88rem;opacity:.85}
+.cta-pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.cta-pair .btn{display:block;text-align:center;width:100%}
+.cta-pair p{font-size:.92rem;margin:10px 0 0;text-align:center}
+#inquiryForm select{appearance:auto}
+.inq-error{display:none;background:#fdecea;border-left:4px solid var(--error);color:var(--error);font-weight:600;padding:12px 14px;margin:0 0 18px}
+.inq-error.active{display:block}
+@media (max-width:760px){.cta-pair{grid-template-columns:1fr}.pay-strip{padding:42px 0}}
 .btn-burg{background:var(--burgundy);color:#fff}
 .btn-burg:hover{background:var(--black);color:#fff}
 
@@ -293,7 +308,7 @@ footer p{margin:0 0 10px}
       <div><dt>Sails from</dt><dd>San Juan, Puerto Rico</dd></div>
       <div><dt>Final payment</dt><dd>August 15, 2027</dd></div>
     </dl>
-    <a class="btn" href="#booking">Start My Booking</a>
+    <a class="btn" href="#cabins">Book your cabin</a>
   </div>
 </header>
 
@@ -331,6 +346,21 @@ footer p{margin:0 0 10px}
       <h3>A quick heads-up about travel</h3>
       <p>We sail the evening of December 26, so plan to fly into San Juan on Christmas Day or a day or two before. Flying the morning of the 26th is too risky if a flight gets delayed. 🎄</p>
       <p class="air-note">Airfare is not included. Each traveler books and manages their own flights to and from San Juan.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pay-strip" id="payment-options">
+  <div class="wrap">
+    <h2>YOUR GETAWAY STARTS WITH A DEPOSIT! 🛳️</h2>
+    <p class="pay-lead">You don't have to pay for your entire cruise today.</p>
+    <p>Secure your cabin with the required deposit and make payments toward your remaining balance.</p>
+    <p>Interested in monthly financing? Flex Pay by Upgrade may be available for eligible travelers.</p>
+    <p>Have questions about payment options? <a class="txt" href="#inquiry">Contact Elite Tripps™ before booking.</a></p>
+    <p class="pay-fine">Financing is subject to approval. Terms and eligibility vary.</p>
+    <div class="cta-pair">
+      <div><a class="btn" href="#cabins">Book your cabin</a><p>For travelers ready to submit their reservation request.</p></div>
+      <div><a class="btn btn-outline" href="#inquiry">Ask about payment options</a><p>For travelers who need assistance before booking.</p></div>
     </div>
   </div>
 </section>
@@ -507,6 +537,68 @@ footer p{margin:0 0 10px}
 
     <div class="gk-item"><h3>Also</h3>
       <p>This is an adults-only cruise, 18 and older. Airfare is not included, and each traveler books their own flights. Group hotel details are coming.</p></div>
+  </div>
+</section>
+
+<section class="light" id="inquiry">
+  <div class="wrap">
+    <div class="star-rule"><svg viewBox="-10 -10 20 20" aria-hidden="true"><path d="M0,-9 Q1.2,-1.2 9,0 Q1.2,1.2 0,9 Q-1.2,1.2 -9,0 Q-1.2,-1.2 0,-9Z" fill="currentColor"/></svg></div>
+    <h2>HAVE QUESTIONS BEFORE YOU BOOK?</h2>
+    <p class="intro">Thinking about joining us for New Year's 2028? Let us help you find the right cabin and understand your payment options.</p>
+    <div class="form-card" style="box-shadow:0 12px 36px rgba(0,0,0,.12)">
+      <form id="inquiryForm" action="https://formspree.io/f/xgavpnbn" method="POST" novalidate>
+        <input type="hidden" name="Trip" value="Virgin Voyages Scarlet Lady | Southern Caribbean New Year's | Dec 26, 2027 to Jan 2, 2028">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="row">
+          <div class="field" data-required="true">
+            <label class="q" for="iqFirst">First name <span class="req">*</span></label>
+            <input type="text" id="iqFirst" name="First Name" autocomplete="given-name">
+            <span class="err">Please add your first name.</span>
+          </div>
+          <div class="field" data-required="true">
+            <label class="q" for="iqLast">Last name <span class="req">*</span></label>
+            <input type="text" id="iqLast" name="Last Name" autocomplete="family-name">
+            <span class="err">Please add your last name.</span>
+          </div>
+        </div>
+        <div class="field" data-required="true">
+          <label class="q" for="iqEmail">Email address <span class="req">*</span></label>
+          <input type="email" id="iqEmail" name="Email" autocomplete="email" inputmode="email">
+          <span class="err">Please add a valid email.</span>
+        </div>
+        <div class="field" data-required="true">
+          <label class="q" for="iqPhone">Phone number <span class="req">*</span></label>
+          <input type="tel" id="iqPhone" name="Phone" autocomplete="tel" inputmode="tel">
+          <span class="err">Please add your phone number.</span>
+        </div>
+        <div class="field" data-required="true">
+          <label class="q" for="iqTopic">What can we help you with? <span class="req">*</span></label>
+          <select id="iqTopic">
+            <option value="">Choose one</option>
+            <option>Cabin pricing and availability</option>
+            <option>Deposits and payment plans</option>
+            <option>Flex Pay financing</option>
+            <option>Traveling solo</option>
+            <option>Ready to book, need assistance</option>
+            <option>Other question</option>
+          </select>
+          <span class="err">Please choose what you need help with.</span>
+        </div>
+        <div class="field" data-required="true">
+          <label class="choice consent"><input type="checkbox" name="Consent" value="Yes">I agree that Elite Tripps™ may contact me about this inquiry by email, text, or phone. Message and data rates may apply. My information is used only to answer my inquiry.</label>
+          <span class="err">Please check the box so I can reach out.</span>
+        </div>
+        <p class="hint" style="margin:-10px 0 20px">Sending this is a question, not a booking. It does not hold a cabin.</p>
+        <div class="inq-error" id="inqError" role="alert">Something went wrong sending your inquiry. Please try again in a moment.</div>
+        <button type="submit" class="btn" style="width:100%">Send my inquiry</button>
+      </form>
+      <div class="thanks" id="inqThanks" role="status">
+        <h3>Thank you! 💛</h3>
+        <p>Your inquiry was received. I'll reach out by email, text, or phone to help you find the right cabin and understand your payment options.</p>
+        <p>Sending this didn't book a cabin. When you're ready, you can <a href="#cabins">choose your cabin</a>.</p>
+        <p>Sabrina</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1035,6 +1127,56 @@ footer p{margin:0 0 10px}
   }
   const clear = e => { const f = e.target.closest('.field'); if(f && f.classList.contains('invalid') && fieldValid(f)) f.classList.remove('invalid'); };
   form.addEventListener('input', clear); form.addEventListener('change', clear);
+
+  // Booking inquiry form
+  const inq = $('#inquiryForm');
+  if(inq){
+    let sending = false;
+    const iqOk = f => {
+      const i = f.querySelector('input,select'); if(!i) return true;
+      if(i.type === 'checkbox') return i.checked;
+      const v = i.value.trim(); if(!v) return false;
+      if(i.type === 'email') return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
+      if(i.type === 'tel') return v.replace(/\D/g,'').length >= 7;
+      return true;
+    };
+    const iqClear = e => { const f = e.target.closest('.field'); if(f && f.classList.contains('invalid') && iqOk(f)) f.classList.remove('invalid'); };
+    inq.addEventListener('input', iqClear); inq.addEventListener('change', iqClear);
+    inq.addEventListener('submit', async e => {
+      e.preventDefault();
+      if(sending) return;
+      let first = null;
+      $$('.field', inq).forEach(f => { const ok = iqOk(f); f.classList.toggle('invalid', !ok); if(!ok && !first) first = f; });
+      if(first){
+        first.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+        const i = first.querySelector('input,select'); if(i) setTimeout(() => i.focus({preventScroll:true}), 300);
+        return;
+      }
+      sending = true;
+      const btn = inq.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...'; btn.disabled = true;
+      $('#inqError').classList.remove('active');
+      const topic = $('#iqTopic').value;
+      const data = new FormData(inq);
+      data.set('Notes', 'INQUIRY (not a booking request): ' + topic);
+      data.set('_subject', 'Inquiry: ' + topic + ' | Grown Folks Getaway New Year\'s 2028');
+      data.set('_replyto', $('#iqEmail').value);
+      try{
+        const res = await fetch(inq.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+        if(!res.ok) throw new Error('Formspree error');
+        let j = null; try{ j = await res.json(); }catch(_){}
+        if(j && j.ok === false) throw new Error('Formspree rejected');
+      }catch(err){
+        sending = false;
+        btn.textContent = 'Send my inquiry'; btn.disabled = false;
+        $('#inqError').classList.add('active');
+        return;
+      }
+      inq.style.display = 'none';
+      $('#inqThanks').classList.add('active');
+      $('#inquiry').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+    });
+  }
 
   // Share buttons
   const pageUrl = location.href.split('#')[0];
