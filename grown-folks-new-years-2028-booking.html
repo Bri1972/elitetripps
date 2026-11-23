@@ -258,6 +258,23 @@ footer p{margin:0 0 10px}
 @media (max-width:760px){.cabins,.cabins.three,.cabins.four,.pctl,.row,.facts,.choices.two{grid-template-columns:1fr}.form-card{padding:26px 18px}.flutes{width:72px}.countdown{gap:12px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1165242935952258');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1165242935952258&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -1172,6 +1189,7 @@ footer p{margin:0 0 10px}
         $('#inqError').classList.add('active');
         return;
       }
+      try{ if(typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Grown Folks Getaway New Year 2028', lead_type: 'General inquiry', readiness: 'General inquiry' }); }catch(_){}
       inq.style.display = 'none';
       $('#inqThanks').classList.add('active');
       $('#inquiry').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
@@ -1237,6 +1255,7 @@ footer p{margin:0 0 10px}
       alert('Something went wrong sending your request. Please try again in a moment.');
       return;
     }
+    try{ const rd = (form.querySelector('input[name="Readiness"]:checked') || {}).value, rdMap = {'Ready to book':"I'm ready to book", 'Close, need a little more info':"I'm close, I just need a little more info", 'Just exploring':'Just exploring for now'}; if(typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Grown Folks Getaway New Year 2028', lead_type: 'Booking request', readiness: rdMap[rd] || rd || '' }); }catch(_){}
     form.style.display = 'none';
     if(insChoice && insChoice.value === 'Send me a quote') $('#tyIns').hidden = false;
     $('#thanks').classList.add('active');
